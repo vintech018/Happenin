@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happenin - Home</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="site-header">
+    <div class="container nav-row">
+      <a href="index.html" class="brand">Happenin</a>
+      <nav>
+        <a href="movies.html">Movies</a>
+        <a href="live.html">Live Events</a>
+        <a href="about.html">About</a>
+        <a href="login.html" class="btn">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to Happenin</h1>
+    <p>Find the best movies, concerts & stand-up shows near you.</p>
+    <a href="movies.html" class="btn">Explore Now</a>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Search Bar -->
+    <div class="search-container">
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" class="search-bar" placeholder="Search for movies, events, sports...">
+    </div>
+
+    <!-- Category Navigation -->
+    <div class="category-nav">
+      <a href="#" class="active">All</a>
+      <a href="#">Movies</a>
+      <a href="#">Concerts</a>
+      <a href="#">Comedy</a>
+      <a href="#">Sports</a>
+      <a href="#">Theatre</a>
+      <a href="#">Adventure</a>
+      <a href="#">Workshops</a>
+    </div>
+
+    <!-- Happening This Week -->
+    <section class="list-page">
+      <h2>Happening This Week</h2>
+      <div class="grid">
+        <article class="tile">
+          <div class="thumb">
+            <img src="images/imagine_dragons.jpg" alt="Imagine Dragons Concert">
+            <span class="date-badge">Sep 12</span>
+            <span class="category-badge">Concert</span>
+          </div>
+          <h4>Imagine Dragons — Live</h4>
+          <p class="muted">Bengaluru Stadium, Bengaluru</p>
+          <div class="price-row">
+            <span class="price">₹1999 onwards</span>
+            <span class="discount">20% off up to ₹400</span>
+          </div>
+        </article>
+
+        <article class="tile">
+          <div class="thumb">
+            <img src="images/comedy_nights.jpg" alt="Comedy Show">
+            <span class="date-badge">Sep 18</span>
+            <span class="category-badge">Comedy</span>
+          </div>
+          <h4>Komedi Nights — Laugh Riot</h4>
+          <p class="muted">Comedy Club, Mumbai</p>
+          <div class="price-row">
+            <span class="price">₹799 onwards</span>
+            <span class="discount">30% off up to ₹300</span>
+          </div>
+        </article>
+
+        <article class="tile">
+          <div class="thumb">
+            <img src="images/goa.jpg" alt="EDM Festival">
+            <span class="date-badge">Oct 5</span>
+            <span class="category-badge">Concert</span>
+          </div>
+          <h4>EDM Sunset Fest</h4>
+          <p class="muted">Sunset Beach, Goa</p>
+          <div class="price-row">
+            <span class="price">₹2499 onwards</span>
+            <span class="discount">15% off up to ₹500</span>
+          </div>
+        </article>
+      </div>
+    </section>
+    
+    <!-- Top Movies Section -->
+    <section class="list-page">
+      <h2>Top Movies Near You</h2>
+      <div class="grid">
+        <article class="tile">
+          <div class="thumb">
+            <img src="images/top_gun.jpg" alt="Top Gun: Maverick" height="50">
+            <span class="category-badge">Action</span>
+          </div>
+          <h4>Top Gun: Maverick</h4>
+          <p class="muted">PVR Cinemas, Delhi</p>
+          <div class="price-row">
+            <span class="price">₹350 onwards</span>
+            <span class="discount">Book now</span>
+          </div>
+        </article>
+        <article class="tile">
+          <div class="thumb">
+            <img src="images/interstellar.jpg" alt="Interstellar">
+            <span class="category-badge">Sci-fi</span>
+          </div>
+          <h4>Interstellar</h4>
+          <p class="muted">INOX, Mumbai</p>
+          <div class="price-row">
+            <span class="price">₹300 onwards</span>
+            <span class="discount">Book now</span>
+          </div>
+        </article>
+
+        <article class="tile">
+          <div class="thumb">
+            <img src="images/fight_club.jpg" alt="Fight Club">
+            <span class="category-badge">Drama</span>
+          </div>
+          <h4>Fight Club</h4>
+          <p class="muted">Cinepolis, Bengaluru</p>
+          <div class="price-row">
+            <span class="price">₹280 onwards</span>
+            <span class="discount">Book now</span>
+          </div>
+        </article>
+      </div>
+    </section>
+    
+    <!-- Best in Comedy -->
+    <section class="list-page">
+      <h2>Best in Comedy</h2>
+      <div class="grid">
+
+        <!-- Comedy Non-Stop (Bassi) -->
+        <article class="tile">
+          <div class="thumb">
+            <img src="images/bassi.jpg" alt="Anubhav Singh Bassi" />
+            <span class="date-badge">Sep 25</span>
+            <span class="category-badge">Stand-up</span>
+          </div>
+          <h4>Comedy Non-Stop</h4>
+          <p class="muted">Comedy Club, Noida</p>
+          <div class="price-row">
+            <span class="price">₹299 onwards</span>
+            <span class="discount">15% off up to ₹200</span>
+          </div>
+        </article>
+
+        <!-- Delhi Comedy Carnival (Chandigarh) -->
+        <article class="tile">
+          <div class="thumb">
+            <img src="images/Chandigarh.jpg" alt="Chandigarh" />
+            <span class="date-badge">Oct 10</span>
+            <span class="category-badge">Stand-up</span>
+          </div>
+          <h4>Chandigarh Comedy Carnival</h4>
+          <p class="muted">Siri Fort Auditorium, Chandigarh</p>
+          <div class="price-row">
+            <span class="price">₹1000 onwards</span>
+            <span class="discount">10% off up to ₹300</span>
+          </div>
+        </article>
+
+        <!-- Joke Stars (Samay Raina) -->
+        <article class="tile">
+          <div class="thumb">
+            <img src="images/samay_raina.jpg" alt="Samay Raina" />
+            <span class="date-badge">Sep 30</span>
+            <span class="category-badge">Stand-up</span>
+          </div>
+          <h4>Joke Stars</h4>
+          <p class="muted">The Social House, Delhi</p>
+          <div class="price-row">
+            <span class="price">₹299 onwards</span>
+            <span class="discount">20% off up to ₹200</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p> By accessing this page, you confirm that you have read, understood, and agreed to our Terms of Service, Cookie Policy, Privacy Policy, and Content Guidelines. All rights reserved. ©</p>
+    </div>
+  </footer>
+  
+  <!-- Scroll to top button -->
+  <button id="scrollToTop" class="scroll-top-btn" title="Go to top">↑</button>
+
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+    
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+</body>
+</html>

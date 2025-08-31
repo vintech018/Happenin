@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxGraphModel dx="1180" dy="1600" grid="1" gridSize="10" guides="1" tooltips="1"
+              connect="1" arrows="1" folding="1" page="1" pageScale="1" pageWidth="1200"
+              pageHeight="1600" math="0" shadow="0">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+
+    <!-- Central Process -->
+    <mxCell id="process" value="Happenin – Event Management System"
+            style="ellipse;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;fontSize=14;fontStyle=1;"
+            vertex="1" parent="1">
+      <mxGeometry x="420" y="360" width="340" height="100" as="geometry"/>
+    </mxCell>
+
+    <!-- Entities -->
+    <mxCell id="user" value="User"
+            style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=13;"
+            vertex="1" parent="1">
+      <mxGeometry x="60" y="160" width="120" height="60" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="organizer" value="Organizer"
+            style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#EF6C00;fontSize=13;"
+            vertex="1" parent="1">
+      <mxGeometry x="840" y="160" width="120" height="60" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="admin" value="Admin"
+            style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#F3E5F5;strokeColor=#6A1B9A;fontSize=13;"
+            vertex="1" parent="1">
+      <mxGeometry x="60" y="580" width="120" height="60" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="payment" value="Payment Gateway"
+            style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#FFEBEE;strokeColor=#C62828;fontSize=13;"
+            vertex="1" parent="1">
+      <mxGeometry x="840" y="580" width="160" height="60" as="geometry"/>
+    </mxCell>
+
+    <!-- Flows -->
+    <mxCell id="flow1" value="Search, Booking Request, Login"
+            style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#333333;fontSize=11;"
+            edge="1" parent="1" source="user" target="process">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="flow2" value="Event Details, Booking Confirmation"
+            style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#333333;fontSize=11;"
+            edge="1" parent="1" source="process" target="user">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="flow3" value="Add/Update Events"
+            style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#333333;fontSize=11;"
+            edge="1" parent="1" source="organizer" target="process">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="flow4" value="Booking Reports, Settlement"
+            style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#333333;fontSize=11;"
+            edge="1" parent="1" source="process" target="organizer">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="flow5" value="User Management, Event Approval"
+            style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#333333;fontSize=11;"
+            edge="1" parent="1" source="admin" target="process">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="flow6" value="Audit Logs, Analytics"
+            style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#333333;fontSize=11;"
+            edge="1" parent="1" source="process" target="admin">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="flow7" value="Payment Request, Refund Request"
+            style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#333333;fontSize=11;"
+            edge="1" parent="1" source="process" target="payment">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <mxCell id="flow8" value="Payment Status, Transaction Ref"
+            style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#333333;fontSize=11;"
+            edge="1" parent="1" source="payment" target="process">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+  </root>
+</mxGraphModel>
