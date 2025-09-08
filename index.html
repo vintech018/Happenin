@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happenin - Home</title>
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Mobile Navigation Styles */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu-toggle:hover {
+      background-color: rgba(89, 40, 229, 0.1);
+      color: var(--primary);
+    }
+
+    .mobile-menu-toggle.active {
+      color: var(--primary);
+    }
+
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-nav.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-nav-content {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 280px;
+      height: 100%;
+      background: var(--background-light);
+      box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-nav.active .mobile-nav-content {
+      transform: translateX(0);
+    }
+
+    .mobile-nav-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border-light);
+      background: var(--background-gray);
+    }
+
+    .mobile-nav-header .brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    .mobile-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-close:hover {
+      background-color: rgba(89, 40, 229, 0.1);
+      color: var(--primary);
+    }
+
+    .mobile-nav-links {
+      flex: 1;
+      padding: 2rem 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mobile-nav-links a {
+      display: flex;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      border-left: 4px solid transparent;
+      text-decoration: none;
+    }
+
+    .mobile-nav-links a:hover {
+      background-color: rgba(89, 40, 229, 0.05);
+      border-left-color: var(--primary);
+      color: var(--primary);
+      transform: translateX(10px);
+    }
+
+    .mobile-nav-links a i {
+      margin-right: 0.75rem;
+      width: 20px;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+
+    .mobile-nav-footer {
+      padding: 1.5rem;
+      border-top: 1px solid var(--border-light);
+      background: var(--background-gray);
+    }
+
+    .mobile-nav-footer .btn {
+      width: 100%;
+      justify-content: center;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Show mobile menu button on smaller screens */
+    @media (max-width: 768px) {
+      .mobile-menu-toggle {
+        display: block;
+      }
+
+      .nav-row nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .mobile-nav-content {
+        width: 100%;
+      }
+    }
+
+    /* Prevent body scroll when menu is open */
+    body.menu-open {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="site-header">
+    <div class="container nav-row">
+      <a href="index.html" class="brand">Happenin</a>
+      <nav>
+        <a href="movies.html">Movies</a>
+        <a href="live.html">Live Events</a>
+        <a href="about.html">About</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="login.html" class="btn">Login</a>
+      </nav>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-content">
+      <div class="mobile-nav-header">
+        <span class="brand">Happenin</span>
+        <button class="mobile-close" id="mobileClose">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="mobile-nav-links">
+        <a href="movies.html">
+          <i class="fas fa-film"></i>
+          Movies
+        </a>
+        <a href="live.html">
+          <i class="fas fa-music"></i>
+          Live Events
+        </a>
+        <a href="about.html">
+          <i class="fas fa-info-circle"></i>
+          About
+        </a>
+      </div>
+      <div class="mobile-nav-footer">
+        <a href="login.html" class="btn">
+          <i class="fas fa-sign-in-alt" style="margin-right: 0.5rem;"></i>
+          Login
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to Happenin</h1>
+    <p>Find the best movies, concerts & stand-up shows near you.</p>
+    <a href="movies.html" class="btn">Explore Now</a>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Search Bar -->
+    <div class="search-container">
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" class="search-bar" placeholder="Search for movies, events, sports...">
+    </div>
+
+    <!-- Category Navigation -->
+    <div class="category-nav">
+      <a href="#" class="category-item active">All</a>
+      <a href="#" class="category-item">Movies</a>
+      <a href="#" class="category-item">Concerts</a>
+      <a href="#" class="category-item">Comedy</a>
+      <a href="#" class="category-item">Sports</a>
+      <a href="#" class="category-item">Theatre</a>
+      <a href="#" class="category-item">Adventure</a>
+      <a href="#" class="category-item">Workshops</a>
+    </div>
+
+    <!-- Happening This Week -->
+    <section class="list-page">
+      <h2>Happening This Week</h2>
+      <div class="grid">
+        <article class="tile">
+          <div class="thumb">
+            <img src="images/imagine_dragons.jpg" alt="Imagine Dragons Concert">
+            <span class="date-badge">Sep 12</span>
+            <span class="category-badge">Concert</span>
+          </div>
+          <h4>Imagine Dragons — Live</h4>
+          <p class="muted">Bengaluru Stadium, Bengaluru</p>
+          <div class="price-row">
+            <span class="price">₹1999 onwards</span>
+            <span class="discount">20% off up to ₹400</span>
+          </div>
+        </article>
+
+        <article class="tile">
+          <div class="thumb">
+            <img src="images/comedy_nights.jpg" alt="Comedy Show">
+            <span class="date-badge">Sep 18</span>
+            <span class="category-badge">Comedy</span>
+          </div>
+          <h4>Komedi Nights — Laugh Riot</h4>
+          <p class="muted">Comedy Club, Mumbai</p>
+          <div class="price-row">
+            <span class="price">₹799 onwards</span>
+            <span class="discount">30% off up to ₹300</span>
+          </div>
+        </article>
+
+        <article class="tile">
+          <div class="thumb">
+            <img src="images/goa.jpg" alt="EDM Festival">
+            <span class="date-badge">Oct 5</span>
+            <span class="category-badge">Concert</span>
+          </div>
+          <h4>EDM Sunset Fest</h4>
+          <p class="muted">Sunset Beach, Goa</p>
+          <div class="price-row">
+            <span class="price">₹2499 onwards</span>
+            <span class="discount">15% off up to ₹500</span>
+          </div>
+        </article>
+      </div>
+    </section>
+    
+    <!-- Top Movies Section -->
+    <section class="list-page">
+      <h2>Top Movies Near You</h2>
+      <div class="grid">
+        <article class="tile">
+          <div class="thumb">
+            <img src="images/top_gun.jpg" alt="Top Gun: Maverick" height="50">
+            <span class="category-badge">Action</span>
+          </div>
+          <h4>Top Gun: Maverick</h4>
+          <p class="muted">PVR Cinemas, Delhi</p>
+          <div class="price-row">
+            <span class="price">₹350 onwards</span>
+            <span class="discount">Book now</span>
+          </div>
+        </article>
+        <article class="tile">
+          <div class="thumb">
+            <img src="images/interstellar.jpg" alt="Interstellar">
+            <span class="category-badge">Sci-fi</span>
+          </div>
+          <h4>Interstellar</h4>
+          <p class="muted">INOX, Mumbai</p>
+          <div class="price-row">
+            <span class="price">₹300 onwards</span>
+            <span class="discount">Book now</span>
+          </div>
+        </article>
+
+        <article class="tile">
+          <div class="thumb">
+            <img src="images/fight_club.jpg" alt="Fight Club">
+            <span class="category-badge">Drama</span>
+          </div>
+          <h4>Fight Club</h4>
+          <p class="muted">Cinepolis, Bengaluru</p>
+          <div class="price-row">
+            <span class="price">₹280 onwards</span>
+            <span class="discount">Book now</span>
+          </div>
+        </article>
+      </div>
+    </section>
+    
+    <!-- Best in Comedy -->
+    <section class="list-page">
+      <h2>Best in Comedy</h2>
+      <div class="grid">
+
+        <!-- Comedy Non-Stop (Bassi) -->
+        <article class="tile">
+          <div class="thumb">
+            <img src="images/bassi.jpg" alt="Anubhav Singh Bassi" />
+            <span class="date-badge">Sep 25</span>
+            <span class="category-badge">Stand-up</span>
+          </div>
+          <h4>Comedy Non-Stop</h4>
+          <p class="muted">Comedy Club, Noida</p>
+          <div class="price-row">
+            <span class="price">₹299 onwards</span>
+            <span class="discount">15% off up to ₹200</span>
+          </div>
+        </article>
+
+        <!-- Delhi Comedy Carnival (Chandigarh) -->
+        <article class="tile">
+          <div class="thumb">
+            <img src="images/Chandigarh.jpg" alt="Chandigarh" />
+            <span class="date-badge">Oct 10</span>
+            <span class="category-badge">Stand-up</span>
+          </div>
+          <h4>Chandigarh Comedy Carnival</h4>
+          <p class="muted">Siri Fort Auditorium, Chandigarh</p>
+          <div class="price-row">
+            <span class="price">₹1000 onwards</span>
+            <span class="discount">10% off up to ₹300</span>
+          </div>
+        </article>
+
+        <!-- Joke Stars (Samay Raina) -->
+        <article class="tile">
+          <div class="thumb">
+            <img src="images/samay_raina.jpg" alt="Samay Raina" />
+            <span class="date-badge">Sep 30</span>
+            <span class="category-badge">Stand-up</span>
+          </div>
+          <h4>Joke Stars</h4>
+          <p class="muted">The Social House, Delhi</p>
+          <div class="price-row">
+            <span class="price">₹299 onwards</span>
+            <span class="discount">20% off up to ₹200</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>By accessing this page, you confirm that you have read, understood, and agreed to our Terms of Service, Cookie Policy, Privacy Policy, and Content Guidelines. All rights reserved. ©</p>
+    </div>
+  </footer>
+  
+  <!-- Scroll to top button -->
+  <button id="scrollToTop" class="scroll-top-btn" title="Go to top">↑</button>
+
+  <script>
+    // Mobile menu functionality
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileClose = document.getElementById('mobileClose');
+    const body = document.body;
+
+    function openMobileMenu() {
+      mobileNav.classList.add('active');
+      mobileMenuToggle.classList.add('active');
+      body.classList.add('menu-open');
+    }
+
+    function closeMobileMenu() {
+      mobileNav.classList.remove('active');
+      mobileMenuToggle.classList.remove('active');
+      body.classList.remove('menu-open');
+    }
+
+    if (mobileMenuToggle) {
+      mobileMenuToggle.addEventListener('click', openMobileMenu);
+    }
+    
+    if (mobileClose) {
+      mobileClose.addEventListener('click', closeMobileMenu);
+    }
+
+    // Close menu when clicking on overlay
+    if (mobileNav) {
+      mobileNav.addEventListener('click', (e) => {
+        if (e.target === mobileNav) {
+          closeMobileMenu();
+        }
+      });
+    }
+
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileNav && mobileNav.classList.contains('active')) {
+        closeMobileMenu();
+      }
+    });
+
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+    
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+</body>
+</html>

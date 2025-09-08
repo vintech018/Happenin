@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Movies — Happenin</title>
+  <link rel="shortcut icon" href="favicon.pngw" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header class="site-header small">
+    <div class="container nav-row">
+      <a href="index.html" class="brand">Happenin</a>
+      <nav>
+        <a href="movies.html">Movies</a>
+        <a href="live.html">Live Events</a>
+        <a href="about.html">About</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="login.html" class="btn btn-ghost">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container list-page">
+    <!-- Search Bar -->
+    <div class="search-container">
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" class="search-bar" placeholder="Search for movies...">
+    </div>
+
+    <!-- Category Navigation -->
+    <div class="category-nav">
+      <a href="#" class="active">All</a>
+      <a href="#">Action</a>
+      <a href="#">Drama</a>
+      <a href="#">Sci-fi</a>
+      <a href="#">Comedy</a>
+      <a href="#">Horror</a>
+      <a href="#">Romance</a>
+      <a href="#">Thriller</a>
+    </div>
+    
+    <h1>Now Showing</h1>
+    
+    <div class="grid">
+      <article class="tile">
+        <div class="thumb">
+          <img src="images/top_gun.jpg" alt="Top Gun: Maverick">
+          <span class="category-badge">Action</span>
+        </div>
+        <h4>Top Gun: Maverick</h4>
+        <p class="muted">PVR Cinemas, Delhi</p>
+        <div class="price-row">
+          <span class="price">₹350 onwards</span>
+          <span class="discount">Book now</span>
+        </div>
+      </article>
+
+      <article class="tile">
+        <div class="thumb">
+          <img src="images/interstellar.jpg" alt="Interstellar">
+          <span class="category-badge">Sci-fi</span>
+        </div>
+        <h4>Interstellar</h4>
+        <p class="muted">INOX, Mumbai</p>
+        <div class="price-row">
+          <span class="price">₹300 onwards</span>
+          <span class="discount">Book now</span>
+        </div>
+      </article>
+
+      <article class="tile">
+        <div class="thumb">
+          <img src="images/fight_club.jpg" alt="Fight Club">
+          <span class="category-badge">Drama</span>
+        </div>
+        <h4>Fight Club</h4>
+        <p class="muted">Cinepolis, Bengaluru</p>
+        <div class="price-row">
+          <span class="price">₹280 onwards</span>
+          <span class="discount">Book now</span>
+        </div>
+      </article>
+      
+      <article class="tile">
+        <div class="thumb">
+          <img src="images/dark_knight.jpg" alt="The Dark Knight">
+          <span class="category-badge">Action</span>
+        </div>
+        <h4>The Dark Knight</h4>
+        <p class="muted">PVR Cinemas, Chennai</p>
+        <div class="price-row">
+          <span class="price">₹320 onwards</span>
+          <span class="discount">Book now</span>
+        </div>
+      </article>
+      
+      <article class="tile">
+        <div class="thumb">
+          <img src="images/inception.jpg" alt="Inception">
+          <span class="category-badge">Sci-fi</span>
+        </div>
+        <h4>Inception</h4>
+        <p class="muted">INOX, Hyderabad</p>
+        <div class="price-row">
+          <span class="price">₹300 onwards</span>
+          <span class="discount">Book now</span>
+        </div>
+      </article>
+      
+      <article class="tile">
+        <div class="thumb">
+          <img src="images/shawshank.jpg" alt="The Shawshank Redemption">
+          <span class="category-badge">Drama</span>
+        </div>
+        <h4>The Shawshank Redemption</h4>
+        <p class="muted">Cinepolis, Pune</p>
+        <div class="price-row">
+          <span class="price">₹280 onwards</span>
+          <span class="discount">Book now</span>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer small">
+    <div class="container">
+      <p>© <span id="year3"></span> Happenin</p>
+    </div>
+  </footer>
+  
+  <!-- Scroll to top button -->
+  <button id="scrollToTop" class="scroll-top-btn" title="Go to top">↑</button>
+
+  <script>
+    // Set current year
+    document.getElementById('year3').textContent = new Date().getFullYear();
+    
+    // Scroll to top functionality
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+    
+    scrollToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+</body>
+</html>
