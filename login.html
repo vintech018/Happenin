@@ -4,18 +4,47 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Login — Happenin</title>
+
   <link rel="icon" href="favicon.png" type="image/png" sizes="32x32">
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!-- Google Sign-In SDK -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+  <!-- Your custom Google login JS -->
+  <script src="google-login.js" defer></script>
 </head>
+
 <body class="auth-page">
   <main class="auth-card">
     <a href="index.html" class="brand" style="display: block; text-align: center; margin-bottom: 1.5rem;">Happenin</a>
     <h2>Welcome back</h2>
+
     <div class="social-login">
-      <button class="social-btn google"><i class="fab fa-google"></i> Continue with Google</button>
-      <button class="social-btn facebook"><i class="fab fa-facebook-f"></i> Continue with Facebook</button>
+      <!-- Google Sign-In button -->
+      <div id="g_id_onload"
+           data-client_id="705184843071-t6cck0onvhjri6ug9250dmmcjq76tsst.apps.googleusercontent.com"
+           data-context="signin"
+           data-ux_mode="popup"
+           data-callback="handleCredentialResponse"
+           data-auto_prompt="false">
+      </div>
+
+      <div id="googleSignInBtn" class="g_id_signin"
+           data-type="standard"
+           data-shape="rectangular"
+           data-theme="outline"
+           data-text="signin_with"
+           data-size="large"
+           data-logo_alignment="left">
+      </div>
+
+      <!-- Facebook button -->
+      <button class="social-btn facebook">
+        <i class="fab fa-facebook-f"></i> Continue with Facebook
+      </button>
     </div>
     
     <div class="divider"><span>or login with email</span></div>
@@ -51,42 +80,29 @@
   
   <!-- Scroll to top button -->
   <button id="scrollToTop" class="scroll-top-btn" title="Go to top">↑</button>
-  
+
   <script>
+    // Update footer year
     document.getElementById('year5').textContent = new Date().getFullYear();
-    
+
     // Toggle password visibility
-    document.querySelector('.toggle-password').addEventListener('click', function() {
-      const passwordInput = document.querySelector('input[type="password"]');
-      const icon = this;
-      
-      if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        icon.classList.remove('fa-eye-slash');
-        icon.classList.add('fa-eye');
-      } else {
-        passwordInput.type = 'password';
-        icon.classList.remove('fa-eye');
-        icon.classList.add('fa-eye-slash');
-      }
+    const toggleIcon = document.querySelector('.toggle-password');
+    const passwordInput = document.querySelector('input[type="password"]');
+
+    toggleIcon.addEventListener('click', () => {
+      const isHidden = passwordInput.type === 'password';
+      passwordInput.type = isHidden ? 'text' : 'password';
+      toggleIcon.classList.toggle('fa-eye', isHidden);
+      toggleIcon.classList.toggle('fa-eye-slash', !isHidden);
     });
-    
-    // Scroll to top functionality
+
+    // Scroll to top
     const scrollToTopBtn = document.getElementById('scrollToTop');
-    
     window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        scrollToTopBtn.classList.add('show');
-      } else {
-        scrollToTopBtn.classList.remove('show');
-      }
+      scrollToTopBtn.classList.toggle('show', window.pageYOffset > 300);
     });
-    
     scrollToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
 </body>

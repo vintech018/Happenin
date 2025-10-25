@@ -223,7 +223,7 @@ nav a:hover:after {
   color: var(--text-light) !important;
   padding: 0.5rem 1.25rem;
   border-radius: 8px;
-  font-weight: 600;
+  font-weight: 600; 
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -878,4 +878,26 @@ body.auth-page {
   .auth-card {
     padding: 1.5rem;
   }
+}
+/* Events */
+.tile-link {
+  text-decoration: none; /* remove underline */
+  color: inherit;        /* keep original text color */
+  display: block;        /* make it a block element like the article */
+}
+
+/* Optional hover effect for tiles */
+.tile-link:hover .tile {
+  transform: scale(1.02); /* slight zoom on hover */
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Ensure images inside links scale smoothly */
+.tile-link .thumb img {
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Optional: hover image zoom slightly */
+.tile-link:hover .thumb img {
+  transform: scale(1.05);
 }
