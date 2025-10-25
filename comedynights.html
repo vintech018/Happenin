@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Imagine Dragons — Booking | Happenin</title>
+  <title>Komedi Nights — Laugh Riot | Happenin</title>
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="booking-page.css" /> 
@@ -25,15 +25,14 @@
   </header>
 
   <div class="event-header">
-    <img src="images/imagine_dragons.jpg" alt="Imagine Dragons Concert Banner">
+    <img src="images/comedy_nights.jpg" alt="Komedi Nights Banner">
     <div class="event-overlay">
       <div class="container">
-        <h1>Imagine Dragons — Live</h1>
-        <p class="meta">
-          <i class="fas fa-calendar-alt"></i> September 12, 2025 (Confirmed) &nbsp; &bull; &nbsp; 
-          <i class="fas fa-map-marker-alt"></i> Chinnaswamy Stadium, Bengaluru &nbsp; &bull; &nbsp;
-          <span class="price">₹1999 onwards</span>
-        </p>
+        <h1>Komedi Nights — Laugh Riot</h1>
+      <p class="meta">
+        <i class="fas fa-calendar-alt"></i> September 18, 2025 (Confirmed)   •   
+        <i class="fas fa-map-marker-alt"></i> <a href="https://maps.google.com/?cid=16478440139612043660&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNl" target="_blank"><b>Comedy Club, Mumbai</b></a>   •  
+      </p>
       </div>
     </div>
   </div>
@@ -42,20 +41,23 @@
 
     <section class="details-column">
       <h2>Event Overview</h2>
-      <p>The <b>Imagine Dragons World Tour</b> comes to India! Experience a night of powerful anthems and electrifying energy at the Bengaluru Stadium. Don't miss hits like "Radioactive," "Believer," and "Thunder."</p>
-
+      <p>The <b>Komedi Nights — Laugh Riot</b> featuring <b>Kapil Sharma</b> is here! Get ready for a night of non-stop laughter and stand-up comedy at the Mumbai <b>Comedy Club</b>.</p>
+      
       <div class="about-section">
         <h3><i class="fas fa-info-circle"></i> Important Information</h3>
         <ul class="feature-list">
-          <li><i class="fas fa-check-circle"></i> Gates open at 5:00 PM. Show starts at 7:30 PM.</li>
-          <li><i class="fas fa-check-circle"></i> Physical ID proof is mandatory for entry.</li>
-          <li><i class="fas fa-check-circle"></i> Outside food and drinks are strictly prohibited.</li>
+          <li><i class="fas fa-check-circle"></i> Doors open at 6:30 PM. Show starts at 8:00 PM.</li>
+          <li><i class="fas fa-check-circle"></i> Physical ID proof is mandatory for entry (Age 18+ recommended).</li>
+          <li><i class="fas fa-check-circle"></i> Event Duration: ~90 minutes. Outside food and drinks are strictly prohibited.</li>
         </ul>
       </div>
 
       <div class="about-section">
-        <h3><i class="fas fa-map"></i> Venue Details</h3>
-        <p>The Bengaluru Stadium offers state-of-the-art facilities and easy access via public transport. Please check local parking advisories.</p>
+        <h3><i class="fas fa-map"></i> Venue Seat Map</h3>
+        <p class="muted" style="text-align: center; margin-top: 0.5rem;">Tickets are categorized based on proximity to the stage (See map).</p>
+        <div class="seat-map-placeholder">
+          <img src="images/comedy_club_seat_map.png" alt="Comedy Club Seating Map" class="stadium-map-image">
+        </div>
       </div>
     </section>
 
@@ -65,8 +67,8 @@
       <div class="selection-group">
         <label>Select Date & Time</label>
         <div class="select-show-time">
-          <div class="time-slot selected" data-time="12-Sep-7:30">Sep 12, 7:30 PM</div>
-          <div class="time-slot" data-time="13-Sep-7:30">Sep 13, 7:30 PM</div>
+          <div class="time-slot selected" data-time="18-Sep-8:00">Sep 18, 8:00 PM</div>
+          <div class="time-slot" data-time="19-Sep-8:00">Sep 19, 8:00 PM</div>
         </div>
       </div>
       
@@ -74,39 +76,25 @@
         <label>Select Category & Quantity</label>
         <div class="ticket-category-selector">
           
-          <div class="ticket-row" data-category="Platinum" data-price="4999">
-            <span class="category-name">Platinum</span>
-            <span class="category-price">₹4999</span>
+          <div class="ticket-row" data-category="Platinum" data-price="1999">
+            <span class="category-name">Platinum (VIP Seating)</span>
+            <span class="category-price">₹1999</span>
             <input type="number" min="0" max="10" value="0" class="ticket-quantity" id="qty-platinum">
           </div>
           
-          <div class="ticket-row" data-category="Gold" data-price="2999">
+          <div class="ticket-row" data-category="Gold" data-price="1299">
             <span class="category-name">Gold</span>
-            <span class="category-price">₹2999</span>
+            <span class="category-price">₹1299</span>
             <input type="number" min="0" max="10" value="0" class="ticket-quantity" id="qty-gold">
           </div>
           
-          <div class="ticket-row" data-category="Silver" data-price="1999">
-            <span class="category-name">Silver</span>
-            <span class="category-price">₹1999</span>
+          <div class="ticket-row" data-category="Silver" data-price="799">
+            <span class="category-name">Silver (GA)</span>
+            <span class="category-price">₹799</span>
             <input type="number" min="0" max="10" value="0" class="ticket-quantity" id="qty-silver">
           </div>
           
         </div>
-      </div>
-
-      <div class="selection-group">
-        <label>Seating Overview</label>
-        <div class="seat-map-placeholder">
-          <img src="images/chinnaswamy_stadium_map.jpg" alt="Chinnaswamy Stadium Seating Map" class="stadium-map-image">
-        </div>
-        <p class="muted" style="text-align: center; margin-top: 0.5rem;">Click on the map above to select seats (feature coming soon).</p>
-        
-        <p style="text-align: center; margin-top: 1rem;">
-            <a href="https://www.google.com/maps/search/?api=1&query=M.+Chinnaswamy+Stadium,+Bengaluru" target="_blank" rel="noopener noreferrer" class="map-link">
-                <i class="fas fa-map-marker-alt"></i> View on Google Maps
-            </a>
-        </p>
       </div>
 
       <div class="seat-info">

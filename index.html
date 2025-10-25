@@ -174,7 +174,6 @@
     </style>
   </head>
   <body>
-    <!-- Navbar -->
     <header class="site-header">
       <div class="container nav-row">
         <a href="index.html" class="brand">Happenin</a>
@@ -191,7 +190,6 @@
       </div>
     </header>
 
-    <!-- Mobile Navigation Overlay -->
     <div class="mobile-nav" id="mobileNav">
       <div class="mobile-nav-content">
         <div class="mobile-nav-header">
@@ -223,16 +221,13 @@
       </div>
     </div>
 
-    <!-- Hero Section -->
     <section class="hero">
       <h1>Welcome to Happenin</h1>
       <p>Find the best movies, concerts & stand-up shows near you.</p>
       <a href="movies.html" class="btn">Explore Now</a>
     </section>
 
-    <!-- Main Content -->
     <main class="container">
-      <!-- Category Navigation -->
       <div class="category-nav">
         <a href="#" class="category-item active">All</a>
         <a href="#" class="category-item">Action</a>
@@ -244,7 +239,6 @@
         <a href="#" class="category-item">Thriller</a>
       </div>
 
-      <!-- Happening This Week -->
       <section class="list-page">
         <h2>Happening This Week</h2>
         <div class="grid">
@@ -267,19 +261,21 @@
             </article>
           </a>
 
-          <article class="tile">
-            <div class="thumb">
-              <img src="images/comedy_nights.jpg" alt="Comedy Show" />
-              <span class="date-badge">Sep 18</span>
-              <span class="category-badge">Comedy</span>
-            </div>
-            <h4>Komedi Nights — Laugh Riot</h4>
-            <p class="muted">Comedy Club, Mumbai</p>
-            <div class="price-row">
-              <span class="price">₹799 onwards</span>
-              <span class="discount">30% off up to ₹300</span>
-            </div>
-          </article>
+          <a href="comedynights.html" class="tile-link">
+            <article class="tile">
+              <div class="thumb">
+                <img src="images/comedy_nights.jpg" alt="Comedy Show" />
+                <span class="date-badge">Sep 18</span>
+                <span class="category-badge">Comedy</span>
+              </div>
+              <h4>Komedi Nights — Laugh Riot</h4>
+              <p class="muted">Comedy Club, Mumbai</p>
+              <div class="price-row">
+                <span class="price">₹799 onwards</span>
+                <span class="discount">30% off up to ₹300</span>
+              </div>
+            </article>
+          </a>
 
           <article class="tile">
             <div class="thumb">
@@ -297,20 +293,16 @@
         </div>
       </section>
 
-      <!-- Top Movies Section -->
       <section class="list-page">
         <h2>Top Movies Near You</h2>
         <div class="grid">
-          <!-- Top movies will be loaded dynamically from the API -->
           <p class="loading-text">Loading top movies...</p>
         </div>
       </section>
 
-      <!-- Best in Comedy -->
       <section class="list-page">
         <h2>Best in Comedy</h2>
         <div class="grid">
-          <!-- Comedy Non-Stop (Bassi) -->
           <article class="tile">
             <div class="thumb">
               <img src="images/bassi.jpg" alt="Anubhav Singh Bassi" />
@@ -325,7 +317,6 @@
             </div>
           </article>
 
-          <!-- Delhi Comedy Carnival (Chandigarh) -->
           <article class="tile">
             <div class="thumb">
               <img src="images/Chandigarh.jpg" alt="Chandigarh" />
@@ -340,7 +331,6 @@
             </div>
           </article>
 
-          <!-- Joke Stars (Samay Raina) -->
           <article class="tile">
             <div class="thumb">
               <img src="images/samay_raina.jpg" alt="Samay Raina" />
@@ -358,7 +348,6 @@
       </section>
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer">
       <div class="container">
         <p>
@@ -369,7 +358,6 @@
       </div>
     </footer>
 
-    <!-- Scroll to top button -->
     <button id="scrollToTop" class="scroll-top-btn" title="Go to top">↑</button>
 
     <script>
@@ -438,7 +426,6 @@
       });
     </script>
 
-    <!-- Script to load top movies from API -->
     <script src="top-movies.js"></script>
   </body>
 </html>

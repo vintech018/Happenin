@@ -265,3 +265,55 @@
     max-width: none;
   }
 }
+
+/* --- Seat Map Section Styles (Added) --- */
+.seat-map-section {
+    background-color: var(--background-light);
+    padding: 30px;
+    border-radius: 16px; /* Assuming a variable like --border-radius */
+    margin-top: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Assuming a variable like --shadow-small */
+}
+
+.seat-map-section h2 {
+    color: var(--primary);
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--border-light);
+    padding-bottom: 10px;
+}
+
+.seat-map-container {
+    text-align: center;
+}
+
+.seat-map-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px; /* Assuming a variable like --border-radius-small */
+    border: 1px solid var(--border-light);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Assuming a variable like --shadow-medium */
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+/* Optional: Add a simple hover effect for better UX */
+.seat-map-image:hover {
+    transform: scale(1.01);
+}
+
+/* Ensure the layout looks good with the new section */
+@media (min-width: 1024px) {
+    .content-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+    }
+    .seat-map-section {
+        grid-column: 1 / 3; /* Span both columns on desktop if it's wide content */
+    }
+    .booking-panel {
+        grid-column: 2 / 3; /* Keep booking panel on the side */
+    }
+}
