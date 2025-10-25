@@ -1,0 +1,267 @@
+/* booking-page.css */
+
+/* --- General Structure & Layout --- */
+
+.event-header {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+
+.event-header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.event-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1));
+  padding: 2rem;
+  color: var(--text-light);
+}
+
+.event-overlay h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.event-overlay .meta {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #ccc;
+}
+
+.booking-container {
+  display: flex;
+  gap: 3rem;
+  padding: 3rem 0;
+}
+
+.details-column {
+  flex: 2;
+}
+
+.about-section {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-light, #eee);
+}
+
+.about-section h3 {
+  color: var(--primary, #5928e5);
+  margin-bottom: 1rem;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+}
+
+.feature-list li {
+  margin-bottom: 0.5rem;
+}
+
+.feature-list li i {
+  color: var(--primary); /* Reusing primary color for checkmarks */
+  margin-right: 0.5rem;
+}
+
+/* --- Booking Column (Sticky Sidebar) --- */
+
+.booking-column {
+  flex: 1;
+  min-width: 300px;
+  max-width: 350px;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background: var(--background-gray, #f8f8f8); 
+  position: sticky; 
+  top: 100px; 
+  border: 1px solid var(--border-light, #eee);
+}
+
+.booking-column h3 {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+/* --- Selection Styles --- */
+
+.selection-group {
+  margin-bottom: 2rem;
+}
+
+.selection-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--text-dark, #333);
+}
+
+.select-show-time {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.time-slot {
+  padding: 0.75rem 1.25rem;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  background: var(--background-light, #fff);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.time-slot.selected, .time-slot:hover {
+  border-color: var(--primary, #5928e5);
+  background-color: rgba(89, 40, 229, 0.1);
+  color: var(--primary-dark, #3b1d96);
+}
+
+/* --- Seat Map Placeholder (Updated for Image) --- */
+.seat-map-placeholder {
+  min-height: auto; /* Allow image to define height */
+  padding: 0;       /* Remove padding for image to fill */
+  border: none;     /* Remove dashed border */
+  background: none; 
+  overflow: hidden; 
+  margin-top: 1rem;
+  border-radius: 6px;
+}
+
+.stadium-map-image {
+  max-width: 100%; /* Ensure image fits container */
+  height: auto;    /* Maintain aspect ratio */
+  display: block;  
+  border-radius: 6px; 
+}
+
+.map-link {
+  display: inline-flex; /* Align icon and text */
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary); 
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.map-link:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+/* --- Ticket Category Selector Styles --- */
+
+.ticket-category-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ticket-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background: var(--background-light, #fff);
+  border: 1px solid var(--border-light, #eee);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.ticket-row:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.category-name {
+  font-weight: 600;
+  flex-grow: 1;
+}
+
+.category-price {
+  font-weight: 500;
+  color: #666;
+  margin-right: 15px;
+  min-width: 60px;
+  text-align: right;
+}
+
+.ticket-quantity {
+  width: 60px;
+  padding: 8px;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--primary-dark);
+  transition: border-color 0.2s;
+}
+
+.ticket-quantity:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(89, 40, 229, 0.2);
+}
+
+/* Color Coding for Categories */
+.ticket-row[data-category="Platinum"] {
+  border-left: 5px solid #E5C100; /* Gold color */
+}
+
+.ticket-row[data-category="Gold"] {
+  border-left: 5px solid #A7A7AD; /* Silver color */
+}
+
+.ticket-row[data-category="Silver"] {
+  border-left: 5px solid #CD7F32; /* Bronze/Copper color */
+}
+
+/* --- Price Info --- */
+
+.seat-info {
+  padding: 1rem 0;
+  border-top: 1px solid var(--border-light);
+  margin-top: 1rem;
+}
+
+.seat-info p {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.seat-info p span:first-child {
+  font-weight: 500;
+}
+.seat-info p span:last-child {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.checkout-btn {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+/* --- Responsive Adjustments --- */
+
+@media (max-width: 992px) {
+  .booking-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .booking-column {
+    position: static;
+    max-width: none;
+  }
+}
