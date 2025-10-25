@@ -226,22 +226,17 @@
 
   <!-- Main Content -->
   <main class="container">
-    <!-- Search Bar -->
-    <div class="search-container">
-      <i class="fas fa-search search-icon"></i>
-      <input type="text" class="search-bar" placeholder="Search for movies, events, sports...">
-    </div>
 
     <!-- Category Navigation -->
     <div class="category-nav">
       <a href="#" class="category-item active">All</a>
-      <a href="#" class="category-item">Movies</a>
-      <a href="#" class="category-item">Concerts</a>
+      <a href="#" class="category-item">Action</a>
+      <a href="#" class="category-item">Drama</a>
+      <a href="#" class="category-item">Sci-fi</a>
       <a href="#" class="category-item">Comedy</a>
-      <a href="#" class="category-item">Sports</a>
-      <a href="#" class="category-item">Theatre</a>
-      <a href="#" class="category-item">Adventure</a>
-      <a href="#" class="category-item">Workshops</a>
+      <a href="#" class="category-item">Horror</a>
+      <a href="#" class="category-item">Romance</a>
+      <a href="#" class="category-item">Thriller</a>
     </div>
 
     <!-- Happening This Week -->
@@ -296,43 +291,8 @@
     <section class="list-page">
       <h2>Top Movies Near You</h2>
       <div class="grid">
-        <article class="tile">
-          <div class="thumb">
-            <img src="images/top_gun.jpg" alt="Top Gun: Maverick" height="50">
-            <span class="category-badge">Action</span>
-          </div>
-          <h4>Top Gun: Maverick</h4>
-          <p class="muted">PVR Cinemas, Delhi</p>
-          <div class="price-row">
-            <span class="price">₹350 onwards</span>
-            <span class="discount">Book now</span>
-          </div>
-        </article>
-        <article class="tile">
-          <div class="thumb">
-            <img src="images/interstellar.jpg" alt="Interstellar">
-            <span class="category-badge">Sci-fi</span>
-          </div>
-          <h4>Interstellar</h4>
-          <p class="muted">INOX, Mumbai</p>
-          <div class="price-row">
-            <span class="price">₹300 onwards</span>
-            <span class="discount">Book now</span>
-          </div>
-        </article>
-
-        <article class="tile">
-          <div class="thumb">
-            <img src="images/fight_club.jpg" alt="Fight Club">
-            <span class="category-badge">Drama</span>
-          </div>
-          <h4>Fight Club</h4>
-          <p class="muted">Cinepolis, Bengaluru</p>
-          <div class="price-row">
-            <span class="price">₹280 onwards</span>
-            <span class="discount">Book now</span>
-          </div>
-        </article>
+        <!-- Top movies will be loaded dynamically from the API -->
+        <p class="loading-text">Loading top movies...</p>
       </div>
     </section>
     
@@ -461,5 +421,8 @@
       });
     });
   </script>
+  
+  <!-- Script to load top movies from API -->
+  <script src="top-movies.js"></script>
 </body>
 </html>

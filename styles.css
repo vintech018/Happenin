@@ -166,22 +166,24 @@ nav a:hover:after {
 
 .category-item {
   padding: 0.5rem 1.25rem;
-  background-color: var(--background-gray);
+  background-color: transparent;
   border-radius: 50px;
   white-space: nowrap;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--text-dark);
+  color: var(--primary);
   transition: all 0.3s ease;
   cursor: pointer;
-  border: 1px solid var(--border-light);
+  border: none;
 }
 
 .category-item:hover,
 .category-item.active {
-  background-color: var(--primary);
-  color: var(--text-light);
-  border-color: var(--primary);
+  background-color: transparent;
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 2px;
 }
 
 /* Search Bar */
