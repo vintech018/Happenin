@@ -26,17 +26,17 @@ function closePaymentModal() {
 }
 
 function handleModalConfirmation() {
+    // Retrieve user name
+    const userName = localStorage.getItem('checkoutUserName') || 'Happenin User';
+
     // Simulate API call delay for "processing" after user clicks confirmation
     const confirmationBtn = document.getElementById('modalConfirmationBtn');
-    const originalText = confirmationBtn.textContent;
-    const originalColor = confirmationBtn.style.backgroundColor;
-
+    
     confirmationBtn.disabled = true;
     confirmationBtn.textContent = 'Verifying Payment... (Simulated)';
     confirmationBtn.style.backgroundColor = '#ffc107'; // Amber/Yellow for processing
 
     setTimeout(() => {
-        // Since we have no backend, we treat user confirmation as success.
         
         // Hide modal
         closePaymentModal();
@@ -45,9 +45,10 @@ function handleModalConfirmation() {
         const finalAmount = document.getElementById('modalFinalAmount').textContent;
         const statusMessage = document.getElementById('payment-status-message');
         
+        // Personalized confirmation message
         statusMessage.classList.remove('hidden', 'error');
         statusMessage.classList.add('success');
-        statusMessage.textContent = `Success! Your manual payment of ${finalAmount} is being processed. An e-ticket will be sent to your email shortly.`;
+        statusMessage.textContent = `✅ Success, ${userName}! Your payment of ${finalAmount} is confirmed. You will be redirected to your account dashboard shortly.`;
         
         // Lock the main form
         document.getElementById('pay-now-button').disabled = true;
@@ -55,6 +56,11 @@ function handleModalConfirmation() {
 
         // Scroll to the confirmation message
         statusMessage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // NEW: Redirect to index.html (simulating account page) after a short delay
+        setTimeout(() => {
+             window.location.href = "index.html"; 
+        }, 3000); // 3 second delay before redirect
 
     }, 2000); // 2 second mock delay
 }

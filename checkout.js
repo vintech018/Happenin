@@ -169,6 +169,9 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
+        // NEW: Store user name for personalized modal confirmation
+        localStorage.setItem('checkoutUserName', buyerName);
+        
         // Final amount is calculated and ready, display modal
         // This function is defined in payment-modal.js
         if (typeof openPaymentModal === 'function') {
