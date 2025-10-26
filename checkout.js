@@ -16,12 +16,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const summaryDiscountEl = document.getElementById('summary-discount');
     const summaryTotalEl = document.getElementById('summary-total');
     const statusMessage = document.getElementById('payment-status-message');
+    
+    // --- New DOM Elements for Dynamic Summary (Must match checkout.html IDs) ---
+    const summaryEventNameEl = document.getElementById('summary-event-name');
+    const summaryTicketDetailsEl = document.getElementById('summary-ticket-details');
+    const summarySubtotalPriceEl = document.getElementById('summary-subtotal-price');
+    const summaryFeesPriceEl = document.getElementById('summary-fees-price');
+    // --- End New DOM Elements ---
 
-    // --- Hardcoded/Placeholder Order Data (In a real app, this would come from the server/session) ---
-    let initialSubtotal = 7998;
-    let initialFees = 799;
+    // --- Price Data (Initialized by loadBookingData) ---
+    let initialSubtotal = 0; 
+    let initialFees = 0;      
     let currentDiscount = 0;
-    let finalAmount = initialSubtotal + initialFees;
+    let finalAmount = 0; 
+    // --- End Price Data ---
 
     // Helper to format currency (reused from booking-page.js pattern)
     function formatCurrency(amount) {
@@ -36,12 +44,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // --- Core Logic: Update Totals ---
     function updateSummary() {
         // Recalculate the final amount with current discount
-        finalAmount = initialSubtotal + initialFees - currentDiscount;
+        finalAmount = Math.max(0, initialSubtotal + initialFees - currentDiscount); // Ensure amount isn't negative
 
         // Update DOM
         summaryDiscountEl.textContent = `- ${formatCurrency(currentDiscount)}`;
         summaryTotalEl.textContent = formatCurrency(finalAmount);
-        finalAmountText.textContent = formatAmount(finalAmount);
+        payNowButton.innerHTML = `<i class="fas"></i> Pay ${formatAmount(finalAmount)} Now`;
+        payNowButton.disabled = finalAmount <= 0;
+        payNowButton.style.opacity = finalAmount <= 0 ? 0.6 : 1;
     }
 
     // --- Utility Function ---
@@ -51,14 +61,51 @@ document.addEventListener('DOMContentLoaded', function() {
         statusMessage.textContent = message;
     }
     
-    // === NEW: Function to handle coupon application logic ===
+    // === NEW: Function to load booking data and update the checkout page ===
+    function loadBookingData() {
+        const bookingDataString = localStorage.getItem('happeninBookingData');
+        
+        if (!bookingDataString) {
+            // Fallback for direct access or no data
+            showStatusMessage('Warning: Could not retrieve booking details. Showing placeholder data. Prices are for demonstration.', 'error');
+            initialSubtotal = 7998; // Fallback value
+            initialFees = 799;      // Fallback value
+            summaryEventNameEl.textContent = 'Event Details Missing';
+            summaryTicketDetailsEl.textContent = 'Please return to booking page.';
+        } else {
+            const bookingData = JSON.parse(bookingDataString);
+
+            // 1. Update initial price variables (using raw numbers)
+            initialSubtotal = bookingData.rawSubtotal;
+            initialFees = bookingData.rawFees;
+            
+            // 2. Update descriptive summary text
+            summaryEventNameEl.textContent = bookingData.eventName;
+            
+            // Build ticket details string: Category x Quantity
+            const ticketDetails = bookingData.selectedTickets.map(t => `${t.category} x ${t.quantity}`).join(', ');
+            summaryTicketDetailsEl.textContent = `${bookingData.eventDate}, ${ticketDetails}`;
+
+            // 3. Update price breakdown display with new initial values
+            summarySubtotalPriceEl.textContent = formatCurrency(initialSubtotal);
+            summaryFeesPriceEl.textContent = formatCurrency(initialFees);
+            
+            // Clean up localStorage to prevent old data from being used next time
+            localStorage.removeItem('happeninBookingData');
+        }
+        
+        // Final update for initial load state
+        updateSummary();
+    }
+    
+    // === NEW: Function to handle coupon application logic (uses initialSubtotal) ===
     function applyCoupon(couponCode) {
         const code = couponCode.trim().toUpperCase();
         let discount = 0;
         let message = '';
         let type = 'error';
 
-        // --- Coupon Validation and Discount Calculation (Must match codes from offers.html) ---
+        // --- Coupon Validation and Discount Calculation ---
         if (code === 'HAPPENIN20') {
             discount = Math.round(initialSubtotal * 0.20); // 20% discount on subtotal
             message = `Coupon "${code}" applied successfully! You saved ${formatCurrency(discount)}.`;
@@ -106,6 +153,13 @@ document.addEventListener('DOMContentLoaded', function() {
     paymentForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         
+        // Check if there's anything to pay
+        if (finalAmount <= 0) {
+            showStatusMessage('Payment successful! Total amount was ₹0. Redirecting...', 'success');
+            payNowButton.textContent = 'Payment Complete!';
+            return;
+        }
+        
         // Disable button to prevent double submission
         payNowButton.disabled = true;
         payNowButton.textContent = 'Processing...';
@@ -126,23 +180,23 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             showStatusMessage('Payment failed: The card transaction was declined. Please check your details or try a different method.', 'error');
             payNowButton.disabled = false;
-            payNowButton.innerHTML = `<i class="fas fa-dollar-sign"></i> Pay ${formatAmount(finalAmount)} Now`;
+            payNowButton.innerHTML = `<i class="fas"></i> Pay ${formatAmount(finalAmount)} Now`;
         }
     });
 
     // --- Initial Load Logic (UPDATED) ---
     
-    // 1. Check for Coupon in URL
+    // 1. Load data from previous page and update initial price variables
+    loadBookingData(); 
+    
+    // 2. Check for Coupon in URL
     const params = getQueryParams();
     const urlCoupon = params['coupon'];
 
     if (urlCoupon) {
         // Auto-fill input and apply coupon
         couponInput.value = urlCoupon;
-        applyCoupon(urlCoupon);
-    } else {
-        // If no coupon in URL, just update summary initially
-        updateSummary();
+        applyCoupon(urlCoupon); 
     }
     
     // Final setup

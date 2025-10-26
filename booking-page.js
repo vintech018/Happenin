@@ -1,5 +1,3 @@
-// booking-page.js
-
 document.addEventListener('DOMContentLoaded', function() {
   // --- Initialize Footer Year ---
   const yearElement = document.getElementById('year4');
@@ -14,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
       timeSlots.forEach(s => s.classList.remove('selected'));
       this.classList.add('selected');
       console.log("Selected Show: " + this.dataset.time);
+      calculateTotal(); 
     });
   });
 
@@ -28,37 +27,69 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Helper to format currency
   function formatCurrency(amount) {
-    // Ensures numbers are formatted with Indian locale and rounded
     return `₹${Math.round(amount).toLocaleString('en-IN')}`;
   }
-
-  function calculateTotal() {
+  
+  // --- NEW: Core function to calculate and aggregate all booking data ---
+  function getEventAndTicketData() {
+    const eventName = document.querySelector('.event-overlay h1')?.textContent.trim() || 'Selected Event';
+    const showTimeElement = document.querySelector('.time-slot.selected');
+    const eventDate = showTimeElement ? showTimeElement.textContent.trim() : 'Date/Time not selected';
+    
     let subtotal = 0;
     let totalTickets = 0;
+    const selectedTickets = [];
 
     quantityInputs.forEach(input => {
       // Ensure the quantity is a non-negative integer
       const quantity = Math.max(0, parseInt(input.value) || 0);
-      input.value = quantity; // Update input value if it was negative/invalid
+      input.value = quantity;
       
-      const price = parseInt(input.closest('.ticket-row').dataset.price);
+      const row = input.closest('.ticket-row');
+      const category = row.dataset.category;
+      const price = parseInt(row.dataset.price);
       
       subtotal += quantity * price;
       totalTickets += quantity;
+
+      if (quantity > 0) {
+          selectedTickets.push({ 
+              category: category,
+              price: price,
+              quantity: quantity
+          });
+      }
     });
 
     const taxes = subtotal * TAX_RATE;
     const totalPayable = subtotal + taxes;
 
-    // Update the DOM elements
-    totalTicketsEl.textContent = totalTickets;
-    subTotalEl.textContent = formatCurrency(subtotal);
-    feesEl.textContent = formatCurrency(taxes);
-    totalPriceEl.textContent = formatCurrency(totalPayable);
+    return { 
+        eventName, 
+        eventDate,
+        rawSubtotal: subtotal,
+        rawFees: taxes,
+        rawTotal: totalPayable, 
+        totalTickets, 
+        selectedTickets 
+    };
+  }
+  // --- End Core function ---
+
+
+  function calculateTotal() {
+    // Get all calculated data from the core function
+    const data = getEventAndTicketData();
+    
+    // Update the DOM elements using the data
+    totalTicketsEl.textContent = data.totalTickets;
+    subTotalEl.textContent = formatCurrency(data.rawSubtotal);
+    feesEl.textContent = formatCurrency(data.rawFees);
+    totalPriceEl.textContent = formatCurrency(data.rawTotal);
 
     // Disable/Enable checkout button (P3)
-    checkoutBtn.disabled = totalTickets === 0;
-    checkoutBtn.style.opacity = totalTickets === 0 ? 0.6 : 1;
+    checkoutBtn.disabled = data.totalTickets === 0;
+    checkoutBtn.style.opacity = data.totalTickets === 0 ? 0.6 : 1;
   }
 
   // Attach the calculation function to all quantity inputs
@@ -83,12 +114,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // --- Checkout Button Logic (UPDATED) ---
+  // --- Checkout Button Logic (UPDATED to save data) ---
   if (checkoutBtn) {
     checkoutBtn.addEventListener('click', function() {
-      const totalTickets = parseInt(totalTicketsEl.textContent) || 0;
-      if (totalTickets > 0) {
-        // Now redirects to the checkout page (checkout.html)
+      const bookingData = getEventAndTicketData(); // Get the final data on click
+      
+      if (bookingData.totalTickets > 0) {
+        // Save the booking data to localStorage before redirect
+        localStorage.setItem('happeninBookingData', JSON.stringify(bookingData));
+        
+        // Redirect to the checkout page
         window.location.href = "checkout.html";
       } else {
         alert("Please select at least one ticket to proceed.");
