@@ -83,13 +83,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // --- Checkout Button Placeholder (Existing) ---
+  // --- Checkout Button Logic (UPDATED) ---
   if (checkoutBtn) {
     checkoutBtn.addEventListener('click', function() {
       const totalTickets = parseInt(totalTicketsEl.textContent) || 0;
       if (totalTickets > 0) {
-        alert(`Initiating payment for ${totalTickets} tickets. Total amount: ${totalPriceEl.textContent}`);
-        // This is DFD Process P3: Proceed to Checkout
+        // Now redirects to the checkout page (checkout.html)
+        window.location.href = "checkout.html";
       } else {
         alert("Please select at least one ticket to proceed.");
       }

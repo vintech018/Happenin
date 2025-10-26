@@ -1,0 +1,240 @@
+/* Custom styles for the Payment Checkout Page */
+
+/* --- Variables (ensure these match styles.css) --- */
+:root {
+  --primary: #5928E5;
+  --primary-dark: #4A20C5;
+  --text-dark: #1A1A2E;
+  --text-light: #F1F1F1;
+  --background-light: #FFFFFF;
+  --background-gray: #F5F5F7;
+  --border-light: #E0E0E0;
+}
+
+/* --- Layout --- */
+.checkout-page-container {
+  padding: 3rem 0;
+  min-height: 80vh;
+}
+
+.checkout-page-container h1 {
+  color: var(--primary);
+  border-bottom: 2px solid var(--border-light);
+  padding-bottom: 10px;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 2rem;
+}
+
+.checkout-grid {
+  display: flex;
+  gap: 3rem;
+}
+
+.checkout-form-column {
+  flex: 2;
+  min-width: 450px;
+}
+
+.order-summary-column {
+  flex: 1;
+  min-width: 300px;
+  max-width: 350px;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background: var(--background-gray); 
+  position: sticky; 
+  top: 100px; 
+  height: fit-content;
+  border: 1px solid var(--border-light);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .checkout-grid {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .checkout-form-column {
+    min-width: 100%;
+  }
+  .order-summary-column {
+    position: static;
+    max-width: none;
+  }
+}
+
+
+/* --- Form Styling (reusing general form styles from styles.css) --- */
+.checkout-form-column h2 {
+    font-size: 1.75rem;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+}
+
+.form .input-group {
+    margin-bottom: 25px; /* Increase spacing */
+}
+
+.form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+}
+
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: var(--background-light);
+    color: var(--text-dark);
+}
+
+.stripe-placeholder {
+  min-height: 44px;
+  padding: 10px 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background-color: var(--background-light);
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* Coupon input with button overlay */
+.input-group:has(#coupon) {
+    position: relative;
+}
+.input-group:has(#coupon) input {
+    padding-right: 6rem; /* Make space for the button */
+}
+.input-group:has(#coupon) button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(calc(-50% + 15px)); /* Center it relative to the input field */
+    padding: 6px 15px;
+    font-size: 0.9rem;
+}
+
+/* --- Summary Styles --- */
+.order-summary-column h2 {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 10px;
+}
+
+.summary-details {
+    margin-bottom: 1.5rem;
+}
+
+.event-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary-dark);
+    margin-bottom: 5px;
+}
+
+.event-meta {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.price-breakdown {
+    border-top: 1px dashed var(--border-light);
+    padding-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.price-breakdown p {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.price-breakdown span:first-child {
+    font-weight: 500;
+    color: #444;
+}
+
+.discount-value {
+    color: #28a745; /* Green for positive discount */
+    font-weight: 600;
+}
+
+.total-row {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    border-top: 2px solid var(--primary);
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.pay-btn {
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 1rem;
+    margin-top: 1.5rem;
+}
+
+.terms-text {
+    font-size: 0.85rem;
+    color: #666;
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: 0;
+}
+
+.booking-guarantee {
+    background-color: #e8f4ff; /* Light blue/primary accent */
+    border: 1px solid #cce5ff;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.booking-guarantee i {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.booking-guarantee p {
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+/* Status Messages */
+.status-message {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+}
+.status-message.hidden {
+    display: none;
+}
+.status-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.status-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}

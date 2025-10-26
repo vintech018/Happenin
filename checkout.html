@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout | Happenin</title>
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="checkout.css" /> 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  </head>
+<body>
+  <header class="site-header small">
+    <div class="container nav-row">
+      <a href="index.html" class="brand">Happenin</a>
+      <nav>
+        <a href="movies.html">Movies</a>
+        <a href="live.html">Live Events</a>
+        <a href="about.html">About</a>
+        <a href="login.html" class="btn btn-ghost">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container checkout-page-container">
+    <h1><i class="fas fa-lock"></i> Secure Checkout</h1>
+    
+    <div class="checkout-grid">
+      <section class="checkout-form-column">
+        <h2>Payment Details</h2>
+        <div id="payment-status-message" class="status-message hidden"></div>
+        
+        <form id="payment-form" class="form">
+          
+          <div class="input-group">
+            <label for="name">Name on Card</label>
+            <input type="text" id="name" required placeholder="Jane Doe" />
+          </div>
+          
+          <div class="input-group">
+            <label for="card-element">Card Details</label>
+            <div id="card-element" class="stripe-placeholder">
+              <i class="fas fa-credit-card input-icon"></i>
+              <input type="text" placeholder="XXXX XXXX XXXX XXXX" disabled style="padding-left: 3rem; background: #f0f0f0;"/>
+              <p class="muted" style="margin-top: 5px;">* Stripe Elements will replace this field.</p>
+            </div>
+          </div>
+          
+          <div class="input-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" required placeholder="your.email@example.com" value="user@example.com" />
+          </div>
+          
+          <div class="input-group">
+            <label for="coupon">Coupon Code (Optional)</label>
+            <input type="text" id="coupon" placeholder="HAPPENIN20" />
+            <button type="button" class="btn btn-ghost" id="applyCouponBtn" style="position: absolute; right: 0; top: 0; transform: translateY(30px);">Apply</button>
+          </div>
+
+          <p class="terms-text">By clicking 'Pay Now', you agree to the <a href="#">Terms and Conditions</a> and <a href="#">Cancellation Policy</a>.</p>
+          
+          <button id="pay-now-button" class="btn login-btn pay-btn" type="submit">
+            <i class="fas fa-dollar-sign"></i> Pay ₹<span id="finalAmountText">0</span> Now
+          </button>
+        </form>
+      </section>
+      
+      <aside class="order-summary-column">
+        <h2>Order Summary</h2>
+        
+        <div class="summary-details">
+          <p class="event-title"><i class="fas fa-ticket-alt"></i> Imagine Dragons — Live</p>
+          <p class="event-meta">Sep 12, 7:30 PM, Platinum x 2</p>
+        </div>
+        
+        <div class="price-breakdown">
+          <p><span>Tickets Subtotal:</span> <span id="summary-subtotal">₹7998</span></p>
+          <p><span>Convenience Fees:</span> <span id="summary-fees">₹799</span></p>
+          <p class="discount-row"><span>Discount Applied:</span> <span id="summary-discount" class="discount-value">- ₹0</span></p>
+          <p class="total-row"><span>Total Payable:</span> <span id="summary-total">₹8797</span></p>
+        </div>
+        
+        <div class="booking-guarantee">
+          <i class="fas fa-shield-alt"></i>
+          <p>Your seats are securely held for the next 5 minutes to complete the payment.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer small">
+    <div class="container">
+      <p>© <span id="year"></span> Happenin</p>
+    </div>
+  </footer>
+  
+  <script src="checkout.js"></script>
+</body>
+</html>
