@@ -7,7 +7,7 @@
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="checkout.css" /> 
-  <link rel="stylesheet" href="payment-modal.css" /> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   
   </head>
@@ -47,7 +47,7 @@
           <div class="input-group">
             <label for="coupon">Coupon Code (Optional)</label>
             <input type="text" id="coupon" placeholder="HAPPENIN20" />
-            <button type="button" class="btn btn-ghost" id="applyCouponBtn" style="position: absolute; right: 0; top: 0; transform: translateY(30px);">Apply</button>
+            <button type="button" class="btn btn-ghost" id="applyCouponBtn" style="position: absolute; right: 10px; top: 50%; transform: translateY(calc(-50% + 15px)); padding: 6px 15px; font-size: 0.9rem;">Apply</button>
           </div>
 
           <p class="terms-text">By clicking 'Proceed to Pay', you agree to the <a href="#">Terms and Conditions</a> and <a href="#">Cancellation Policy</a>.</p>
@@ -88,7 +88,10 @@
   </footer>
   
   <script src="checkout.js"></script>
-  <script src="payment-modal.js"></script> <div class="modal-backdrop" id="paymentModalBackdrop">
+  <script src="payment-modal.js"></script>
+
+<!-- START of Payment Modal HTML -->
+<div class="modal-backdrop" id="paymentModalBackdrop">
     <div class="payment-modal-content">
         <div class="modal-header">
             <h3>Complete Your Payment</h3>
@@ -102,7 +105,7 @@
             </p>
 
             <div class="upi-qr-box">
-                <img src="269B4124-D1C3-456C-91DE-040BD45655C7.PNG" alt="UPI QR Code" class="upi-qr-image-modal">
+                <img src="images/upi.jpg" alt="UPI QR Code" class="upi-qr-image-modal">
                 <p class="upi-id-text-modal" id="modalUpiIdText">UPI ID: *****8456@upi</p>
             </div>
             
@@ -110,11 +113,11 @@
                 **Instructions:**<br>
                 1. Open any UPI App (GPay, PhonePe, Paytm, etc.).<br>
                 2. Scan the QR code above or manually enter the UPI ID.<br>
-                3. Send the **exact amount** shown above.<br>
-                4. **CRITICAL:** Only click the button below *after* the transaction is successful in your UPI app.
+                3. Send the <b>exact amount</b> shown above.<br>
+                4. <b>CRITICAL:</b> Only click the button below *after* the transaction is successful in your UPI app.
             </p>
 
-            <button class="modal-confirmation-btn" id="modalConfirmationBtn" disabled>
+            <button class="modal-confirmation-btn" id="modalConfirmationBtn">
                 I have paid ₹0
             </button>
             <p class="modal-warning-text">
@@ -123,5 +126,6 @@
         </div>
     </div>
 </div>
+<!-- END of Payment Modal HTML -->
 </body>
 </html>

@@ -88,8 +88,7 @@
 }
 
 .form input[type="text"],
-.form input[type="email"],
-.form input[type="password"] {
+.form input[type="email"] {
     width: 100%;
     padding: 0.8rem 1rem;
     border: 1px solid var(--border-light);
@@ -99,16 +98,7 @@
     color: var(--text-dark);
 }
 
-.stripe-placeholder {
-  min-height: 44px;
-  padding: 10px 1rem;
-  border: 1px solid var(--border-light);
-  border-radius: 8px;
-  background-color: var(--background-light);
-  display: flex;
-  align-items: center;
-  position: relative;
-}
+/* REMOVED: .stripe-placeholder */ 
 
 /* Coupon input with button overlay */
 .input-group:has(#coupon) {
@@ -126,7 +116,57 @@
     font-size: 0.9rem;
 }
 
-/* --- Summary Styles --- */
+/* --- UPI Gateway Styles (NEW) --- */
+.upi-gateway-container {
+    background: var(--background-light);
+    padding: 1.5rem;
+    border: 2px dashed var(--primary);
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.upi-header {
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+}
+
+.upi-qr-box {
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+.upi-qr-image {
+    max-width: 180px;
+    height: auto;
+    display: block;
+    margin: 0 auto 0.5rem;
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+}
+
+.upi-id-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 0.5rem 0 0;
+}
+
+.upi-instructions {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #444;
+    text-align: left;
+    margin: 1rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-light);
+}
+
+/* --- Summary Styles (Existing, check for integrity) --- */
 .order-summary-column h2 {
     color: var(--primary);
     margin-bottom: 1.5rem;
