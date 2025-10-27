@@ -1,4 +1,4 @@
-// movies.js - UPDATED TO SUPPORT DEADPOOL & WOLVERINE FLOW
+// movies.js - UPDATED TO SUPPORT OPPENHEIMER FLOW
 
 document.getElementById('year3').textContent = new Date().getFullYear();
 
@@ -13,8 +13,8 @@ const trendingMovies = [
   "Dune: Part Two",
   "Joker: Folie à Deux", 
   "Venom: The Last Dance", 
-  "Deadpool & Wolverine", // Target movie
-  "Oppenheimer",
+  "Deadpool & Wolverine",
+  "Oppenheimer", // Target movie
   "Inside Out 2",
   "The Batman"
 ];
@@ -44,7 +44,9 @@ function renderMovies(movies) {
     let bookNowContent = "";
     
     // --- Linking Logic for all new flows ---
-    if (movie.Title === "Deadpool & Wolverine") {
+    if (movie.Title === "Oppenheimer") {
+        bookNowContent = `<a href="oppenheimer.html" class="btn">Book now</a>`;
+    } else if (movie.Title === "Deadpool & Wolverine") {
         bookNowContent = `<a href="deadpool.html" class="btn">Book now</a>`;
     } else if (movie.Title === "Venom: The Last Dance") {
         bookNowContent = `<a href="venom.html" class="btn">Book now</a>`;
@@ -81,12 +83,12 @@ async function initializeMovies() {
   movieGrid.innerHTML = "<p class='loading-text'>Loading latest movies...</p>";
   
   // Placeholder data for consistent rendering
-  const deadpoolPlaceholder = {
-    Title: "Deadpool & Wolverine",
-    Year: "2024",
-    imdbRating: "8.1",
-    Genre: "Action, Comedy",
-    Poster: "images/top_gun.jpg" 
+  const oppenheimerPlaceholder = {
+    Title: "Oppenheimer",
+    Year: "2023",
+    imdbRating: "8.6",
+    Genre: "Biography, Drama, History",
+    Poster: "images/inception.jpg" 
   };
     
   const moviePromises = trendingMovies.map(title => fetchMovie(title));
@@ -94,9 +96,9 @@ async function initializeMovies() {
 
   allMoviesData = fetchedResults.filter(movie => movie !== null);
 
-  // Ensure Deadpool & Wolverine is present (at index 3)
-  if (!allMoviesData.find(m => m.Title === "Deadpool & Wolverine")) {
-      allMoviesData.splice(3, 0, deadpoolPlaceholder); 
+  // Ensure Oppenheimer is present (at index 4)
+  if (!allMoviesData.find(m => m.Title === "Oppenheimer")) {
+      allMoviesData.splice(4, 0, oppenheimerPlaceholder); 
   }
 
   renderMovies(allMoviesData);
