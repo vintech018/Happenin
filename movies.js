@@ -1,4 +1,4 @@
-// movies.js - UPDATED TO SUPPORT OPPENHEIMER FLOW
+// movies.js - UPDATED TO SUPPORT THE BATMAN FLOW
 
 document.getElementById('year3').textContent = new Date().getFullYear();
 
@@ -14,9 +14,9 @@ const trendingMovies = [
   "Joker: Folie à Deux", 
   "Venom: The Last Dance", 
   "Deadpool & Wolverine",
-  "Oppenheimer", // Target movie
+  "Oppenheimer",
   "Inside Out 2",
-  "The Batman"
+  "The Batman" // Target movie
 ];
 
 // Helper function to fetch a single movie
@@ -44,7 +44,11 @@ function renderMovies(movies) {
     let bookNowContent = "";
     
     // --- Linking Logic for all new flows ---
-    if (movie.Title === "Oppenheimer") {
+    if (movie.Title === "The Batman") {
+        bookNowContent = `<a href="thebatman.html" class="btn">Book now</a>`;
+    } else if (movie.Title === "Inside Out 2") {
+        bookNowContent = `<a href="insideout2.html" class="btn">Book now</a>`;
+    } else if (movie.Title === "Oppenheimer") {
         bookNowContent = `<a href="oppenheimer.html" class="btn">Book now</a>`;
     } else if (movie.Title === "Deadpool & Wolverine") {
         bookNowContent = `<a href="deadpool.html" class="btn">Book now</a>`;
@@ -83,12 +87,12 @@ async function initializeMovies() {
   movieGrid.innerHTML = "<p class='loading-text'>Loading latest movies...</p>";
   
   // Placeholder data for consistent rendering
-  const oppenheimerPlaceholder = {
-    Title: "Oppenheimer",
-    Year: "2023",
-    imdbRating: "8.6",
-    Genre: "Biography, Drama, History",
-    Poster: "images/inception.jpg" 
+  const thebatmanPlaceholder = {
+    Title: "The Batman",
+    Year: "2022",
+    imdbRating: "7.8",
+    Genre: "Action, Crime, Drama",
+    Poster: "images/dark_knight.jpg" 
   };
     
   const moviePromises = trendingMovies.map(title => fetchMovie(title));
@@ -96,9 +100,9 @@ async function initializeMovies() {
 
   allMoviesData = fetchedResults.filter(movie => movie !== null);
 
-  // Ensure Oppenheimer is present (at index 4)
-  if (!allMoviesData.find(m => m.Title === "Oppenheimer")) {
-      allMoviesData.splice(4, 0, oppenheimerPlaceholder); 
+  // Ensure The Batman is present (at the end of the list)
+  if (!allMoviesData.find(m => m.Title === "The Batman")) {
+      allMoviesData.push(thebatmanPlaceholder); 
   }
 
   renderMovies(allMoviesData);
