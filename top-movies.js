@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
     
-    // Fallback data for consistent display (Dune placeholder)
+    // Fallback data for consistent display (Dune and Joker placeholders)
     if (!fetchedMovies.find(m => m.Title === "Dune: Part Two")) {
         fetchedMovies.unshift({
             Title: "Dune: Part Two",
@@ -50,6 +50,15 @@ document.addEventListener('DOMContentLoaded', function() {
             imdbRating: "8.4",
             Genre: "Action, Sci-Fi",
             Poster: "images/interstellar.jpg" 
+        });
+    }
+    if (!fetchedMovies.find(m => m.Title === "Joker: Folie à Deux")) {
+        fetchedMovies.splice(1, 0, {
+            Title: "Joker: Folie à Deux",
+            Year: "2024",
+            imdbRating: "5.2",
+            Genre: "Drama, Musical",
+            Poster: "images/fight_club.jpg" 
         });
     }
 
@@ -66,15 +75,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     for (const movie of movies) {
       const primaryGenre = movie.Genre ? movie.Genre.split(",")[0].trim() : "Movie";
-      let bookNowLink = "";
+      let bookNowContent = "";
       
-      // --- Linking Logic Added ---
-      if (movie.Title === "Dune: Part Two") {
-        // Link the Dune tile to the dedicated booking flow starter page
-        bookNowLink = `<a href="dune-part-two.html" class="btn">Book now</a>`;
+      // --- Linking Logic for Joker and Dune ---
+      if (movie.Title === "Joker: Folie à Deux") {
+        // Link Joker tile to its dedicated booking flow starter page
+        bookNowContent = `<a href="joker.html" class="btn">Book now</a>`;
+      } else if (movie.Title === "Dune: Part Two") {
+        // Link Dune tile to its dedicated booking flow starter page
+        bookNowContent = `<a href="dune-part-two.html" class="btn">Book now</a>`;
       } else {
         // Generic "Book now" link for other movies
-        bookNowLink = `<span class="discount">Book now</span>`;
+        bookNowContent = `<span class="discount">Book now</span>`;
       }
       // ---------------------------
       
@@ -88,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <p class="muted">${movie.Year} • IMDb ${movie.imdbRating}</p>
           <div class="price-row">
             <span class="price">₹${Math.floor(Math.random()*200+250)} onwards</span>
-            ${bookNowLink}
+            ${bookNowContent}
           </div>
         </article>
       `;
