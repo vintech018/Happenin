@@ -1,4 +1,4 @@
-// movies.js - UPDATED TO SUPPORT VENOM: THE LAST DANCE FLOW
+// movies.js - UPDATED TO SUPPORT DEADPOOL & WOLVERINE FLOW
 
 document.getElementById('year3').textContent = new Date().getFullYear();
 
@@ -12,8 +12,8 @@ let allMoviesData = [];
 const trendingMovies = [
   "Dune: Part Two",
   "Joker: Folie à Deux", 
-  "Venom: The Last Dance", // Target movie
-  "Deadpool & Wolverine",
+  "Venom: The Last Dance", 
+  "Deadpool & Wolverine", // Target movie
   "Oppenheimer",
   "Inside Out 2",
   "The Batman"
@@ -43,8 +43,10 @@ function renderMovies(movies) {
     const primaryGenre = movie.Genre ? movie.Genre.split(",")[0].trim() : "Movie";
     let bookNowContent = "";
     
-    // --- Linking Logic for Venom, Joker, and Dune ---
-    if (movie.Title === "Venom: The Last Dance") {
+    // --- Linking Logic for all new flows ---
+    if (movie.Title === "Deadpool & Wolverine") {
+        bookNowContent = `<a href="deadpool.html" class="btn">Book now</a>`;
+    } else if (movie.Title === "Venom: The Last Dance") {
         bookNowContent = `<a href="venom.html" class="btn">Book now</a>`;
     } else if (movie.Title === "Joker: Folie à Deux") {
         bookNowContent = `<a href="joker.html" class="btn">Book now</a>`;
@@ -79,12 +81,12 @@ async function initializeMovies() {
   movieGrid.innerHTML = "<p class='loading-text'>Loading latest movies...</p>";
   
   // Placeholder data for consistent rendering
-  const venomPlaceholder = {
-    Title: "Venom: The Last Dance",
+  const deadpoolPlaceholder = {
+    Title: "Deadpool & Wolverine",
     Year: "2024",
-    imdbRating: "6.0",
-    Genre: "Action, Sci-Fi",
-    Poster: "images/dark_knight.jpg" 
+    imdbRating: "8.1",
+    Genre: "Action, Comedy",
+    Poster: "images/top_gun.jpg" 
   };
     
   const moviePromises = trendingMovies.map(title => fetchMovie(title));
@@ -92,15 +94,13 @@ async function initializeMovies() {
 
   allMoviesData = fetchedResults.filter(movie => movie !== null);
 
-  // Ensure Venom: The Last Dance is present
-  if (!allMoviesData.find(m => m.Title === "Venom: The Last Dance")) {
-      allMoviesData.splice(2, 0, venomPlaceholder); 
+  // Ensure Deadpool & Wolverine is present (at index 3)
+  if (!allMoviesData.find(m => m.Title === "Deadpool & Wolverine")) {
+      allMoviesData.splice(3, 0, deadpoolPlaceholder); 
   }
 
   renderMovies(allMoviesData);
 }
 
-// (Other functions like filterMoviesByGenre, event listeners, and footer logic remain the same)
-// ... [rest of movies.js]
-
+// (Rest of movies.js remains the same)
 initializeMovies();
