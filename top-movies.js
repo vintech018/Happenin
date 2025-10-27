@@ -42,6 +42,17 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
     
+    // Fallback data for consistent display (Dune placeholder)
+    if (!fetchedMovies.find(m => m.Title === "Dune: Part Two")) {
+        fetchedMovies.unshift({
+            Title: "Dune: Part Two",
+            Year: "2024",
+            imdbRating: "8.4",
+            Genre: "Action, Sci-Fi",
+            Poster: "images/interstellar.jpg" 
+        });
+    }
+
     displayMovies(fetchedMovies);
   }
   
@@ -54,17 +65,30 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     for (const movie of movies) {
+      const primaryGenre = movie.Genre ? movie.Genre.split(",")[0].trim() : "Movie";
+      let bookNowLink = "";
+      
+      // --- Linking Logic Added ---
+      if (movie.Title === "Dune: Part Two") {
+        // Link the Dune tile to the dedicated booking flow starter page
+        bookNowLink = `<a href="dune-part-two.html" class="btn">Book now</a>`;
+      } else {
+        // Generic "Book now" link for other movies
+        bookNowLink = `<span class="discount">Book now</span>`;
+      }
+      // ---------------------------
+      
       moviesHTML += `
         <article class="tile">
           <div class="thumb">
             <img src="${movie.Poster !== "N/A" ? movie.Poster : "images/placeholder.jpg"}" alt="${movie.Title}">
-            <span class="category-badge">${movie.Genre.split(",")[0]}</span>
+            <span class="category-badge">${primaryGenre}</span>
           </div>
           <h4>${movie.Title}</h4>
           <p class="muted">${movie.Year} • IMDb ${movie.imdbRating}</p>
           <div class="price-row">
             <span class="price">₹${Math.floor(Math.random()*200+250)} onwards</span>
-            <span class="discount">Book now</span>
+            ${bookNowLink}
           </div>
         </article>
       `;
@@ -76,13 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Filter movies by genre
   function filterMoviesByGenre(genre) {
-    if (genre === "All") {
-      displayMovies(fetchedMovies);
-      return;
-    }
-    
-    // For "Movies" category, show all movies
-    if (genre === "Movies") {
+    if (genre === "All" || genre === "Movies") {
       displayMovies(fetchedMovies);
       return;
     }

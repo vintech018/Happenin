@@ -1,3 +1,5 @@
+// movies.js - UPDATED TO SUPPORT DUNE: PART TWO FLOW
+
 document.getElementById('year3').textContent = new Date().getFullYear();
 
 const apiKey = "84176f5f"; // Using the OMDb key
@@ -40,6 +42,17 @@ function renderMovies(movies) {
   for (const movie of movies) {
     // Determine the primary genre for the badge
     const primaryGenre = movie.Genre ? movie.Genre.split(",")[0].trim() : "Movie";
+    
+    // --- Custom Link Logic for the new flow ---
+    let bookNowContent = "";
+    if (movie.Title === "Dune: Part Two") {
+        // Link the specific movie to the new detail page (Step 1)
+        bookNowContent = `<a href="dune-part-two.html" class="btn">Book now</a>`;
+    } else {
+        // Generic "Book now" link for other movies
+        bookNowContent = `<a href="checkout.html" class="btn">Book now</a>`;
+    }
+    // ------------------------------------------
 
     moviesHTML += `
       <article class="tile">
@@ -51,7 +64,7 @@ function renderMovies(movies) {
         <p class="muted">${movie.Year} • IMDb ${movie.imdbRating}</p>
         <div class="price-row">
           <span class="price">₹${Math.floor(Math.random()*200+250)} onwards</span>
-          <span class="discount">Book now</span>
+          ${bookNowContent}
         </div>
       </article>
     `;
@@ -63,71 +76,61 @@ function renderMovies(movies) {
 async function initializeMovies() {
   movieGrid.innerHTML = "<p class='loading-text'>Loading latest movies...</p>";
   
+  // Placeholder data for consistent rendering, even if API fails
+  const dunePlaceholder = {
+    Title: "Dune: Part Two",
+    Year: "2024",
+    imdbRating: "8.4",
+    Genre: "Action, Sci-Fi",
+    Poster: "images/interstellar.jpg" 
+  };
+    
   const moviePromises = trendingMovies.map(title => fetchMovie(title));
   const fetchedResults = await Promise.all(moviePromises);
 
-  // Filter out null results and store the successful movie objects
   allMoviesData = fetchedResults.filter(movie => movie !== null);
 
-  // Display all movies initially
+  // Ensure Dune: Part Two is present
+  if (!allMoviesData.find(m => m.Title === "Dune: Part Two")) {
+      allMoviesData.unshift(dunePlaceholder); 
+  }
+
   renderMovies(allMoviesData);
 }
 
 // Function to filter movies by genre (UPDATED FOR STRICT MATCH)
 function filterMoviesByGenre(genre) {
-  // 1. Handle "All"
   if (genre.toLowerCase() === 'all') {
     renderMovies(allMoviesData);
     return;
   }
-
-  // 2. Filter logic for STRICT MATCH: 
-  // Only show the movie if the selected genre matches the movie's *primary* genre (the first one listed).
   const filteredList = allMoviesData.filter(movie => {
-    // Ensure movie.Genre exists before splitting
     if (!movie.Genre) return false; 
-      
-    // Get the first genre listed and trim any whitespace
     const primaryGenre = movie.Genre.split(',')[0].trim();
-    
-    // Check for strict match
     return primaryGenre.toLowerCase() === genre.toLowerCase();
   });
-
   renderMovies(filteredList);
 }
 
 // --- Event Listeners ---
-
-// 1. Category Filtering
 categoryLinks.forEach(link => {
   link.addEventListener('click', function(e) {
     e.preventDefault();
-
-    // Update active class
     categoryLinks.forEach(l => l.classList.remove('active'));
     this.classList.add('active');
-
-    // Apply filter
-    const genre = this.textContent.trim();
-    filterMoviesByGenre(genre);
+    filterMoviesByGenre(this.textContent.trim());
   });
 });
 
-// 2. Search (Updated to use the new renderMovies logic)
 searchInput.addEventListener("keypress", async (e) => {
   if (e.key === "Enter") {
     const query = e.target.value.trim();
     if (!query) return;
-
-    // Reset category active state
     categoryLinks.forEach(l => l.classList.remove('active'));
-
     movieGrid.innerHTML = "<p class='loading-text'>Searching...</p>";
     const movie = await fetchMovie(query);
 
     if (movie) {
-      // Display the single search result
       renderMovies([movie]);
     } else {
       movieGrid.innerHTML = "<p class='loading-text'>No movie found.</p>";
@@ -135,7 +138,6 @@ searchInput.addEventListener("keypress", async (e) => {
   }
 });
 
-// 3. Initial Load
 initializeMovies();
 
 // Scroll to top (Existing logic)
