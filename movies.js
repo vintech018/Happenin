@@ -1,4 +1,4 @@
-// movies.js - UPDATED TO SUPPORT JOKER: FOLIE À DEUX FLOW
+// movies.js - UPDATED TO SUPPORT VENOM: THE LAST DANCE FLOW
 
 document.getElementById('year3').textContent = new Date().getFullYear();
 
@@ -11,8 +11,8 @@ let allMoviesData = [];
 
 const trendingMovies = [
   "Dune: Part Two",
-  "Joker: Folie à Deux", // Target movie
-  "Venom: The Last Dance",
+  "Joker: Folie à Deux", 
+  "Venom: The Last Dance", // Target movie
   "Deadpool & Wolverine",
   "Oppenheimer",
   "Inside Out 2",
@@ -43,16 +43,15 @@ function renderMovies(movies) {
     const primaryGenre = movie.Genre ? movie.Genre.split(",")[0].trim() : "Movie";
     let bookNowContent = "";
     
-    // --- Linking Logic for Joker ---
-    if (movie.Title === "Joker: Folie à Deux") {
-        // Link the specific movie to its new detail page
+    // --- Linking Logic for Venom, Joker, and Dune ---
+    if (movie.Title === "Venom: The Last Dance") {
+        bookNowContent = `<a href="venom.html" class="btn">Book now</a>`;
+    } else if (movie.Title === "Joker: Folie à Deux") {
         bookNowContent = `<a href="joker.html" class="btn">Book now</a>`;
     } else if (movie.Title === "Dune: Part Two") {
-        // Keep the existing link for Dune
         bookNowContent = `<a href="dune-part-two.html" class="btn">Book now</a>`;
     } 
     else {
-        // Generic "Book now" link for other movies
         bookNowContent = `<a href="checkout.html" class="btn">Book now</a>`;
     }
     // ------------------------------------------
@@ -75,17 +74,17 @@ function renderMovies(movies) {
   movieGrid.innerHTML = moviesHTML;
 }
 
-// Function to fetch all movies and initialize the grid (rest of the file remains the same)
+// Function to fetch all movies and initialize the grid
 async function initializeMovies() {
   movieGrid.innerHTML = "<p class='loading-text'>Loading latest movies...</p>";
   
   // Placeholder data for consistent rendering
-  const jokerPlaceholder = {
-    Title: "Joker: Folie à Deux",
+  const venomPlaceholder = {
+    Title: "Venom: The Last Dance",
     Year: "2024",
-    imdbRating: "5.2",
-    Genre: "Drama, Musical",
-    Poster: "images/fight_club.jpg" // Using an existing placeholder
+    imdbRating: "6.0",
+    Genre: "Action, Sci-Fi",
+    Poster: "images/dark_knight.jpg" 
   };
     
   const moviePromises = trendingMovies.map(title => fetchMovie(title));
@@ -93,9 +92,9 @@ async function initializeMovies() {
 
   allMoviesData = fetchedResults.filter(movie => movie !== null);
 
-  // Ensure Joker: Folie à Deux is present
-  if (!allMoviesData.find(m => m.Title === "Joker: Folie à Deux")) {
-      allMoviesData.splice(1, 0, jokerPlaceholder); 
+  // Ensure Venom: The Last Dance is present
+  if (!allMoviesData.find(m => m.Title === "Venom: The Last Dance")) {
+      allMoviesData.splice(2, 0, venomPlaceholder); 
   }
 
   renderMovies(allMoviesData);
