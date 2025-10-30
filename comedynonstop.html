@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Anubhav Singh Bassi: Comedy Non-Stop — Booking | Happenin</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="booking-page.css" /> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="site-header small">
+        <div class="container nav-row">
+            <a href="index.html" class="brand">Happenin</a>
+            <nav>
+                <a href="movies.html">Movies</a>
+                <a href="live.html" class="active">Live Events</a>
+                <a href="about.html">About</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="login.html" class="btn btn-ghost">Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="event-header">
+        <img src="images/bassi.jpg" alt="Anubhav Singh Bassi - Comedy Non-Stop Banner">
+        <div class="event-overlay">
+            <div class="container">
+                <h1>Anubhav Singh Bassi: Comedy Non-Stop</h1>
+                <p class="meta">
+                    <i class="fas fa-calendar-alt"></i> September 25, 2025 (Confirmed)   •   
+                    <i class="fas fa-map-marker-alt"></i> The Comedy Club, Noida   •  
+                    <span class="price">₹299 onwards</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <main class="container booking-container">
+
+        <section class="details-column">
+            <h2>Event Overview</h2>
+            <p>Catch **Anubhav Singh Bassi** live for his acclaimed stand-up special, **Comedy Non-Stop**. Known for his relatable storytelling and sharp wit, Bassi guarantees an evening of non-stop laughter. This is an intimate club performance.</p>
+
+            <div class="about-section">
+                <h3><i class="fas fa-info-circle"></i> Important Information</h3>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> Doors open at 7:00 PM. Show starts at 8:00 PM.</li>
+                    <li><i class="fas fa-check-circle"></i> Age limit: 18+ (Mature content warning).</li>
+                    <li><i class="fas fa-check-circle"></i> Venue operates a no-tolerance policy on heckling.</li>
+                </ul>
+            </div>
+
+            <div class="about-section">
+                <h3><i class="fas fa-map"></i> Venue Seat Map (Placeholder)</h3>
+                <p class="muted" style="text-align: center; margin-top: 0.5rem;">The venue uses a General Admission (GA) layout with some reserved seating.</p>
+                <div class="seat-map-placeholder">
+                    <img src="images/comedy_club_seat_map.png" alt="Comedy Club Noida Seating Map Placeholder" class="stadium-map-image">
+                </div>
+                <p class="muted" style="text-align: center; margin-top: 0.5rem;">Image of the seat map is a placeholder (seatmap.jpg).</p>
+            </div>
+        </section>
+
+        <aside class="booking-column">
+            <h3>Book Your Tickets</h3>
+            
+            <div class="selection-group">
+                <label>Select Date & Time</label>
+                <div class="select-show-time">
+                    <div class="time-slot selected" data-time="25-Sep-8:00">Sep 25, 8:00 PM</div>
+                    <div class="time-slot" data-time="26-Sep-8:00">Sep 26, 8:00 PM</div>
+                </div>
+            </div>
+
+            <div class="selection-group">
+                <label>Select Category & Quantity</label>
+                <div class="ticket-category-selector">
+                    
+                    <div class="ticket-row" data-category="Reserved Seating" data-price="799">
+                        <span class="category-name">Reserved Seating</span>
+                        <span class="category-price">₹799</span>
+                        <input type="number" min="0" max="10" value="0" class="ticket-quantity" id="qty-reserved">
+                    </div>
+                    
+                    <div class="ticket-row" data-category="General Admission" data-price="499">
+                        <span class="category-name">General Admission</span>
+                        <span class="category-price">₹499</span>
+                        <input type="number" min="0" max="10" value="0" class="ticket-quantity" id="qty-general">
+                    </div>
+                    
+                    <div class="ticket-row" data-category="Standing/Entry" data-price="299">
+                        <span class="category-name">Standing/Entry</span>
+                        <span class="category-price">₹299</span>
+                        <input type="number" min="0" max="10" value="0" class="ticket-quantity" id="qty-entry">
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="seat-info">
+                <p><span>Total Tickets:</span> <span id="totalTickets">0</span></p>
+                <p><span>Subtotal:</span> <span id="subTotal">₹0</span></p>
+                <p><span>Taxes & Fees (10%):</span> <span id="fees">₹0</span></p>
+                <p style="font-size: 1.2rem; font-weight: 700; color: var(--primary);"><span>Total Payable:</span> <span id="totalPrice">₹0</span></p>
+            </div>
+
+            <button class="btn checkout-btn" id="checkoutBtn" disabled style="opacity: 0.6;">
+                <i class="fas fa-credit-card"></i> Proceed to Checkout
+            </button>
+        </aside>
+
+    </main>
+
+    <footer class="site-footer small">
+        <div class="container">
+            <p>© <span id="year4"></span> Happenin</p>
+        </div>
+    </footer>
+    
+    <button id="scrollToTop" class="scroll-top-btn" title="Go to top">↑</button>
+
+    <script src="booking-page.js"></script>
+</body>
+</html>

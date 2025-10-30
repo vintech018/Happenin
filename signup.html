@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Login — Happenin</title>
+  <title>Sign Up — Happenin</title>
 
   <link rel="icon" href="favicon.png" type="image/png" sizes="32x32">
   <link rel="stylesheet" href="styles.css" />
@@ -11,19 +11,18 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
   <script src="https://accounts.google.com/gsi/client" async defer></script>
-
   <script src="google-login.js" defer></script>
 </head>
 
 <body class="auth-page">
   <main class="auth-card">
     <a href="index.html" class="brand" style="display: block; text-align: center; margin-bottom: 1.5rem;">Happenin</a>
-    <h2>Welcome back</h2>
+    <h2>Create Your Account</h2>
 
     <div class="social-login">
       <div id="g_id_onload"
            data-client_id="705184843071-t6cck0onvhjri6ug9250dmmcjq76tsst.apps.googleusercontent.com"
-           data-context="signin"
+           data-context="signup"
            data-ux_mode="popup"
            data-callback="handleCredentialResponse"
            data-auto_prompt="false">
@@ -33,15 +32,21 @@
            data-type="standard"
            data-shape="rectangular"
            data-theme="outline"
-           data-text="signin_with"
+           data-text="signup_with"
            data-size="large"
            data-logo_alignment="left">
       </div>
-      </div>
+    </div>
     
-    <div class="divider"><span>or login with email</span></div>
+    <div class="divider"><span>or sign up with email</span></div>
     
     <form action="#" method="post" class="form">
+      
+      <div class="input-group">
+        <i class="fas fa-user input-icon"></i>
+        <input type="text" name="name" required placeholder="Full Name" />
+      </div>
+      
       <div class="input-group">
         <i class="fas fa-envelope input-icon"></i>
         <input type="email" name="email" required placeholder="Email address" />
@@ -49,18 +54,19 @@
 
       <div class="input-group">
         <i class="fas fa-lock input-icon"></i>
-        <input type="password" name="password" required minlength="6" placeholder="Password" />
+        <input type="password" name="password" required minlength="6" placeholder="Password (min 6 characters)" />
         <i class="fas fa-eye-slash toggle-password"></i>
       </div>
-
-      <div class="form-row">
-        <label class="checkbox"><input type="checkbox" /> <span>Remember me</span></label>
-        <a href="#" class="text-link">Forgot password?</a>
+      
+      <div class="input-group">
+        <i class="fas fa-lock input-icon"></i>
+        <input type="password" name="confirm-password" required minlength="6" placeholder="Confirm Password" />
+        <i class="fas fa-eye-slash toggle-password-confirm"></i>
       </div>
 
-      <button class="btn login-btn" type="submit">Login</button>
+      <button class="btn login-btn" type="submit">Sign Up</button>
 
-      <p class="signup-link">New here? <a href="signup.html">Sign up</a> or <a href="index.html">Continue as guest</a></p>
+      <p class="signup-link">Already have an account? <a href="login.html">Login</a> or <a href="index.html">Continue as guest</a></p>
     </form>
   </main>
   
@@ -76,15 +82,22 @@
     // Update footer year
     document.getElementById('year5').textContent = new Date().getFullYear();
 
-    // Toggle password visibility
-    const toggleIcon = document.querySelector('.toggle-password');
-    const passwordInput = document.querySelector('input[type="password"]');
+    // Toggle password visibility logic (modified to handle multiple password fields)
+    const toggleIcons = document.querySelectorAll('.toggle-password, .toggle-password-confirm');
+    
+    toggleIcons.forEach(toggleIcon => {
+        toggleIcon.addEventListener('click', () => {
+            const inputGroup = toggleIcon.closest('.input-group');
+            // Find the closest input element that is either password or text type
+            const passwordInput = inputGroup.querySelector('input[name="password"], input[name="confirm-password"], input[type="text"]');
+            
+            if (!passwordInput) return;
 
-    toggleIcon.addEventListener('click', () => {
-      const isHidden = passwordInput.type === 'password';
-      passwordInput.type = isHidden ? 'text' : 'password';
-      toggleIcon.classList.toggle('fa-eye', isHidden);
-      toggleIcon.classList.toggle('fa-eye-slash', !isHidden);
+            const isHidden = passwordInput.type === 'password';
+            passwordInput.type = isHidden ? 'text' : 'password';
+            toggleIcon.classList.toggle('fa-eye', isHidden);
+            toggleIcon.classList.toggle('fa-eye-slash', !isHidden);
+        });
     });
 
     // Scroll to top

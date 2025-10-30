@@ -562,15 +562,6 @@ body.auth-page {
   background-color: #f1f1f1;
 }
 
-.social-btn.facebook {
-  background-color: #1877F2;
-  color: white;
-  border: none;
-}
-
-.social-btn.facebook:hover {
-  background-color: #166fe5;
-}
 
 /* Divider */
 .divider {
@@ -600,9 +591,10 @@ body.auth-page {
   margin-top: 1rem;
 }
 
+/* ADJUSTED: Reduced margin-bottom for a tighter form layout, especially for signup */
 .input-group {
   position: relative;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem; 
 }
 
 .input-icon {
@@ -613,7 +605,9 @@ body.auth-page {
   color: #666;
 }
 
-.toggle-password {
+/* COMBINED AND FIXED: Applies the correct styling to both password toggle icons in signup */
+.toggle-password,
+.toggle-password-confirm {
   position: absolute;
   right: 1rem;
   top: 50%;
@@ -628,8 +622,10 @@ body.auth-page {
   font-weight: 500;
 }
 
+/* UPDATED: Added input[type="text"] to match general input styling and correct padding for icons */
 .form input[type="email"],
-.form input[type="password"] {
+.form input[type="password"],
+.form input[type="text"] {
   width: 100%;
   padding: 0.9rem 2.5rem;
   border: 1px solid var(--border-light);
