@@ -1,0 +1,92 @@
+{
+  "liveEvents": [
+    {
+      "id": 1,
+      "title": "Comedy Non-Stop",
+      "date": "Sep 25",
+      "category": "Stand-up",
+      "location": "Comedy Club, Noida",
+      "price": 299,
+      "discount": "15% off up to ₹200",
+      "image": "images/bassi.jpg",
+      "link": "comedynonstop.html"
+    },
+    {
+      "id": 2,
+      "title": "Chandigarh Comedy Carnival",
+      "date": "Oct 10",
+      "category": "Stand-up",
+      "location": "Siri Fort Auditorium, Chandigarh",
+      "price": 1000,
+      "discount": "10% off up to ₹300",
+      "image": "images/Chandigarh.jpg",
+      "link": "chandigarh.html"
+    },
+    {
+      "id": 3,
+      "title": "Imagine Dragons — Live",
+      "date": "Sep 12",
+      "category": "Concert",
+      "location": "Bengaluru Stadium, Bengaluru",
+      "price": 1999,
+      "discount": "20% off up to ₹400",
+      "image": "images/imagine_dragons.jpg",
+      "link": "imaginedragons.html"
+    },
+    {
+      "id": 4,
+      "title": "Komedi Nights — Laugh Riot",
+      "date": "Sep 18",
+      "category": "Comedy",
+      "location": "Comedy Club, Mumbai",
+      "price": 799,
+      "discount": "30% off up to ₹300",
+      "image": "images/comedy_nights.jpg",
+      "link": "comedynights.html"
+    },
+    {
+      "id": 5,
+      "title": "EDM Sunset Fest",
+      "date": "Oct 5",
+      "category": "Concert",
+      "location": "Sunset Beach, Goa",
+      "price": 2499,
+      "discount": "15% off up to ₹500",
+      "image": "images/goa.jpg",
+      "link": "goa.html"
+    },
+    {
+      "id": 6,
+      "title": "Coldplay World Tour",
+      "date": "Oct 15",
+      "category": "Concert",
+      "location": "Jawaharlal Nehru Stadium, Delhi",
+      "price": 3500,
+      "discount": "10% off up to ₹500",
+      "image": "images/coldplay.jpg",
+      "link": "coldplay.html"
+    },
+    {
+      "id": 7,
+      "title": "Samay Raina — Comedy Club Special",
+      "date": "Sep 30",
+      "category": "Comedy",
+      "location": "The Comedy Store, Pune",
+      "price": 599,
+      "discount": "25% off up to ₹200",
+      "image": "images/samay_raina.jpg",
+      "link": "Samay.html"
+    },
+    {
+      "id": 8,
+      "title": "Classical Music Festival",
+      "date": "Nov 2",
+      "category": "Concert",
+      "location": "Music Academy, Chennai",
+      "price": 1200,
+      "discount": "15% off up to ₹300",
+      "image": "images/classical.jpg",
+      "link": "classical.html"
+    }
+  ]
+}

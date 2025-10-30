@@ -29,147 +29,20 @@
       <input type="text" class="search-bar" placeholder="Search for events, concerts, comedy shows...">
     </div>
 
-    <div class="category-nav">
-      <a href="#" class="active">All</a>
-      <a href="#">Concerts</a>
-      <a href="#">Comedy</a>
-      <a href="#">Theatre</a>
-      <a href="#">Sports</a>
-      <a href="#">Adventure</a>
-      <a href="#">Workshops</a>
+    <div class="category-nav" id="categoryNav">
+      <a href="#" class="category-item active" data-category="All">All</a>
+      <a href="#" class="category-item" data-category="Concert">Concerts</a>
+      <a href="#" class="category-item" data-category="Comedy">Comedy</a>
+      <a href="#" class="category-item" data-category="Stand-up">Stand-up</a>
+      <a href="#" class="category-item" data-category="Theatre">Theatre</a>
+      <a href="#" class="category-item" data-category="Sports">Sports</a>
     </div>
     
     <h1>Live Events</h1>
 
-    <div class="grid">
-      
-      <a href="comedynonstop.html">
-        <article class="tile">
-          <div class="thumb">
-            <img src="images/bassi.jpg" alt="Comedy Non-Stop">
-            <span class="date-badge">Sep 25</span>
-            <span class="category-badge">Stand-up</span>
-          </div>
-          <h4>Comedy Non-Stop</h4>
-          <p class="muted">Comedy Club, Noida</p>
-          <div class="price-row">
-            <span class="price">₹299 onwards</span>
-            <span class="discount">15% off up to ₹200</span>
-          </div>
-        </article>
-      </a>
-
-      <a href="chandigarh.html">
-        <article class="tile">
-          <div class="thumb">
-            <img src="images/Chandigarh.jpg" alt="Chandigarh Comedy Carnival">
-            <span class="date-badge">Oct 10</span>
-            <span class="category-badge">Stand-up</span>
-          </div>
-          <h4>Chandigarh Comedy Carnival</h4>
-          <p class="muted">Siri Fort Auditorium, Chandigarh</p>
-          <div class="price-row">
-            <span class="price">₹1000 onwards</span>
-            <span class="discount">10% off up to ₹300</span>
-          </div>
-        </article>
-      </a>
-
-      <article class="tile">
-        <div class="thumb">
-          <a href="imaginedragons.html">
-          <img src="images/imagine_dragons.jpg" alt="Imagine Dragons Concert">
-          <span class="date-badge">Sep 12</span>
-          <span class="category-badge">Concert</span>
-        </div>
-        <h4>Imagine Dragons — Live</h4>
-        <p class="muted">Bengaluru Stadium, Bengaluru</p>
-        <div class="price-row">
-          <span class="price">₹1999 onwards</span>
-          <span class="discount">20% off up to ₹400</span>
-        </a>
-        </div>
-      </article>
-
-      <article class="tile">
-        <div class="thumb">
-          <a href="comedynights.html">
-            <img src="images/comedy_nights.jpg" alt="Comedy Show">
-            <span class="date-badge">Sep 18</span>
-            <span class="category-badge">Comedy</span>
-          </div>
-          <h4>Komedi Nights — Laugh Riot</h4>
-          <p class="muted">Comedy Club, Mumbai</p>
-          <div class="price-row">
-            <span class="price">₹799 onwards</span>
-            <span class="discount">30% off up to ₹300</span>
-          </a>
-        </div>
-      </article>
-      
-      <a href="goa.html">
-      <article class="tile">
-        <div class="thumb">
-            <img src="images/goa.jpg" alt="EDM Festival">
-            <span class="date-badge">Oct 5</span>
-            <span class="category-badge">Concert</span>
-          </div>
-          <h4>EDM Sunset Fest</h4>
-          <p class="muted">Sunset Beach, Goa</p>
-          <div class="price-row">
-            <span class="price">₹2499 onwards</span>
-            <span class="discount">15% off up to ₹500</span>
-          </div>
-        </article>
-      </a>
-      
-      <a href="coldplay.html">
-      <article class="tile">
-          <div class="thumb placeholder">
-            <img src ="images/coldplay.jpg">
-            <span class="date-badge">Oct 15</span>
-            <span class="category-badge">Concert</span>
-          </div>
-          <h4>Coldplay World Tour</h4>
-          <p class="muted">Jawaharlal Nehru Stadium, Delhi</p>
-          <div class="price-row">
-            <span class="price">₹3500 onwards</span>
-            <span class="discount">10% off up to ₹500</span>
-          </div>
-        </article>
-      </a>
-      
-      <a href="Samay.html">
-        <article class="tile">
-          <div class="thumb placeholder">
-            <img src="images/samay_raina.jpg">
-            <span class="date-badge">Sep 25</span>
-            <span class="category-badge">Comedy</span>
-          </div>
-          <h4>Comedy Club Special</h4>
-          <p class="muted">The Comedy Store, Pune</p>
-          <div class="price-row">
-            <span class="price">₹599 onwards</span>
-            <span class="discount">25% off up to ₹200</span>
-          </div>
-        </article>
-      </a>
-      <a href="classical.html">
-        <article class="tile">
-          <div class="thumb placeholder">
-            <img src="images/classical.jpg">
-            <span class="date-badge">Nov 2</span>
-            <span class="category-badge">Concert</span>
-          </div>
-          <h4>Classical Music Festival</h4>
-          <p class="muted">Music Academy, Chennai</p>
-          <div class="price-row">
-            <span class="price">₹1200 onwards</span>
-            <span class="discount">15% off up to ₹300</span>
-          </div>
-        </article>
-      </div>
-    </a>
+    <div class="grid" id="liveEventGrid">
+      <p class="loading-text">Loading live events from server...</p>
+    </div>
   </main>
 
   <footer class="site-footer small">
@@ -181,10 +54,10 @@
   <button id="scrollToTop" class="scroll-top-btn" title="Go to top">↑</button>
 
   <script>
-    // Set current year
+    // Set current year - Kept the existing logic for the footer year.
     document.getElementById('year4').textContent = new Date().getFullYear();
     
-    // Scroll to top functionality
+    // Scroll to top functionality - Kept the existing logic.
     const scrollToTopBtn = document.getElementById('scrollToTop');
     
     window.addEventListener('scroll', () => {
@@ -202,5 +75,6 @@
       });
     });
   </script>
+  <script src="live-events.js"></script>
 </body>
 </html>
