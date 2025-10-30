@@ -298,6 +298,10 @@ nav a:hover:after {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   border: 1px solid var(--border-light);
+  /* FIX: Added properties to enable vertical stretching in the grid */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .tile:hover {
@@ -353,6 +357,8 @@ nav a:hover:after {
 .tile h4 {
   padding: 1rem 1rem 0.5rem;
   margin-bottom: 0.25rem;
+  /* FIX: Allow h4/content area to push the price row down */
+  flex-grow: 1; 
 }
 
 .tile p {
@@ -591,9 +597,9 @@ body.auth-page {
   margin-top: 1rem;
 }
 
-/* ADJUSTED: Reduced margin-bottom for a tighter form layout, especially for signup */
 .input-group {
   position: relative;
+  /* Adjusted margin for tighter sign-up/login form */
   margin-bottom: 1.25rem; 
 }
 
@@ -605,7 +611,7 @@ body.auth-page {
   color: #666;
 }
 
-/* COMBINED AND FIXED: Applies the correct styling to both password toggle icons in signup */
+/* Combined styling for both password toggle icons */
 .toggle-password,
 .toggle-password-confirm {
   position: absolute;
@@ -622,7 +628,7 @@ body.auth-page {
   font-weight: 500;
 }
 
-/* UPDATED: Added input[type="text"] to match general input styling and correct padding for icons */
+/* Added text input for consistent styling */
 .form input[type="email"],
 .form input[type="password"],
 .form input[type="text"] {
@@ -747,10 +753,6 @@ body.auth-page {
   animation: fadeIn 0.8s ease-out 0.6s both;
 }
 
-.tile {
-  animation: fadeIn 0.5s ease-out;
-}
-
 .grid .tile:nth-child(odd) {
   animation: slideInFromLeft 0.5s ease-out both;
 }
@@ -778,6 +780,7 @@ body.auth-page {
 .tile:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 12px 20px rgba(89, 40, 229, 0.15);
+  border-color: rgba(89, 40, 229, 0.2);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -879,14 +882,16 @@ body.auth-page {
 }
 /* Events */
 .tile-link {
-  text-decoration: none; /* remove underline */
-  color: inherit;        /* keep original text color */
-  display: block;        /* make it a block element like the article */
+  text-decoration: none; 
+  color: inherit;        
+  display: block;        
+  /* FIX: Ensure the link wrapper takes up full height of the grid item */
+  height: 100%;
 }
 
 /* Optional hover effect for tiles */
 .tile-link:hover .tile {
-  transform: scale(1.02); /* slight zoom on hover */
+  transform: scale(1.02); 
   transition: transform 0.2s ease-in-out;
 }
 
@@ -898,4 +903,206 @@ body.auth-page {
 /* Optional: hover image zoom slightly */
 .tile-link:hover .thumb img {
   transform: scale(1.05);
+}
+
+/* === Team Section Styles (About Page) === */
+
+.team-wrapper {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-light);
+}
+
+.team-heading {
+    color: var(--text-dark);
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 0;
+}
+
+.team-card {
+    text-align: center;
+    background: var(--background-gray);
+    border-radius: 10px;
+    padding: 1.5rem;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(89, 40, 229, 0.1);
+    border-color: var(--primary);
+}
+
+.team-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 4px solid var(--primary);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.team-role {
+    color: var(--primary-dark);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.team-linkedin {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: #0077B5;
+    color: white !important;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    transition: transform 0.2s;
+}
+
+.team-linkedin:hover {
+    transform: scale(1.1);
+    background: #005f93;
+}
+
+/* === Modal Styles (About Page) === */
+
+/* Ensure basic modal visibility and backdrop are consistent with previous setup */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s;
+}
+
+.modal-content {
+    background-color: var(--background-light);
+    margin: 15% auto; 
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    transform: scale(0.9);
+    animation: scaleUp 0.3s forwards;
+}
+
+@keyframes scaleUp {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--primary-dark);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal Inner Content Styling (From modal.js injection) */
+
+.modal-header-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.modal-header-content h2 {
+    margin: 0;
+    font-size: 1.75rem;
+    color: var(--primary-dark);
+}
+
+.modal-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary);
+}
+
+.modal-role {
+    margin: 0;
+    color: #777;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.modal-body-content {
+    padding-top: 1rem;
+}
+
+.bio-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #444;
+}
+
+.modal-social {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border-light);
+}
+
+.modal-social .social-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: var(--primary);
+    color: var(--text-light) !important;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.modal-social .social-link:hover {
+    background: var(--primary-dark);
+    text-decoration: none;
+}
+
+.modal-social .social-link i {
+    margin-right: 0.5rem;
 }

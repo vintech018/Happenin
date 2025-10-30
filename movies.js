@@ -1,4 +1,4 @@
-// movies.js - UPDATED TO SUPPORT THE BATMAN FLOW
+// movies.js - FIX: ADDED STRICT SORTING BY MOVIE TITLE
 
 document.getElementById('year3').textContent = new Date().getFullYear();
 
@@ -16,7 +16,8 @@ const trendingMovies = [
   "Deadpool & Wolverine",
   "Oppenheimer",
   "Inside Out 2",
-  "The Batman" // Target movie
+  "The Batman",
+  "The Shawshank Redemption"
 ];
 
 // Helper function to fetch a single movie
@@ -43,7 +44,7 @@ function renderMovies(movies) {
     const primaryGenre = movie.Genre ? movie.Genre.split(",")[0].trim() : "Movie";
     let bookNowContent = "";
     
-    // --- Linking Logic for all new flows ---
+    // --- Linking Logic (unchanged) ---
     if (movie.Title === "The Batman") {
         bookNowContent = `<a href="thebatman.html" class="btn">Book now</a>`;
     } else if (movie.Title === "Inside Out 2") {
@@ -58,7 +59,9 @@ function renderMovies(movies) {
         bookNowContent = `<a href="joker.html" class="btn">Book now</a>`;
     } else if (movie.Title === "Dune: Part Two") {
         bookNowContent = `<a href="dune-part-two.html" class="btn">Book now</a>`;
-    } 
+    } else if (movie.Title === "The Shawshank Redemption") {
+        bookNowContent = `<a href="shawshank-details.html" class="btn">Book now</a>`;
+    }
     else {
         bookNowContent = `<a href="checkout.html" class="btn">Book now</a>`;
     }
@@ -82,11 +85,39 @@ function renderMovies(movies) {
   movieGrid.innerHTML = moviesHTML;
 }
 
+// Function to filter movies by genre
+function filterMoviesByGenre(genre) {
+  if (genre === "All") {
+    renderMovies(allMoviesData);
+    return;
+  }
+  
+  const filteredMovies = allMoviesData.filter(movie => 
+    movie.Genre && movie.Genre.split(',').map(g => g.trim()).includes(genre)
+  );
+  
+  renderMovies(filteredMovies);
+}
+
+// Function to handle category link clicks
+categoryLinks.forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // Update active class
+    categoryLinks.forEach(l => l.classList.remove('active'));
+    this.classList.add('active');
+    
+    const genre = this.textContent.trim();
+    filterMoviesByGenre(genre);
+  });
+});
+
 // Function to fetch all movies and initialize the grid
 async function initializeMovies() {
   movieGrid.innerHTML = "<p class='loading-text'>Loading latest movies...</p>";
   
-  // Placeholder data for consistent rendering
+  // Placeholder data (kept for consistency)
   const thebatmanPlaceholder = {
     Title: "The Batman",
     Year: "2022",
@@ -94,19 +125,31 @@ async function initializeMovies() {
     Genre: "Action, Crime, Drama",
     Poster: "images/dark_knight.jpg" 
   };
+  const shawshankPlaceholder = {
+    Title: "The Shawshank Redemption",
+    Year: "1994",
+    imdbRating: "9.3",
+    Genre: "Drama",
+    Poster: "images/shawshank.jpg" 
+  };
     
   const moviePromises = trendingMovies.map(title => fetchMovie(title));
   const fetchedResults = await Promise.all(moviePromises);
 
   allMoviesData = fetchedResults.filter(movie => movie !== null);
 
-  // Ensure The Batman is present (at the end of the list)
+  // Ensure placeholders are present if API fails
   if (!allMoviesData.find(m => m.Title === "The Batman")) {
       allMoviesData.push(thebatmanPlaceholder); 
   }
+  if (!allMoviesData.find(m => m.Title === "The Shawshank Redemption")) {
+      allMoviesData.push(shawshankPlaceholder); 
+  }
+  
+  // === FIX: STRICT SORTING BY TITLE ===
+  allMoviesData.sort((a, b) => a.Title.localeCompare(b.Title));
 
   renderMovies(allMoviesData);
 }
 
-// (Rest of movies.js remains the same)
 initializeMovies();
