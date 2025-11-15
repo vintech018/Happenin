@@ -357,7 +357,8 @@ a.btn:hover {
 }
 
 .price-row .btn,
-.price-row a.btn {
+.price-row a.btn,
+.price-row button.btn {
   flex-shrink: 0 !important;
   white-space: nowrap !important;
   display: inline-block !important;
@@ -375,6 +376,25 @@ a.btn:hover {
   font-weight: 600 !important;
   text-decoration: none !important;
   margin: 0 !important;
+  cursor: pointer !important;
+}
+
+.tile .price-row {
+  position: relative;
+  z-index: 5;
+}
+
+.tile .price-row button {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+.tile > a {
+  position: relative;
+  z-index: 1;
 }
 
 .price {

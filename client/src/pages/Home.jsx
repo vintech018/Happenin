@@ -87,10 +87,16 @@ export default function Home() {
                   <div className="price-row">
                     <span className="price">₹{event.price} onwards</span>
                     <button 
-                      onClick={() => navigate(`/live-events/${event.id}`)} 
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        navigate(`/live-events/${event.id}`);
+                      }} 
                       className="btn"
                       style={{
                         display: 'block',
+                        visibility: 'visible',
+                        opacity: 1,
                         background: '#5928E5',
                         color: '#F1F1F1',
                         padding: '0.5rem 1.25rem',
@@ -98,7 +104,10 @@ export default function Home() {
                         border: 'none',
                         cursor: 'pointer',
                         fontWeight: 600,
-                        fontSize: '0.9rem'
+                        fontSize: '0.9rem',
+                        minWidth: '90px',
+                        minHeight: '38px',
+                        zIndex: 10
                       }}
                     >
                       Book now

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { api } from '../services/api';
 
 const categories = ['All', 'Concert', 'Comedy', 'Stand-up'];
 
 export default function LiveEvents() {
+  const navigate = useNavigate();
   const [events, setEvents] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -69,8 +70,8 @@ export default function LiveEvents() {
         ) : (
           <div className="grid" id="liveEventGrid">
             {filteredEvents.map(event => (
-              <Link key={event.id} to={`/live-events/${event.id}`} className="tile-link">
-                <article className="tile">
+              <article key={event.id} className="tile">
+                <Link to={`/live-events/${event.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <div className="thumb">
                     <img src={`/${event.image}`} alt={event.title} />
                     <span className="date-badge">{event.date}</span>
@@ -78,12 +79,41 @@ export default function LiveEvents() {
                   </div>
                   <h4>{event.title}</h4>
                   <p className="muted">{event.location}</p>
-                  <div className="price-row">
+                </Link>
+                <div className="price-row">
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
                     <span className="price">{formatCurrency(event.price)} onwards</span>
-                    <span className="discount">{event.discount}</span>
+                    {event.discount && <span className="discount" style={{ fontSize: '0.8rem' }}>{event.discount}</span>}
                   </div>
-                </article>
-              </Link>
+                  <button 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      navigate(`/live-events/${event.id}`);
+                    }} 
+                    className="btn"
+                    style={{
+                      display: 'block',
+                      visibility: 'visible',
+                      opacity: 1,
+                      background: '#5928E5',
+                      color: '#F1F1F1',
+                      padding: '0.5rem 1.25rem',
+                      borderRadius: '8px',
+                      border: 'none',
+                      cursor: 'pointer',
+                      fontWeight: 600,
+                      fontSize: '0.9rem',
+                      minWidth: '90px',
+                      minHeight: '38px',
+                      zIndex: 10,
+                      flexShrink: 0
+                    }}
+                  >
+                    Book now
+                  </button>
+                </div>
+              </article>
             ))}
           </div>
         )}
