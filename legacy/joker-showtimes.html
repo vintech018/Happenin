@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Joker: Folie à Deux — Showtimes | Happenin</title>
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="booking-page.css" /> 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .event-overlay h1 {
+        font-size: 2.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header small">
+    <div class="container nav-row">
+      <a href="index.html" class="brand">Happenin</a>
+      <nav>
+        <a href="movies.html" class="active">Movies</a>
+        <a href="live.html">Live Events</a>
+        <a href="about.html">About</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="login.html" class="btn btn-ghost">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="event-header" style="height: 300px;">
+    <img src="images/joker.jpg" alt="Joker: Folie à Deux Poster" style="object-fit: cover; filter: brightness(0.6);">
+    <div class="event-overlay">
+      <div class="container">
+        <h1>Joker: Folie à Deux — Showtimes</h1>
+      <p class="meta">
+        <i class="fas fa-map-marker-alt"></i> Arkham Cinemas, Gotham City
+      </p>
+      </div>
+    </div>
+  </div>
+
+  <main class="container booking-container">
+    <section class="details-column">
+        <h2>Select Your Show</h2>
+        <p>Choose a convenient date, time, and ticket class before proceeding to seat selection.</p>
+        
+        <div class="about-section" style="border-top: none;">
+            <h3><i class="fas fa-calendar-day"></i> Select Date</h3>
+            <div class="select-show-time" id="date-selection">
+                <div class="time-slot selected" data-time="Oct 4">Today, Oct 4</div>
+                <div class="time-slot" data-time="Oct 5">Sat, Oct 5</div>
+                <div class="time-slot" data-time="Oct 6">Sun, Oct 6</div>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <h3><i class="fas fa-clock"></i> Select Showtime (2D English)</h3>
+            <div class="select-show-time" id="time-selection-2d">
+                <div class="time-slot" data-time="11:30 AM">11:30 AM</div>
+                <div class="time-slot selected" data-time="02:45 PM">02:45 PM</div>
+                <div class="time-slot" data-time="06:00 PM">06:00 PM</div>
+                <div class="time-slot" data-time="09:15 PM">09:15 PM</div>
+            </div>
+        </div>
+        
+        <div class="about-section">
+            <h3><i class="fas fa-clock"></i> Select Showtime (IMAX)</h3>
+            <div class="select-show-time" id="time-selection-imax">
+                <div class="time-slot" data-time="04:00 PM">04:00 PM</div>
+                <div class="time-slot" data-time="10:30 PM">10:30 PM</div>
+            </div>
+        </div>
+
+    </section>
+
+    <aside class="booking-column">
+      <h3>Ticket Class Pricing</h3>
+      
+      <div class="selection-group">
+        <label>Select Category & Quantity</label>
+        <div class="ticket-category-selector">
+          
+          <div class="ticket-row" data-category="Executive" data-price="350">
+            <span class="category-name">Executive</span>
+            <span class="category-price">₹350</span>
+            <input type="number" min="0" max="10" value="1" class="ticket-quantity" id="qty-executive">
+          </div>
+          
+          <div class="ticket-row" data-category="Premium" data-price="250">
+            <span class="category-name">Premium</span>
+            <span class="category-price">₹250</span>
+            <input type="number" min="0" max="10" value="1" class="ticket-quantity" id="qty-premium">
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="seat-info">
+        <p><span>Total Tickets:</span> <span id="totalTickets">2</span></p>
+        <p style="font-size: 1.2rem; font-weight: 700; color: var(--primary);"><span>Subtotal:</span> <span id="subTotal">₹600</span></p>
+      </div>
+
+      <button class="btn checkout-btn" id="selectSeatsBtn">
+        <i class="fas fa-couch"></i> Proceed to Select Seats
+      </button>
+    </aside>
+
+  </main>
+
+  <footer class="site-footer small">
+    <div class="container">
+      <p>© 2025 Happenin</p>
+    </div>
+  </footer>
+  
+  <button id="scrollToTop" class="scroll-top-btn" title="Go to top">↑</button>
+
+  <script src="joker-showtimes.js"></script>
+</body>
+</html>

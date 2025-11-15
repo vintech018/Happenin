@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Samay Raina - Comedy Club Special — Booking | Happenin</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="booking-page.css" /> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="site-header small">
+        <div class="container nav-row">
+            <a href="index.html" class="brand">Happenin</a>
+            <nav>
+                <a href="movies.html">Movies</a>
+                <a href="live.html" class="active">Live Events</a>
+                <a href="about.html">About</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="login.html" class="btn btn-ghost">Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="event-header">
+        <img src="images/samay_raina.jpg" alt="Samay Raina Live & Unfiltered Banner">
+        <div class="event-overlay">
+            <div class="container">
+                <h1>Samay Raina — Comedy Club Special</h1>
+                <p class="meta">
+                    <i class="fas fa-calendar-alt"></i> September 25, 2025 (Confirmed)   •   
+                    <i class="fas fa-map-marker-alt"></i> The Comedy Store, Pune   •  
+                    <span class="price">₹599 onwards</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <main class="container booking-container">
+
+        <section class="details-column">
+            <h2>Event Overview</h2>
+            <p>Join the ever-popular stand-up comedian, <b>Samay Raina</b>, for a brand new set of his acclaimed <strong>Live & Unfiltered</strong> show. Prepare for a night of big laughs and unexpected stories in this special comedy club performance.</p>
+
+            <div class="about-section">
+                <h3><i class="fas fa-info-circle"></i> Important Information</h3>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> Doors open at 7:00 PM. Show starts at 8:00 PM. (Assumed timing)</li>
+                    <li><i class="fas fa-check-circle"></i> Age limit is 18+ due to mature content.</li>
+                    <li><i class="fas fa-check-circle"></i> Late entry is permitted but strongly discouraged once the show begins.</li>
+                </ul>
+            </div>
+
+            <div class="about-section">
+                <h3><i class="fas fa-map"></i> Venue Details</h3>
+                <p><strong>The Comedy Store, Pune</strong>, is a premier venue known for its intimate setting and excellent acoustics, ensuring you don't miss a punchline. Limited seating is available, so book early!</p>
+            </div>
+        </section>
+
+        <aside class="booking-column">
+            <h3>Book Your Tickets</h3>
+            
+            <div class="selection-group">
+                <label>Select Date & Time</label>
+                <div class="select-show-time">
+                    <div class="time-slot selected" data-time="25-Sep-8:00">Sep 25, 8:00 PM</div>
+                    </div>
+            </div>
+
+            <div class="selection-group">
+                <label>Select Category & Quantity</label>
+                <div class="ticket-category-selector">
+                    
+                    <div class="ticket-row" data-category="VIP Front Row" data-price="1299">
+                        <span class="category-name">VIP Front Row</span>
+                        <span class="category-price">₹1299</span>
+                        <input type="number" min="0" max="10" value="0" class="ticket-quantity" id="qty-vip">
+                    </div>
+                    
+                    <div class="ticket-row" data-category="General Seating" data-price="899">
+                        <span class="category-name">General Seating</span>
+                        <span class="category-price">₹899</span>
+                        <input type="number" min="0" max="10" value="0" class="ticket-quantity" id="qty-general">
+                    </div>
+                    
+                    <div class="ticket-row" data-category="Standing/Entry" data-price="599">
+                        <span class="category-name">Standing/Entry</span>
+                        <span class="category-price">₹599</span>
+                        <input type="number" min="0" max="10" value="0" class="ticket-quantity" id="qty-entry">
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="selection-group">
+                <label>Seating Overview</label>
+                <div class="seat-map-placeholder">
+                    <img src="images/comedy_clubhouse.png" alt="Comedy Club Seating Map" class="stadium-map-image">
+                </div>
+                <p class="muted" style="text-align: center; margin-top: 0.5rem;">Seats are on a first-come, first-served basis within the selected category.</p>
+                
+                <p style="text-align: center; margin-top: 1rem;">
+                    <a href="https://www.google.com/maps/place/The+Comedy+Clubhouse/@18.5737309,73.7715768,17z/data=!3m1!4b1!4m6!3m5!1s0x3bc2b95b1503401f:0xf4727e16ff189c12!8m2!3d18.5737258!4d73.7741571!16s%2Fg%2F11s8jwcgth?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="map-link">
+                        <i class="fas fa-map-marker-alt"></i> View on Google Maps
+                    </a>
+                </p>
+            </div>
+
+            <div class="seat-info">
+                <p><span>Total Tickets:</span> <span id="totalTickets">0</span></p>
+                <p><span>Subtotal:</span> <span id="subTotal">₹0</span></p>
+                <p><span>Taxes & Fees (10%):</span> <span id="fees">₹0</span></p>
+                <p style="font-size: 1.2rem; font-weight: 700; color: var(--primary);"><span>Total Payable:</span> <span id="totalPrice">₹0</span></p>
+            </div>
+
+            <button class="btn checkout-btn" id="checkoutBtn" disabled style="opacity: 0.6;">
+                <i class="fas fa-credit-card"></i> Proceed to Checkout
+            </button>
+        </aside>
+
+    </main>
+
+    <footer class="site-footer small">
+        <div class="container">
+            <p>© <span id="year4"></span> Happenin</p>
+        </div>
+    </footer>
+    
+    <button id="scrollToTop" class="scroll-top-btn" title="Go to top">↑</button>
+
+    <script src="booking-page.js"></script>
+</body>
+</html>

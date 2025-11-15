@@ -1,0 +1,70 @@
+{
+  "liveEvents": [
+    {
+      "id": 1,
+      "title": "Comedy Non-Stop",
+      "category": "Comedy",
+      "date": "Sep 25, 2024",
+      "location": "Comedy Club, Mumbai",
+      "price": 299,
+      "image": "images/bassi.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Chandigarh Comedy Carnival",
+      "category": "Comedy",
+      "date": "Oct 5, 2024",
+      "location": "Chandigarh",
+      "price": 499,
+      "image": "images/Chandigarh.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Coldplay Concert",
+      "category": "Concert",
+      "date": "Nov 15, 2024",
+      "location": "Mumbai",
+      "price": 2999,
+      "image": "images/coldplay.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Imagine Dragons Live",
+      "category": "Concert",
+      "date": "Oct 20, 2024",
+      "location": "Delhi",
+      "price": 2499,
+      "image": "images/imagine_dragons.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Samay Raina Stand-up",
+      "category": "Stand-up",
+      "date": "Sep 30, 2024",
+      "location": "Bangalore",
+      "price": 599,
+      "image": "images/samay_raina.jpg"
+    },
+    {
+      "id": 6,
+      "title": "Comedy Nights",
+      "category": "Comedy",
+      "date": "Oct 10, 2024",
+      "location": "Pune",
+      "price": 399,
+      "image": "images/comedy_nights.jpg"
+    },
+    {
+      "id": 7,
+      "title": "Classical Music Festival",
+      "category": "Concert",
+      "date": "Nov 2, 2024",
+      "location": "Chennai",
+      "price": 1200,
+      "image": "images/classical.jpg"
+    }
+  ],
+  "bookings": [],
+  "users": []
+}
+

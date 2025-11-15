@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Offers & Coupons — Happenin</title>
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="offers.css" /> 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <header class="site-header small">
+    <div class="container nav-row">
+      <a href="index.html" class="brand">Happenin</a>
+      <nav>
+        <a href="movies.html">Movies</a>
+        <a href="live.html">Live Events</a>
+        <a href="about.html">About</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="login.html" class="btn btn-ghost">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container list-page">
+    <h1>Exclusive Offers & Coupons</h1>
+
+    <div class="offers-tab-nav">
+      <button class="tab-item active" data-tab="card-offers">
+        <i class="fas fa-credit-card"></i> Card Offers
+      </button>
+      <button class="tab-item" data-tab="general-coupons">
+        <i class="fas fa-tags"></i> General Coupons
+      </button>
+    </div>
+
+    <div class="tab-content active" id="card-offers">
+      <h2>Bank & Credit Card Promotions</h2>
+      <div class="grid offers-grid" id="cardOffersGrid">
+        <article class="offer-tile card-offer">
+          <div class="offer-thumb">
+            <img src="images/bank_happenin.jpg" alt="HDFC Bank Offer">
+            <span class="category-badge">VISA / MASTERCARD</span>
+          </div>
+          <div class="offer-body">
+            <h4>HDFC Bank 20% Off</h4>
+            <p class="muted">Get 20% off up to ₹500 on all movie and event tickets using HDFC Bank Credit Cards.</p>
+            <div class="offer-footer">
+              <span class="expiry-date"><i class="fas fa-clock"></i> Expires: <span class="expiry-span">Oct 31, 2025</span></span>
+              <button class="btn offer-btn" data-code="HDFC20">Use Code</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="offer-tile card-offer">
+          <div class="offer-thumb">
+            <img src="images/icicibank_happenin.png" alt="ICICI Bank Offer">
+            <span class="category-badge">BUY 1 GET 1</span>
+          </div>
+          <div class="offer-body">
+            <h4>ICICI Bank Buy 1 Get 1</h4>
+            <p class="muted">Buy one ticket, get the second free (up to ₹250) on ICICI Debit Cards. Valid once per month.</p>
+            <div class="offer-footer">
+              <span class="expiry-date"><i class="fas fa-clock"></i> Expires: <span class="expiry-span">Nov 15, 2025</span></span>
+              <button class="btn offer-btn btn-ghost" data-code="ICICIBOGO">Check Details</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="tab-content" id="general-coupons">
+      <h2>Happenin Promo Codes</h2>
+      <div class="grid offers-grid" id="generalCouponsGrid">
+        <article class="offer-tile general-coupon">
+          <div class="offer-body">
+            <div class="coupon-tag">NEWUSER</div>
+            <h4>₹150 Flat Discount</h4>
+            <p class="muted">For first-time users. Minimum transaction value ₹500. Valid across all events and movies.</p>
+            <div class="offer-footer">
+              <span class="expiry-date"><i class="fas fa-clock"></i> Expires: <span class="expiry-span">Dec 31, 2025</span></span>
+              <button class="btn offer-btn" data-code="NEWUSER" data-coupon-text>Copy Code</button>
+            </div>
+          </div>
+        </article>
+        
+        <article class="offer-tile general-coupon">
+          <div class="offer-body">
+            <div class="coupon-tag">WEEKEND50</div>
+            <h4>50% off on Comedy Shows</h4>
+            <p class="muted">Max discount ₹200. Only valid for live comedy events on Saturdays and Sundays.</p>
+            <div class="offer-footer">
+              <span class="expiry-date"><i class="fas fa-clock"></i> Expires: <span class="expiry-span">Nov 30, 2025</span></span>
+              <button class="btn offer-btn" data-code="WEEKEND50" data-coupon-text>Copy Code</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer small">
+    <div class="container">
+      <p>© <span id="year-offers"></span> Happenin</p>
+    </div>
+  </footer>
+  
+  <button id="scrollToTop" class="scroll-top-btn" title="Go to top">↑</button>
+
+  <script src="offers.js"></script>
+</body>
+</html>

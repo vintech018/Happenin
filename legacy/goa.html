@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EDM Sunset Fest — Booking | Happenin</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="booking-page.css" /> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="site-header small">
+        <div class="container nav-row">
+            <a href="index.html" class="brand">Happenin</a>
+            <nav>
+                <a href="movies.html">Movies</a>
+                <a href="live.html" class="active">Live Events</a>
+                <a href="about.html">About</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="login.html" class="btn btn-ghost">Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="event-header">
+        <img src="images/goa.jpg" alt="EDM Sunset Fest Banner">
+        <div class="event-overlay">
+            <div class="container">
+                <h1>EDM Sunset Fest</h1>
+                <p class="meta">
+                    <i class="fas fa-calendar-alt"></i> October 05, 2025 (Confirmed)   •   
+                    <i class="fas fa-map-marker-alt"></i> Sunset Beach, Goa   •  
+                    <span class="price">₹2499 onwards</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <main class="container booking-container">
+
+        <section class="details-column">
+            <h2>Event Overview</h2>
+            <p>Experience the ultimate <b>EDM Sunset Fest</b> on the beautiful shores of Goa. Dance to the beats of top international and local DJs as the sun sets over the Arabian Sea. Get ready for an unforgettable night of music, lights, and pure energy! Featuring dynamic artists and stunning visual effects, this concert is a must-attend for all electronic music lovers.</p>
+
+            <div class="about-section">
+                <h3><i class="fas fa-info-circle"></i> Important Information</h3>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> Gates open at 4:00 PM. Music starts at 5:00 PM.</li>
+                    <li><i class="fas fa-check-circle"></i> Age limit: 18+ only. Valid ID required for entry.</li>
+                    <li><i class="fas fa-check-circle"></i> Outside food and beverages are strictly prohibited.</li>
+                    <li><i class="fas fa-check-circle"></i> Re-entry is not permitted.</li>
+                </ul>
+            </div>
+
+            <div class="about-section">
+                <h3><i class="fas fa-map"></i> Venue Details</h3>
+                <p><b>Sunset Beach, Goa</b> offers a breathtaking open-air setting, perfect for an electrifying EDM experience. Enjoy the stunning natural backdrop with state-of-the-art sound and lighting systems. Accessible by local transport, limited parking available nearby.</p>
+            </div>
+        </section>
+
+        <aside class="booking-column">
+            <h3>Book Your Tickets</h3>
+            
+            <div class="selection-group">
+                <label>Select Date & Time</label>
+                <div class="select-show-time">
+                    <div class="time-slot selected" data-time="05-Oct-4:00">Oct 05, 4:00 PM</div>
+                </div>
+            </div>
+
+            <div class="selection-group">
+                <label>Select Category & Quantity</label>
+                <div class="ticket-category-selector">
+                    
+                    <div class="ticket-row" data-category="Early Bird" data-price="2499">
+                        <span class="category-name">Early Bird</span>
+                        <span class="category-price">₹2499</span>
+                        <input type="number" min="0" max="10" value="0" class="ticket-quantity" id="qty-earlybird">
+                    </div>
+                    
+                    <div class="ticket-row" data-category="General Access" data-price="2999">
+                        <span class="category-name">General Access</span>
+                        <span class="category-price">₹2999</span>
+                        <input type="number" min="0" max="10" value="0" class="ticket-quantity" id="qty-general">
+                    </div>
+                    
+                    <div class="ticket-row" data-category="VIP Lounge" data-price="4999">
+                        <span class="category-name">VIP Lounge</span>
+                        <span class="category-price">₹4999</span>
+                        <input type="number" min="0" max="10" value="0" class="ticket-quantity" id="qty-vip">
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="selection-group">
+                <label>Seating/Area Overview</label>
+                <div class="seat-map-placeholder">
+                    <img src="images/sunset.jpg_large" alt="EDM Sunset Fest Area Map" class="stadium-map-image">
+                </div>
+                <p class="muted" style="text-align: center; margin-top: 0.5rem;">Access to designated areas based on ticket category.</p>
+                
+                <p style="text-align: center; margin-top: 1rem;">
+                    <a href="https://www.google.com/maps/place/Sunset+Beach/@15.3013726,73.9022788,17z/data=!3m1!4b1!4m6!3m5!1s0x3bbfb693c3c7ebe1:0x881ca26490ed4697!8m2!3d15.3012749!4d73.9049348!16s%2Fg%2F1thl3wdd?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="map-link">
+                        <i class="fas fa-map-marker-alt"></i> View on Google Maps
+                    </a>
+                </p>
+            </div>
+
+            <div class="seat-info">
+                <p><span>Total Tickets:</span> <span id="totalTickets">0</span></p>
+                <p><span>Subtotal:</span> <span id="subTotal">₹0</span></p>
+                <p><span>Taxes & Fees (10%):</span> <span id="fees">₹0</span></p>
+                <p style="font-size: 1.2rem; font-weight: 700; color: var(--primary);"><span>Total Payable:</span> <span id="totalPrice">₹0</span></p>
+            </div>
+
+            <button class="btn checkout-btn" id="checkoutBtn" disabled style="opacity: 0.6;">
+                <i class="fas fa-credit-card"></i> Proceed to Checkout
+            </button>
+        </aside>
+
+    </main>
+
+    <footer class="site-footer small">
+        <div class="container">
+            <p>© <span id="year4"></span> Happenin</p>
+        </div>
+    </footer>
+    
+    <button id="scrollToTop" class="scroll-top-btn" title="Go to top">↑</button>
+
+    <script src="booking-page.js"></script>
+</body>
+</html>

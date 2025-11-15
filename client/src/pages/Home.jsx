@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { api } from '../services/api';
 import { omdb } from '../services/omdb';
 
@@ -16,6 +16,7 @@ const placeholders = {
 };
 
 export default function Home() {
+  const navigate = useNavigate();
   const [topMovies, setTopMovies] = useState([]);
   const [liveEvents, setLiveEvents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -73,8 +74,8 @@ export default function Home() {
           ) : (
             <div className="grid">
               {liveEvents.map(event => (
-                <Link key={event.id} to={`/live-events/${event.id}`} className="tile-link">
-                  <article className="tile">
+                <article key={event.id} className="tile">
+                  <Link to={`/live-events/${event.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                     <div className="thumb">
                       <img src={`/${event.image}`} alt={event.title} />
                       <span className="date-badge">{event.date}</span>
@@ -82,12 +83,28 @@ export default function Home() {
                     </div>
                     <h4>{event.title}</h4>
                     <p className="muted">{event.location}</p>
-                    <div className="price-row">
-                      <span className="price">₹{event.price} onwards</span>
-                      <span className="discount">{event.discount}</span>
-                    </div>
-                  </article>
-                </Link>
+                  </Link>
+                  <div className="price-row">
+                    <span className="price">₹{event.price} onwards</span>
+                    <button 
+                      onClick={() => navigate(`/live-events/${event.id}`)} 
+                      className="btn"
+                      style={{
+                        display: 'block',
+                        background: '#5928E5',
+                        color: '#F1F1F1',
+                        padding: '0.5rem 1.25rem',
+                        borderRadius: '8px',
+                        border: 'none',
+                        cursor: 'pointer',
+                        fontWeight: 600,
+                        fontSize: '0.9rem'
+                      }}
+                    >
+                      Book now
+                    </button>
+                  </div>
+                </article>
               ))}
             </div>
           )}
@@ -113,7 +130,23 @@ export default function Home() {
                     <p className="muted">{movie.Year} • IMDb {movie.imdbRating}</p>
                     <div className="price-row">
                       <span className="price">₹{Math.floor(Math.random() * 200 + 250)} onwards</span>
-                      <Link to={movieLink} className="btn">Book now</Link>
+                      <button 
+                        onClick={() => navigate(movieLink)} 
+                        className="btn"
+                        style={{
+                          display: 'block',
+                          background: '#5928E5',
+                          color: '#F1F1F1',
+                          padding: '0.5rem 1.25rem',
+                          borderRadius: '8px',
+                          border: 'none',
+                          cursor: 'pointer',
+                          fontWeight: 600,
+                          fontSize: '0.9rem'
+                        }}
+                      >
+                        Book now
+                      </button>
                     </div>
                   </article>
                 );

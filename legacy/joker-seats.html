@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Joker: Folie à Deux — Select Seats | Happenin</title>
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="booking-page.css" /> 
+  <link rel="stylesheet" href="dune-seats.css" /> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header class="site-header small">
+    <div class="container nav-row">
+      <a href="index.html" class="brand">Happenin</a>
+      <nav>
+        <a href="movies.html" class="active">Movies</a>
+        <a href="live.html">Live Events</a>
+        <a href="about.html">About</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="login.html" class="btn btn-ghost">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="event-header" style="height: 150px;">
+    <div class="event-overlay" style="padding: 1rem 2rem;">
+      <div class="container">
+        <h1 style="font-size: 2.5rem;">Joker: Folie à Deux — Seat Selection</h1>
+        <p class="meta" id="movie-meta">Loading showtime details...</p>
+      </div>
+    </div>
+  </div>
+
+  <main class="container booking-container">
+
+    <section class="details-column">
+        <h2>Select Your Seats</h2>
+        <div class="theater-map-container">
+            <div class="screen-label">SCREEN THIS WAY</div>
+            <div class="seat-map" id="seatMap">
+                </div>
+            
+            <div class="seat-legend">
+                <div class="legend-item"><span class="seat available"></span> Available</div>
+                <div class="legend-item"><span class="seat selected"></span> Selected</div>
+                <div class="legend-item"><span class="seat occupied"></span> Occupied</div>
+            </div>
+            
+            <p class="muted" style="text-align: center; margin-top: 1.5rem;">Selecting seats is mandatory before proceeding to checkout.</p>
+        </div>
+    </section>
+
+    <aside class="booking-column">
+      <h3>Booking Summary</h3>
+      
+      <div class="selection-group">
+        <label><i class="fas fa-ticket-alt"></i> Selected Tickets</label>
+        <p id="summary-tickets-required">0 tickets required</p>
+        <p id="summary-seats-selected" style="font-weight: 600; color: var(--primary);">0 seats selected</p>
+      </div>
+      
+      <div class="seat-info">
+        <p><span>Selected Seats:</span> <span id="selectedSeatsList">None</span></p>
+        <p><span>Ticket Subtotal:</span> <span id="subTotalSummary">₹0</span></p>
+        <p><span>Taxes & Fees (10%):</span> <span id="feesSummary">₹0</span></p>
+        <p class="total-row"><span>Total Payable:</span> <span id="totalPriceSummary">₹0</span></p>
+      </div>
+
+      <button class="btn checkout-btn" id="checkoutBtn" disabled style="opacity: 0.6;">
+        <i class="fas fa-credit-card"></i> Go to Checkout
+      </button>
+    </aside>
+
+  </main>
+
+  <footer class="site-footer small">
+    <div class="container">
+      <p>© 2025 Happenin</p>
+    </div>
+  </footer>
+  
+  <button id="scrollToTop" class="scroll-top-btn" title="Go to top">↑</button>
+
+  <script src="joker-seats.js"></script>
+</body>
+</html>

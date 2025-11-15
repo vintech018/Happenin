@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chandigarh Comedy Carnival — Booking | Happenin</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="booking-page.css" /> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="site-header small">
+        <div class="container nav-row">
+            <a href="index.html" class="brand">Happenin</a>
+            <nav>
+                <a href="movies.html">Movies</a>
+                <a href="live.html" class="active">Live Events</a>
+                <a href="about.html">About</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="login.html" class="btn btn-ghost">Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="event-header">
+        <img src="images/Chandigarh.jpg" alt="Chandigarh Comedy Carnival Banner">
+        <div class="event-overlay">
+            <div class="container">
+                <h1>Chandigarh Comedy Carnival</h1>
+                <p class="meta">
+                    <i class="fas fa-calendar-alt"></i> October 10, 2025 (Confirmed)   •   
+                    <i class="fas fa-map-marker-alt"></i> Kalagram, Chandigarh   •  
+                    <span class="price">₹1000 onwards</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <main class="container booking-container">
+
+        <section class="details-column">
+            <h2>Event Overview</h2>
+            <p>The **Chandigarh Comedy Carnival** brings together a massive lineup of over 15 national stand-up artists, including **Abhishek Upmanyu**, **Appurv Gupta**, and **Manish Tyagi**. Held at the spacious **Kalagram**, expect a night of diverse and brilliant humor.</p>
+
+            <div class="about-section">
+                <h3><i class="fas fa-info-circle"></i> Important Information</h3>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check-circle"></i> Gates open at 6:00 PM. Show starts at 7:30 PM.</li>
+                    <li><i class="fas fa-check-circle"></i> Seating is allocated based on ticket category.</li>
+                    <li><i class="fas fa-check-circle"></i> Event Duration: ~3 hours. Intermission provided.</li>
+                </ul>
+            </div>
+
+            <div class="about-section">
+                <h3><i class="fas fa-map"></i> Venue Seating Map (Placeholder)</h3>
+                <p class="muted" style="text-align: center; margin-top: 0.5rem;">Please refer to the seating map for allocated zones.</p>
+                <div class="seat-map-placeholder">
+                    <img src="images/comedy_club_seat_map.png" alt="Kalagram Seating Map Placeholder" class="stadium-map-image">
+                </div>
+                <p class="muted" style="text-align: center; margin-top: 0.5rem;">Image of the seat map is a placeholder (seatmap.jpg).</p>
+            </div>
+        </section>
+
+        <aside class="booking-column">
+            <h3>Book Your Tickets</h3>
+            
+            <div class="selection-group">
+                <label>Select Date & Time</label>
+                <div class="select-show-time">
+                    <div class="time-slot selected" data-time="10-Oct-7:30">Oct 10, 7:30 PM</div>
+                    <div class="time-slot" data-time="11-Oct-7:30">Oct 11, 7:30 PM</div>
+                </div>
+            </div>
+
+            <div class="selection-group">
+                <label>Select Category & Quantity</label>
+                <div class="ticket-category-selector">
+                    
+                    <div class="ticket-row" data-category="Diamond Seating" data-price="2999">
+                        <span class="category-name">Diamond Seating</span>
+                        <span class="category-price">₹2999</span>
+                        <input type="number" min="0" max="10" value="0" class="ticket-quantity" id="qty-diamond">
+                    </div>
+                    
+                    <div class="ticket-row" data-category="Platinum Tier" data-price="1999">
+                        <span class="category-name">Platinum Tier</span>
+                        <span class="category-price">₹1999</span>
+                        <input type="number" min="0" max="10" value="0" class="ticket-quantity" id="qty-platinum">
+                    </div>
+                    
+                    <div class="ticket-row" data-category="Gold Tier" data-price="1000">
+                        <span class="category-name">Gold Tier</span>
+                        <span class="category-price">₹1000</span>
+                        <input type="number" min="0" max="10" value="0" class="ticket-quantity" id="qty-gold">
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="seat-info">
+                <p><span>Total Tickets:</span> <span id="totalTickets">0</span></p>
+                <p><span>Subtotal:</span> <span id="subTotal">₹0</span></p>
+                <p><span>Taxes & Fees (10%):</span> <span id="fees">₹0</span></p>
+                <p style="font-size: 1.2rem; font-weight: 700; color: var(--primary);"><span>Total Payable:</span> <span id="totalPrice">₹0</span></p>
+            </div>
+
+            <button class="btn checkout-btn" id="checkoutBtn" disabled style="opacity: 0.6;">
+                <i class="fas fa-credit-card"></i> Proceed to Checkout
+            </button>
+        </aside>
+
+    </main>
+
+    <footer class="site-footer small">
+        <div class="container">
+            <p>© <span id="year4"></span> Happenin</p>
+        </div>
+    </footer>
+    
+    <button id="scrollToTop" class="scroll-top-btn" title="Go to top">↑</button>
+
+    <script src="booking-page.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+/* dune-seats.css - New file for the seat map view */
+
+.theater-map-container {
+    padding: 2rem;
+    background: var(--background-light);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-light);
+    text-align: center;
+}
+
+.screen-label {
+    background: #000;
+    color: var(--text-light);
+    padding: 1rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    letter-spacing: 2px;
+    /* Simulate curved screen */
+    border-bottom-left-radius: 50% 5%;
+    border-bottom-right-radius: 50% 5%;
+}
+
+.seat-map {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+.seat-row {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.row-label {
+    font-weight: 600;
+    margin-right: 15px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.seat {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    background: var(--background-gray);
+    border: 1px solid var(--border-light);
+    transition: all 0.2s ease;
+    /* Center seat number */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+/* Available */
+.seat.available:hover {
+    background: rgba(89, 40, 229, 0.3);
+    border-color: var(--primary);
+    transform: scale(1.1);
+}
+
+/* Selected */
+.seat.selected {
+    background: var(--primary);
+    border-color: var(--primary-dark);
+    color: var(--text-light);
+    transform: scale(1.05);
+}
+
+/* Occupied */
+.seat.occupied {
+    background: #d9534f; /* Danger red */
+    cursor: not-allowed;
+    border: 1px solid #c9302c;
+    opacity: 0.7;
+}
+
+/* Spacer for aisle */
+.aisle {
+    width: 20px; 
+}
+
+/* Legend */
+.seat-legend {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border-light);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.legend-item .seat {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    /* Ensure legend seats don't show text */
+    content: '';
+    text-indent: -9999px; 
+}
+
+/* Responsive adjustment */
+@media (max-width: 600px) {
+    .seat {
+        width: 25px;
+        height: 25px;
+    }
+    .seat-row {
+        gap: 5px;
+    }
+    .row-label {
+        font-size: 0.8rem;
+    }
+    .seat-legend {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .theater-map-container {
+        padding: 1rem;
+    }
+}

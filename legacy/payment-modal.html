@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout | Happenin</title>
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="checkout.css" /> 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  </head>
+<body>
+  <header class="site-header small">
+    <div class="container nav-row">
+      <a href="index.html" class="brand">Happenin</a>
+      <nav>
+        <a href="movies.html">Movies</a>
+        <a href="live.html">Live Events</a>
+        <a href="about.html">About</a>
+        <a href="login.html" class="btn btn-ghost">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container checkout-page-container">
+    <h1><i class="fas fa-lock"></i> Secure Checkout</h1>
+    
+    <div class="checkout-grid">
+      <section class="checkout-form-column">
+        <h2>Confirm Details</h2>
+        <div id="payment-status-message" class="status-message hidden"></div>
+        
+        <form id="payment-form" class="form">
+          
+          <div class="input-group">
+            <label for="name">Booking Name</label>
+            <input type="text" id="name" required placeholder="Jane Doe" value="Happenin User" />
+          </div>
+          
+          <div class="input-group">
+            <label for="email">Email Address (for E-Ticket)</label>
+            <input type="email" id="email" required placeholder="your.email@example.com" value="user@example.com" />
+          </div>
+          
+          <div class="input-group">
+            <label for="coupon">Coupon Code (Optional)</label>
+            <input type="text" id="coupon" placeholder="HAPPENIN20" />
+            <button type="button" class="btn btn-ghost" id="applyCouponBtn" style="position: absolute; right: 10px; top: 50%; transform: translateY(calc(-50% + 15px)); padding: 6px 15px; font-size: 0.9rem;">Apply</button>
+          </div>
+
+          <p class="terms-text">By clicking 'Proceed to Pay', you agree to the <a href="#">Terms and Conditions</a> and <a href="#">Cancellation Policy</a>.</p>
+          
+          <button id="pay-now-button" class="btn login-btn pay-btn" type="submit">
+            <i class="fas fa-arrow-right"></i> Proceed to Pay ₹<span id="finalAmountText">0</span>
+          </button>
+        </form>
+      </section>
+      
+      <aside class="order-summary-column">
+        <h2>Order Summary</h2>
+        
+        <div class="summary-details">
+          <p class="event-title"><i class="fas fa-ticket-alt"></i> <span id="summary-event-name">Loading Event...</span></p>
+          <p class="event-meta" id="summary-ticket-details">Loading Details...</p>
+        </div>
+        
+        <div class="price-breakdown">
+          <p><span>Tickets Subtotal:</span> <span id="summary-subtotal-price">₹0</span></p>
+          <p><span>Convenience Fees:</span> <span id="summary-fees-price">₹0</span></p>
+          <p class="discount-row"><span>Discount Applied:</span> <span id="summary-discount" class="discount-value">- ₹0</span></p>
+          <p class="total-row"><span>Total Payable:</span> <span id="summary-total">₹0</span></p>
+        </div>
+        
+        <div class="booking-guarantee">
+          <i class="fas fa-shield-alt"></i>
+          <p>Your tickets are reserved temporarily. Payment must be completed now.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer small">
+    <div class="container">
+      <p>© <span id="year"></span> Happenin</p>
+    </div>
+  </footer>
+  
+  <script src="checkout.js"></script>
+  <script src="payment-modal.js"></script>
+
+<!-- START of Payment Modal HTML -->
+<div class="modal-backdrop" id="paymentModalBackdrop">
+    <div class="payment-modal-content">
+        <div class="modal-header">
+            <h3>Complete Your Payment</h3>
+            <button class="modal-close-btn">&times;</button>
+        </div>
+        
+        <div class="modal-payment-info">
+            <p class="amount-display">
+                <span style="font-size: 1rem;">Total Payable</span>
+                <span id="modalFinalAmount">₹0</span>
+            </p>
+
+            <div class="upi-qr-box">
+                <img src="images/upi.jpg" alt="UPI QR Code" class="upi-qr-image-modal">
+                <p class="upi-id-text-modal" id="modalUpiIdText">UPI ID: *****8456@upi</p>
+            </div>
+            
+            <p class="upi-instructions-modal">
+                **Instructions:**<br>
+                1. Open any UPI App (GPay, PhonePe, Paytm, etc.).<br>
+                2. Scan the QR code above or manually enter the UPI ID.<br>
+                3. Send the <b>exact amount</b> shown above.<br>
+                4. <b>CRITICAL:</b> Only click the button below *after* the transaction is successful in your UPI app.
+            </p>
+
+            <button class="modal-confirmation-btn" id="modalConfirmationBtn">
+                I have paid ₹0
+            </button>
+            <p class="modal-warning-text">
+                *Booking is confirmed based on your assertion. Non-payment will lead to cancellation.*
+            </p>
+        </div>
+    </div>
+</div>
+<!-- END of Payment Modal HTML -->
+</body>
+</html>
