@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation, Link } from 'react-router-dom';
-import ReactPlayer from 'react-player';
 import { getMovieBySlug } from '../data/movies';
 
 export default function MovieDetailPage() {
@@ -67,18 +66,19 @@ export default function MovieDetailPage() {
                 overflow: 'hidden',
                 boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
               }}>
-                <ReactPlayer
-                  url={movie.trailer}
-                  width="100%"
-                  height="100%"
+                <iframe
+                  src={movie.trailer}
+                  title={`${movie.title} Official Trailer`}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
                   style={{
                     position: 'absolute',
                     top: 0,
-                    left: 0
+                    left: 0,
+                    width: '100%',
+                    height: '100%'
                   }}
-                  controls={true}
-                  playing={false}
-                  light={false}
                 />
               </div>
             </div>
