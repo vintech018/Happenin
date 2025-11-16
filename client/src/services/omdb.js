@@ -13,7 +13,7 @@ export const omdb = {
   },
 
   async fetchMovies(titles) {
-    const promises = titles.map(title => this.fetchMovie(title));
+    const promises = titles.map(title => omdb.fetchMovie(title));
     const results = await Promise.all(promises);
     return results.filter(movie => movie !== null);
   }
