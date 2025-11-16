@@ -117,7 +117,16 @@ export default function MovieShowtimes() {
         <img 
           src={`/${movie.poster}`} 
           alt={`${movie.title} Poster`}
-          style={{ objectFit: 'cover', filter: 'brightness(0.6)', width: '100%', height: '100%' }}
+          style={{ 
+            objectFit: 'cover', 
+            filter: 'brightness(0.6)', 
+            width: '100%', 
+            height: '100%',
+            display: 'block',
+            position: 'absolute',
+            top: 0,
+            left: 0
+          }}
         />
         <div className="event-overlay">
           <div className="container">

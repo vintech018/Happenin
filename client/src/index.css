@@ -16,6 +16,16 @@ html {
   --border-light: #E0E0E0;
 }
 
+/* Dark Mode Variables */
+.dark-mode {
+  --text-dark: #E1E1E1;
+  --text-light: #1A1A2E;
+  --background-dark: #1A1A2E;
+  --background-light: #0F0F1B;
+  --background-gray: #1E1E2E;
+  --border-light: #2A2A3E;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -30,6 +40,7 @@ body {
   animation: fadeInPage 0.6s ease-in-out;
   margin: 0;
   min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @keyframes fadeInPage {
@@ -91,14 +102,50 @@ p {
   margin-bottom: 1rem;
 }
 
+/* Theme Toggle Button */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+}
+
+.theme-toggle:hover {
+  background: var(--background-gray);
+  border-color: var(--primary);
+  transform: scale(1.05);
+}
+
+.dark-mode .theme-toggle {
+  border-color: var(--border-light);
+}
+
+.dark-mode .theme-toggle:hover {
+  background: var(--background-gray);
+}
+
 /* Navbar */
 .site-header {
-  background: #fff;
+  background: var(--background-light);
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   position: sticky;
   top: 0;
   z-index: 100;
   padding: 1rem 0;
+  transition: background-color 0.3s ease;
+}
+
+.dark-mode .site-header {
+  background: var(--background-light);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 .site-header.small {
@@ -293,7 +340,7 @@ a.btn:hover {
 
 .thumb {
   height: 180px;
-  background: #f0f0f0;
+  background: var(--background-gray);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -301,6 +348,11 @@ a.btn:hover {
   font-weight: 500;
   position: relative;
   overflow: hidden;
+}
+
+.dark-mode .thumb {
+  background: var(--background-gray);
+  color: #666;
 }
 
 .thumb img {
@@ -351,7 +403,7 @@ a.btn:hover {
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 1rem 1rem;
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid var(--border-light);
   margin-top: 0.5rem;
   gap: 1rem;
 }
@@ -417,6 +469,10 @@ a.btn:hover {
   font-size: 0.9rem;
 }
 
+.dark-mode .muted {
+  color: #999;
+}
+
 .list-page {
   padding: 2rem 0;
 }
@@ -453,6 +509,7 @@ a.btn:hover {
   padding: 1.5rem 0;
   margin-top: 2rem;
   text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .site-footer p {
@@ -540,6 +597,11 @@ a.btn:hover {
   position: sticky;
   top: 100px;
   border: 1px solid var(--border-light);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-mode .booking-column {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .booking-column h3 {
@@ -561,6 +623,7 @@ a.btn:hover {
   cursor: pointer;
   font-weight: 500;
   background: var(--background-light);
+  color: var(--text-dark);
   transition: all 0.2s ease;
   user-select: none;
 }
@@ -587,6 +650,7 @@ a.btn:hover {
   background: var(--background-light);
   border: 1px solid var(--border-light);
   border-radius: 8px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .ticket-info {
@@ -605,6 +669,10 @@ a.btn:hover {
   font-size: 0.9rem;
 }
 
+.dark-mode .ticket-price {
+  color: #999;
+}
+
 .ticket-quantity-controls {
   display: flex;
   align-items: center;
@@ -620,6 +688,7 @@ a.btn:hover {
   cursor: pointer;
   font-weight: 600;
   color: var(--primary);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .quantity-btn:hover {
@@ -634,6 +703,8 @@ a.btn:hover {
   text-align: center;
   font-weight: 600;
   color: var(--primary-dark);
+  background: var(--background-light);
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .booking-summary {
@@ -690,9 +761,10 @@ a.btn:hover {
 }
 
 .seat.available {
-  background: white;
+  background: var(--background-light);
   color: var(--text-dark);
   cursor: pointer;
+  border-color: var(--border-light);
 }
 
 .seat.selected {
@@ -707,10 +779,20 @@ a.btn:hover {
   cursor: not-allowed;
 }
 
+.dark-mode .seat.occupied {
+  background: #444;
+  color: #888;
+}
+
 .seat.disabled {
-  background: #f0f0f0;
+  background: var(--background-gray);
   color: #999;
   cursor: not-allowed;
+}
+
+.dark-mode .seat.disabled {
+  background: var(--background-gray);
+  color: #666;
 }
 
 /* Responsive */
@@ -820,12 +902,13 @@ a.btn:hover {
 
 .offer-thumb {
   height: 150px;
-  background: linear-gradient(135deg, #f5f5f7, #e0e0e0);
+  background: linear-gradient(135deg, var(--background-gray), var(--border-light));
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
+  transition: background 0.3s ease;
 }
 
 .offer-thumb img {
@@ -848,7 +931,7 @@ a.btn:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid var(--border-light);
   padding-top: 1rem;
   margin-top: 1rem;
 }
@@ -857,6 +940,10 @@ a.btn:hover {
   font-size: 0.85rem;
   color: #777;
   font-weight: 500;
+}
+
+.dark-mode .expiry-date {
+  color: #999;
 }
 
 .expiry-date i {
@@ -883,6 +970,11 @@ a.btn:hover {
   display: inline-block;
   margin-bottom: 1rem;
   letter-spacing: 1px;
+}
+
+.dark-mode .coupon-tag {
+  background: #3a3a2a;
+  color: #ffc107;
 }
 
 .selection-group {
@@ -935,6 +1027,11 @@ a.btn:hover {
   top: 100px;
   height: fit-content;
   border: 1px solid var(--border-light);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-mode .order-summary-column {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .checkout-form-column h2 {
@@ -965,6 +1062,7 @@ a.btn:hover {
   font-size: 1rem;
   background-color: var(--background-light);
   color: var(--text-dark);
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .summary-details {
@@ -983,6 +1081,10 @@ a.btn:hover {
   color: #666;
 }
 
+.dark-mode .event-meta {
+  color: #999;
+}
+
 .price-breakdown {
   border-top: 1px dashed var(--border-light);
   padding-top: 1rem;
@@ -998,6 +1100,10 @@ a.btn:hover {
 .price-breakdown span:first-child {
   font-weight: 500;
   color: #444;
+}
+
+.dark-mode .price-breakdown span:first-child {
+  color: #BBB;
 }
 
 .discount-value {
@@ -1029,6 +1135,10 @@ a.btn:hover {
   margin-bottom: 0;
 }
 
+.dark-mode .terms-text {
+  color: #999;
+}
+
 .booking-guarantee {
   background-color: #e8f4ff;
   border: 1px solid #cce5ff;
@@ -1036,6 +1146,12 @@ a.btn:hover {
   padding: 1rem;
   text-align: center;
   margin-top: 1rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark-mode .booking-guarantee {
+  background-color: #1a2a3a;
+  border-color: #2a3a4a;
 }
 
 .booking-guarantee i {
@@ -1109,7 +1225,7 @@ a.btn:hover {
   padding: 1.5rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   transform: scale(0.9);
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s ease;
   position: relative;
 }
 
@@ -1166,10 +1282,11 @@ a.btn:hover {
 
 .upi-qr-box {
   padding: 1rem;
-  background: #f8f8f8;
+  background: var(--background-gray);
   border: 1px solid var(--border-light);
   border-radius: 8px;
   margin-bottom: 1rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .upi-qr-image-modal {
@@ -1197,6 +1314,11 @@ a.btn:hover {
   background: #fff9e6;
   border-left: 4px solid #ffc107;
   border-radius: 4px;
+}
+
+.dark-mode .upi-instructions-modal {
+  background: #3a3a2a;
+  color: #ddd;
 }
 
 .modal-confirmation-btn {
@@ -1255,6 +1377,7 @@ a.btn:hover {
   position: relative;
   transform: scale(0.9);
   animation: scaleUp 0.3s forwards;
+  transition: background-color 0.3s ease;
 }
 
 @keyframes scaleUp {
@@ -1311,6 +1434,10 @@ a.btn:hover {
   font-size: 1rem;
 }
 
+.dark-mode .modal-role {
+  color: #999;
+}
+
 .modal-body-content {
   padding-top: 1rem;
 }
@@ -1319,6 +1446,10 @@ a.btn:hover {
   font-size: 0.95rem;
   line-height: 1.6;
   color: #444;
+}
+
+.dark-mode .bio-text {
+  color: #CCC;
 }
 
 .modal-social {
@@ -1368,6 +1499,10 @@ a.btn:hover {
   color: var(--text-dark);
 }
 
+.dark-mode .search-bar {
+  background: var(--background-gray);
+}
+
 .search-bar:focus {
   outline: none;
   border-color: var(--primary);
@@ -1387,10 +1522,15 @@ a.btn:hover {
 .team-wrapper {
   margin-top: 2rem;
   padding: 1.5rem;
-  background: #fff;
+  background: var(--background-light);
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   border: 1px solid var(--border-light);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark-mode .team-wrapper {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .team-heading {
@@ -1469,6 +1609,12 @@ body.auth-page,
   min-height: 100vh;
   background: linear-gradient(135deg, #f5f5f7, #eeeef2);
   padding: 2rem 1rem;
+  transition: background 0.3s ease;
+}
+
+.dark-mode body.auth-page,
+.dark-mode .auth-page {
+  background: linear-gradient(135deg, #1A1A2E, #0F0F1B);
 }
 
 .auth-card {
@@ -1480,6 +1626,11 @@ body.auth-page,
   max-width: 450px;
   border: 1px solid var(--border-light);
   margin: 0 auto;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark-mode .auth-card {
+  box-shadow: 0 8px 24px rgba(89, 40, 229, 0.3);
 }
 
 .auth-card h2 {
@@ -1504,6 +1655,10 @@ body.auth-page,
   margin: 1.5rem 0;
   color: #666;
   font-size: 0.9rem;
+}
+
+.dark-mode .divider {
+  color: #999;
 }
 
 .divider::before,
@@ -1557,7 +1712,7 @@ body.auth-page,
   border: 1px solid var(--border-light);
   border-radius: 8px;
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
   background-color: var(--background-light);
   color: var(--text-dark);
   box-sizing: border-box;
@@ -1622,6 +1777,7 @@ body.auth-page,
   margin-top: 1.5rem;
   font-size: 0.95rem;
   color: var(--text-dark);
+  transition: color 0.3s ease;
 }
 
 .signup-link a {
@@ -1649,10 +1805,11 @@ body.auth-page,
 .seat-map-placeholder {
   margin: 1.5rem 0;
   text-align: center;
-  background: #f8f8f8;
+  background: var(--background-gray);
   border-radius: 8px;
   padding: 1rem;
   border: 1px solid var(--border-light);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .stadium-map-image {
