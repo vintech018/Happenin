@@ -1,2 +1,12 @@
 .DS_Store
 
+# Environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Node modules
+node_modules/
+client/node_modules/
+

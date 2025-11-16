@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import PaymentModal from '../components/PaymentModal';
+import { sendTicketEmail } from '../utils/sendTicketEmail';
 
 const UPI_ID = "*****8456@upi";
 
@@ -18,6 +19,7 @@ export default function Checkout() {
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [statusMessage, setStatusMessage] = useState({ text: '', type: '' });
   const [isPaymentConfirmed, setIsPaymentConfirmed] = useState(false);
+  const [isSendingEmail, setIsSendingEmail] = useState(false);
 
   useEffect(() => {
     const data = localStorage.getItem('happeninBookingData');
@@ -149,13 +151,13 @@ export default function Checkout() {
     setShowPaymentModal(false);
   };
 
-  const handlePaymentSuccess = () => {
+  const handlePaymentSuccess = async () => {
     const userName = localStorage.getItem('checkoutUserName') || 'Happenin User';
     const finalAmountText = formatCurrency(finalAmount);
     
     setIsPaymentConfirmed(true);
     setStatusMessage({ 
-      text: `✅ Success, ${userName}! Your payment of ${finalAmountText} is confirmed. You will be redirected shortly.`, 
+      text: `✅ Success, ${userName}! Your payment of ${finalAmountText} is confirmed. Processing your ticket...`, 
       type: 'success' 
     });
 
@@ -171,6 +173,57 @@ export default function Checkout() {
 
     localStorage.setItem('bookingConfirmation', JSON.stringify(finalBooking));
     localStorage.removeItem('happeninBookingData');
+    
+    // Extract booking details for email
+    try {
+      setIsSendingEmail(true);
+      
+      // Parse eventDate to extract date and time
+      const eventDateParts = bookingData.eventDate ? bookingData.eventDate.split(', ') : ['', ''];
+      const bookingDate = eventDateParts[0] || 'N/A';
+      const bookingTime = eventDateParts[1] || 'N/A';
+      
+      // Extract seats from selectedTickets
+      let seats = 'N/A';
+      if (bookingData.selectedTickets && bookingData.selectedTickets.length > 0) {
+        const seatInfo = bookingData.selectedTickets[0].category;
+        // Check if seats are in the format "Selected Seats (A1, B2, C3)"
+        const seatMatch = seatInfo.match(/Selected Seats \((.+)\)/);
+        if (seatMatch) {
+          seats = seatMatch[1];
+        } else {
+          seats = seatInfo;
+        }
+      }
+      
+      // Send ticket email with QR code
+      await sendTicketEmail({
+        name: formData.name,
+        email: formData.email,
+        movie: bookingData.eventName || 'Event',
+        date: bookingDate,
+        time: bookingTime,
+        seats: seats,
+        ticketId: crypto.randomUUID()
+      });
+      
+      setIsSendingEmail(false);
+      setStatusMessage({ 
+        text: `✅ Success, ${userName}! Your payment of ${finalAmountText} is confirmed. Your ticket has been emailed with a QR code 🎉`, 
+        type: 'success' 
+      });
+      toast.success('Your ticket has been emailed with a QR code 🎉');
+      
+    } catch (error) {
+      console.error('Failed to send ticket email:', error);
+      setIsSendingEmail(false);
+      // Still show success for payment, but note email issue
+      setStatusMessage({ 
+        text: `✅ Success, ${userName}! Your payment of ${finalAmountText} is confirmed. Note: Email delivery failed - please contact support.`, 
+        type: 'success' 
+      });
+      toast.error('Payment confirmed, but email delivery failed. Please contact support.');
+    }
     
     setTimeout(() => {
       navigate('/');
@@ -193,6 +246,12 @@ export default function Checkout() {
           {statusMessage.text && (
             <div className={`status-message ${statusMessage.type}`} id="payment-status-message">
               {statusMessage.text}
+              {isSendingEmail && (
+                <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <i className="fas fa-spinner fa-spin"></i>
+                  <span>Sending your ticket email...</span>
+                </div>
+              )}
             </div>
           )}
           

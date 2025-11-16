@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happenin Ticket Email Template</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .email-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #5928E5;
+            margin-top: 0;
+        }
+        .ticket-info {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .ticket-info p {
+            margin: 10px 0;
+        }
+        .ticket-info b {
+            color: #5928E5;
+        }
+        .qr-code-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .qr-code-container img {
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            font-size: 0.9em;
+            color: #666;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <h2>Your Happenin Ticket 🎬</h2>
+        
+        <div class="ticket-info">
+            <p><b>Movie:</b> {{movie}}</p>
+            <p><b>Date:</b> {{date}}</p>
+            <p><b>Time:</b> {{time}}</p>
+            <p><b>Seats:</b> {{seats}}</p>
+            <p><b>Ticket ID:</b> {{ticketId}}</p>
+        </div>
+        
+        <div class="qr-code-container">
+            <img src="{{qr_code}}" width="180" style="border-radius:12px;" alt="Ticket QR Code" />
+        </div>
+        
+        <p>Please present this QR code at the venue for entry. Keep this email safe!</p>
+        
+        <div class="footer">
+            <p>Thank you for choosing Happenin! 🎉</p>
+            <p>If you have any questions, please contact our support team.</p>
+        </div>
+    </div>
+</body>
+</html>
+
