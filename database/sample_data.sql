@@ -36,61 +36,118 @@ INSERT INTO movies (title, year, genre, rating, director, stars, studio, descrip
 ('Inside Out 2', 2024, 'Animation, Comedy', 7.8, 'Kelsey Mann', 'Amy Poehler, Maya Hawke, Lewis Black', 'Pixar Animation Studios', 'Inside Out 2 returns to the mind of newly minted teenager Riley.', 'images/inside.jpg', 'https://www.youtube.com/embed/LEjhY15eCx0', 96, '2024-06-14'),
 ('Oppenheimer', 2023, 'Biography, Drama', 8.3, 'Christopher Nolan', 'Cillian Murphy, Emily Blunt, Robert Downey Jr.', 'Universal Pictures', 'J. Robert Oppenheimer, the American theoretical physicist, is appointed to direct the Manhattan Project.', 'images/oppenheimer.jpg', 'https://www.youtube.com/embed/uYPbbksJxIg', 180, '2023-07-21');
 
--- Insert Live Events
+-- Insert Live Events (matching liveEvents.js data)
 INSERT INTO live_events (title, category, description, event_date, event_time, venue_id, organizer_name, image_url, base_price) VALUES
-('Comedy Non-Stop', 'Comedy', 'Catch Anubhav Singh Bassi live for his acclaimed stand-up special. Known for his relatable storytelling and sharp wit.', '2024-09-25', '20:00:00', 4, 'Comedy Club Productions', 'images/bassi.jpg', 299),
-('Chandigarh Comedy Carnival', 'Comedy', 'The Chandigarh Comedy Carnival brings together a massive lineup of over 15 national stand-up artists.', '2024-10-05', '19:30:00', 9, 'Comedy Carnival Events', 'images/Chandigarh.jpg', 499),
-('Coldplay Concert', 'Concert', 'Coldplay brings their spectacular world tour to India! Experience their greatest hits live.', '2024-11-15', '19:00:00', 5, 'Live Nation', 'images/coldplay.jpg', 2999),
-('Imagine Dragons Live', 'Concert', 'The Imagine Dragons World Tour comes to India! Experience a night of powerful anthems.', '2024-10-20', '19:30:00', 6, 'AEG Presents', 'images/imagine_dragons.jpg', 2499),
-('Samay Raina Stand-up', 'Stand-up', 'Samay Raina brings his unique brand of comedy to The Comedy Store, Pune.', '2024-09-30', '20:00:00', 7, 'Comedy Store', 'images/samay_raina.jpg', 599),
-('Comedy Nights', 'Comedy', 'Komedi Nights presents a laugh riot featuring top comedians from across India.', '2024-10-10', '20:00:00', 7, 'Komedi Nights', 'images/comedy_nights.jpg', 399),
-('Classical Music Festival', 'Concert', 'Experience the finest in classical music at the Music Academy, Chennai.', '2024-11-02', '19:00:00', 8, 'Music Academy', 'images/classical.jpg', 1200);
+('Comedy Non-Stop', 'Comedy', 'Catch Anubhav Singh Bassi live for his acclaimed stand-up special, Comedy Non-Stop. Known for his relatable storytelling and sharp wit, Bassi guarantees an evening of non-stop laughter. This is an intimate club performance.', '2024-09-25', '20:00:00', 4, 'Comedy Club Productions', 'images/bassi.jpg', 299),
+('Comedy Non-Stop', 'Comedy', 'Catch Anubhav Singh Bassi live for his acclaimed stand-up special, Comedy Non-Stop. Known for his relatable storytelling and sharp wit, Bassi guarantees an evening of non-stop laughter. This is an intimate club performance.', '2024-09-26', '20:00:00', 4, 'Comedy Club Productions', 'images/bassi.jpg', 299),
+('Chandigarh Comedy Carnival', 'Comedy', 'The Chandigarh Comedy Carnival brings together a massive lineup of over 15 national stand-up artists, including Abhishek Upmanyu, Appurv Gupta, and Manish Tyagi. Held at the spacious Kalagram, expect a night of diverse and brilliant humor.', '2024-10-10', '19:30:00', 9, 'Comedy Carnival Events', 'images/Chandigarh.jpg', 499),
+('Imagine Dragons Live', 'Concert', 'The Imagine Dragons World Tour comes to India! Experience a night of powerful anthems and electrifying energy at the Bengaluru Stadium. Don\'t miss hits like "Radioactive," "Believer," and "Thunder."', '2024-09-12', '19:30:00', 6, 'AEG Presents', 'images/imagine_dragons.jpg', 2499),
+('Imagine Dragons Live', 'Concert', 'The Imagine Dragons World Tour comes to India! Experience a night of powerful anthems and electrifying energy at the Bengaluru Stadium. Don\'t miss hits like "Radioactive," "Believer," and "Thunder."', '2024-09-13', '19:30:00', 6, 'AEG Presents', 'images/imagine_dragons.jpg', 2499),
+('Comedy Nights', 'Comedy', 'Komedi Nights presents a laugh riot featuring top comedians from across India. Get ready for an evening of side-splitting humor and unforgettable performances.', '2024-09-18', '20:00:00', 7, 'Komedi Nights', 'images/comedy_nights.jpg', 399),
+('Samay Raina Stand-up', 'Stand-up', 'Samay Raina brings his unique brand of comedy to The Comedy Store, Pune. Known for his chess-themed humor and quick wit, this is a show you don\'t want to miss!', '2024-09-30', '20:00:00', 7, 'Comedy Store', 'images/samay_raina.jpg', 599),
+('EDM Sunset Fest', 'Festival', 'Experience the ultimate EDM festival at Sunset Beach, Goa. Dance to the beats of top DJs as the sun sets over the Arabian Sea. A night you won\'t forget!', '2024-10-05', '18:00:00', 9, 'EDM Festivals', 'images/sunset.jpg_large', 2499),
+('Coldplay Concert', 'Concert', 'Coldplay brings their spectacular world tour to India! Experience their greatest hits live at the Jawaharlal Nehru Stadium in Delhi. A night of music, lights, and unforgettable memories.', '2024-10-15', '19:00:00', 5, 'Live Nation', 'images/coldplay.jpg', 2999),
+('Classical Music Festival', 'Concert', 'Experience the finest in classical music at the Music Academy, Chennai. Featuring renowned musicians and orchestras, this festival celebrates the rich heritage of Indian classical music.', '2024-11-02', '19:00:00', 8, 'Music Academy', 'images/classical.jpg', 1200);
 
--- Insert Showtimes for Movies
+-- Insert Showtimes for Movies (matching movies.js data with proper dates)
+-- Deadpool & Wolverine - TVA Cinema, New York (Jul 26, 27, 28)
 INSERT INTO showtimes (movie_id, venue_id, show_date, show_time, screen_number, format_type, base_price, available_seats, total_seats) VALUES
--- Deadpool & Wolverine
+-- July 26, 2024
 (1, 1, '2024-07-26', '11:30:00', 1, '2D', 250, 180, 200),
 (1, 1, '2024-07-26', '14:45:00', 1, '2D', 250, 190, 200),
 (1, 1, '2024-07-26', '18:00:00', 1, '2D', 250, 200, 200),
 (1, 1, '2024-07-26', '21:15:00', 1, '2D', 250, 195, 200),
+-- July 27, 2024
 (1, 1, '2024-07-27', '11:30:00', 1, '2D', 250, 200, 200),
 (1, 1, '2024-07-27', '16:00:00', 2, 'IMAX 3D', 450, 200, 200),
 (1, 1, '2024-07-27', '22:30:00', 2, 'IMAX 3D', 450, 180, 200),
--- Venom
-(2, 2, '2024-10-01', '10:30:00', 1, '2D', 320, 280, 300),
-(2, 2, '2024-10-01', '13:00:00', 1, '2D', 320, 290, 300),
-(2, 2, '2024-10-01', '16:30:00', 1, '2D', 320, 300, 300),
-(2, 2, '2024-10-01', '19:30:00', 1, '2D', 320, 295, 300),
-(2, 2, '2024-10-01', '22:00:00', 1, '2D', 320, 300, 300),
--- Joker
-(3, 3, '2024-10-04', '11:00:00', 1, '2D', 300, 230, 250),
-(3, 3, '2024-10-04', '14:00:00', 1, '2D', 300, 240, 250),
-(3, 3, '2024-10-04', '17:00:00', 1, '2D', 300, 250, 250),
-(3, 3, '2024-10-04', '20:00:00', 1, '2D', 300, 245, 250),
--- Dune Part Two
-(4, 2, '2024-10-05', '10:00:00', 2, '2D', 350, 280, 300),
-(4, 2, '2024-10-05', '13:30:00', 2, '2D', 350, 290, 300),
-(4, 2, '2024-10-05', '16:00:00', 2, '2D', 350, 300, 300),
-(4, 2, '2024-10-05', '19:00:00', 2, '2D', 350, 295, 300),
-(4, 2, '2024-10-05', '22:30:00', 2, '2D', 350, 300, 300),
--- The Batman
-(5, 2, '2024-10-06', '10:15:00', 1, '2D', 340, 280, 300),
-(5, 2, '2024-10-06', '13:15:00', 1, '2D', 340, 290, 300),
-(5, 2, '2024-10-06', '16:15:00', 1, '2D', 340, 300, 300),
-(5, 2, '2024-10-06', '19:15:00', 1, '2D', 340, 295, 300),
-(5, 2, '2024-10-06', '22:15:00', 1, '2D', 340, 300, 300),
--- Inside Out 2
-(6, 2, '2024-10-07', '10:00:00', 3, '2D', 300, 280, 300),
-(6, 2, '2024-10-07', '13:00:00', 3, '2D', 300, 290, 300),
-(6, 2, '2024-10-07', '16:00:00', 3, '2D', 300, 300, 300),
-(6, 2, '2024-10-07', '19:00:00', 3, '2D', 300, 295, 300),
--- Oppenheimer
-(7, 2, '2024-10-08', '11:30:00', 1, '2D', 350, 230, 250),
-(7, 2, '2024-10-08', '14:30:00', 1, '2D', 350, 240, 250),
-(7, 2, '2024-10-08', '17:30:00', 1, '2D', 350, 250, 250),
-(7, 2, '2024-10-08', '20:30:00', 1, '2D', 350, 245, 250);
+-- July 28, 2024
+(1, 1, '2024-07-28', '11:30:00', 1, '2D', 250, 200, 200),
+(1, 1, '2024-07-28', '14:45:00', 1, '2D', 250, 200, 200),
+(1, 1, '2024-07-28', '18:00:00', 1, '2D', 250, 200, 200),
+(1, 1, '2024-07-28', '21:15:00', 1, '2D', 250, 200, 200);
 
--- Insert Seats for Venue 1 (TVA Cinema - 200 seats)
+-- Venom: The Last Dance - Cinema Hall, Mumbai (Today, Tomorrow, Day After - using current dates)
+INSERT INTO showtimes (movie_id, venue_id, show_date, show_time, screen_number, format_type, base_price, available_seats, total_seats) VALUES
+-- Multiple days with 5 showtimes each
+(2, 2, CURDATE(), '10:30:00', 1, '2D', 320, 280, 300),
+(2, 2, CURDATE(), '13:00:00', 1, '2D', 320, 290, 300),
+(2, 2, CURDATE(), '16:30:00', 1, '2D', 320, 300, 300),
+(2, 2, CURDATE(), '19:30:00', 1, '2D', 320, 295, 300),
+(2, 2, CURDATE(), '22:00:00', 1, '2D', 320, 300, 300),
+(2, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '10:30:00', 1, '2D', 320, 300, 300),
+(2, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '13:00:00', 1, '2D', 320, 300, 300),
+(2, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '16:30:00', 1, '2D', 320, 300, 300),
+(2, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '19:30:00', 1, '2D', 320, 300, 300),
+(2, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '22:00:00', 1, '2D', 320, 300, 300),
+(2, 2, DATE_ADD(CURDATE(), INTERVAL 2 DAY), '10:30:00', 1, '2D', 320, 300, 300),
+(2, 2, DATE_ADD(CURDATE(), INTERVAL 2 DAY), '13:00:00', 1, '2D', 320, 300, 300),
+(2, 2, DATE_ADD(CURDATE(), INTERVAL 2 DAY), '16:30:00', 1, '2D', 320, 300, 300),
+(2, 2, DATE_ADD(CURDATE(), INTERVAL 2 DAY), '19:30:00', 1, '2D', 320, 300, 300),
+(2, 2, DATE_ADD(CURDATE(), INTERVAL 2 DAY), '22:00:00', 1, '2D', 320, 300, 300);
+
+-- Joker: Folie à Deux - Arkham Cinemas, Delhi (Today, Tomorrow)
+INSERT INTO showtimes (movie_id, venue_id, show_date, show_time, screen_number, format_type, base_price, available_seats, total_seats) VALUES
+(3, 3, CURDATE(), '11:00:00', 1, '2D', 300, 230, 250),
+(3, 3, CURDATE(), '14:00:00', 1, '2D', 300, 240, 250),
+(3, 3, CURDATE(), '17:00:00', 1, '2D', 300, 250, 250),
+(3, 3, CURDATE(), '20:00:00', 1, '2D', 300, 245, 250),
+(3, 3, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '11:00:00', 1, '2D', 300, 250, 250),
+(3, 3, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '14:00:00', 1, '2D', 300, 250, 250),
+(3, 3, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '17:00:00', 1, '2D', 300, 250, 250),
+(3, 3, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '20:00:00', 1, '2D', 300, 250, 250);
+
+-- Dune: Part Two - Cinema Hall, Mumbai (Today, Tomorrow)
+INSERT INTO showtimes (movie_id, venue_id, show_date, show_time, screen_number, format_type, base_price, available_seats, total_seats) VALUES
+(4, 2, CURDATE(), '10:00:00', 2, '2D', 350, 280, 300),
+(4, 2, CURDATE(), '13:30:00', 2, '2D', 350, 290, 300),
+(4, 2, CURDATE(), '16:00:00', 2, '2D', 350, 300, 300),
+(4, 2, CURDATE(), '19:00:00', 2, '2D', 350, 295, 300),
+(4, 2, CURDATE(), '22:30:00', 2, '2D', 350, 300, 300),
+(4, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '10:00:00', 2, '2D', 350, 300, 300),
+(4, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '13:30:00', 2, '2D', 350, 300, 300),
+(4, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '16:00:00', 2, '2D', 350, 300, 300),
+(4, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '19:00:00', 2, '2D', 350, 300, 300),
+(4, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '22:30:00', 2, '2D', 350, 300, 300);
+
+-- The Batman - Cinema Hall, Mumbai (Today, Tomorrow)
+INSERT INTO showtimes (movie_id, venue_id, show_date, show_time, screen_number, format_type, base_price, available_seats, total_seats) VALUES
+(5, 2, CURDATE(), '10:15:00', 1, '2D', 340, 280, 300),
+(5, 2, CURDATE(), '13:15:00', 1, '2D', 340, 290, 300),
+(5, 2, CURDATE(), '16:15:00', 1, '2D', 340, 300, 300),
+(5, 2, CURDATE(), '19:15:00', 1, '2D', 340, 295, 300),
+(5, 2, CURDATE(), '22:15:00', 1, '2D', 340, 300, 300),
+(5, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '10:15:00', 1, '2D', 340, 300, 300),
+(5, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '13:15:00', 1, '2D', 340, 300, 300),
+(5, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '16:15:00', 1, '2D', 340, 300, 300),
+(5, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '19:15:00', 1, '2D', 340, 300, 300),
+(5, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '22:15:00', 1, '2D', 340, 300, 300);
+
+-- Inside Out 2 - Cinema Hall, Mumbai (Today, Tomorrow)
+INSERT INTO showtimes (movie_id, venue_id, show_date, show_time, screen_number, format_type, base_price, available_seats, total_seats) VALUES
+(6, 2, CURDATE(), '10:00:00', 3, '2D', 300, 280, 300),
+(6, 2, CURDATE(), '13:00:00', 3, '2D', 300, 290, 300),
+(6, 2, CURDATE(), '16:00:00', 3, '2D', 300, 300, 300),
+(6, 2, CURDATE(), '19:00:00', 3, '2D', 300, 295, 300),
+(6, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '10:00:00', 3, '2D', 300, 300, 300),
+(6, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '13:00:00', 3, '2D', 300, 300, 300),
+(6, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '16:00:00', 3, '2D', 300, 300, 300),
+(6, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '19:00:00', 3, '2D', 300, 300, 300);
+
+-- Oppenheimer - Cinema Hall, Mumbai (Today, Tomorrow)
+INSERT INTO showtimes (movie_id, venue_id, show_date, show_time, screen_number, format_type, base_price, available_seats, total_seats) VALUES
+(7, 2, CURDATE(), '11:30:00', 1, '2D', 350, 230, 250),
+(7, 2, CURDATE(), '14:30:00', 1, '2D', 350, 240, 250),
+(7, 2, CURDATE(), '17:30:00', 1, '2D', 350, 250, 250),
+(7, 2, CURDATE(), '20:30:00', 1, '2D', 350, 245, 250),
+(7, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '11:30:00', 1, '2D', 350, 250, 250),
+(7, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '14:30:00', 1, '2D', 350, 250, 250),
+(7, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '17:30:00', 1, '2D', 350, 250, 250),
+(7, 2, DATE_ADD(CURDATE(), INTERVAL 1 DAY), '20:30:00', 1, '2D', 350, 250, 250);
+
+-- Insert Seats for all Cinema Venues
+-- Helper function to generate seats for a venue
+-- Venue 1: TVA Cinema, New York (200 seats - 8 rows x 10 seats)
 INSERT INTO seats (venue_id, row_label, seat_number, category_id) 
 SELECT 1, row_label, seat_num, 
        CASE 
@@ -112,6 +169,49 @@ FROM (
     ) seats
 ) seat_combinations;
 
+-- Venue 2: Cinema Hall, Mumbai (300 seats - 10 rows x 10 seats)
+INSERT INTO seats (venue_id, row_label, seat_number, category_id) 
+SELECT 2, row_label, seat_num, 
+       CASE 
+           WHEN row_label IN ('A', 'B') THEN 3  -- VIP
+           WHEN row_label IN ('C', 'D', 'E') THEN 2  -- Premium
+           ELSE 1  -- Standard
+       END
+FROM (
+    SELECT row_label, seat_num
+    FROM (
+        SELECT 'A' as row_label, n as seat_num FROM (SELECT 1 as n UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10) t
+        UNION ALL SELECT 'B', n FROM (SELECT 1 as n UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10) t
+        UNION ALL SELECT 'C', n FROM (SELECT 1 as n UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10) t
+        UNION ALL SELECT 'D', n FROM (SELECT 1 as n UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10) t
+        UNION ALL SELECT 'E', n FROM (SELECT 1 as n UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10) t
+        UNION ALL SELECT 'F', n FROM (SELECT 1 as n UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10) t
+        UNION ALL SELECT 'G', n FROM (SELECT 1 as n UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10) t
+        UNION ALL SELECT 'H', n FROM (SELECT 1 as n UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10) t
+        UNION ALL SELECT 'I', n FROM (SELECT 1 as n UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10) t
+        UNION ALL SELECT 'J', n FROM (SELECT 1 as n UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10) t
+    ) seats
+) seat_combinations;
+
+-- Venue 3: Arkham Cinemas, Delhi (250 seats - 10 rows x 10 seats, but only 5 rows used)
+INSERT INTO seats (venue_id, row_label, seat_number, category_id) 
+SELECT 3, row_label, seat_num, 
+       CASE 
+           WHEN row_label IN ('A', 'B') THEN 3  -- VIP
+           WHEN row_label IN ('C', 'D') THEN 2  -- Premium
+           ELSE 1  -- Standard
+       END
+FROM (
+    SELECT row_label, seat_num
+    FROM (
+        SELECT 'A' as row_label, n as seat_num FROM (SELECT 1 as n UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10) t
+        UNION ALL SELECT 'B', n FROM (SELECT 1 as n UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10) t
+        UNION ALL SELECT 'C', n FROM (SELECT 1 as n UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10) t
+        UNION ALL SELECT 'D', n FROM (SELECT 1 as n UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10) t
+        UNION ALL SELECT 'E', n FROM (SELECT 1 as n UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10) t
+    ) seats
+) seat_combinations;
+
 -- Insert Users
 INSERT INTO users (username, email, password_hash, full_name, phone, date_of_birth, gender, address, city, state, pincode) VALUES
 ('john_doe', 'john.doe@email.com', '$2b$10$example_hash_1', 'John Doe', '9876543210', '1990-05-15', 'Male', '123 Main St', 'Mumbai', 'Maharashtra', '400001'),
@@ -130,21 +230,29 @@ INSERT INTO coupons (coupon_code, discount_type, discount_value, min_purchase_am
 ('SUMMER25', 'Percentage', 25.00, 800, 2000, '2024-06-01', '2024-08-31', 500, TRUE, '25% off during summer season');
 
 -- Insert Sample Bookings
-INSERT INTO bookings (user_id, booking_type, movie_id, showtime_id, booking_status, total_tickets, subtotal, convenience_fees, discount_amount, coupon_id, total_amount, customer_name, customer_email, customer_phone) VALUES
-(1, 'Movie', 1, 1, 'Confirmed', 2, 500.00, 90.00, 100.00, 1, 490.00, 'John Doe', 'john.doe@email.com', '9876543210'),
-(2, 'Movie', 2, 8, 'Confirmed', 3, 960.00, 172.80, 0.00, NULL, 1132.80, 'Jane Smith', 'jane.smith@email.com', '9876543211'),
-(3, 'Live Event', NULL, NULL, 'Confirmed', 2, 5998.00, 1079.64, 500.00, 2, 6577.64, 'Bob Wilson', 'bob.wilson@email.com', '9876543212'),
-(4, 'Movie', 4, 19, 'Pending', 1, 350.00, 63.00, 150.00, 3, 263.00, 'Alice Brown', 'alice.brown@email.com', '9876543213'),
-(5, 'Live Event', NULL, NULL, 'Confirmed', 1, 1200.00, 216.00, 0.00, NULL, 1416.00, 'Charlie Davis', 'charlie.davis@email.com', '9876543214');
+-- Note: Using showtime_id from first showtime for movies, event_id for live events
+INSERT INTO bookings (user_id, booking_type, movie_id, event_id, showtime_id, booking_status, total_tickets, subtotal, convenience_fees, discount_amount, coupon_id, total_amount, customer_name, customer_email, customer_phone) VALUES
+(1, 'Movie', 1, NULL, 1, 'Confirmed', 2, 500.00, 90.00, 100.00, 1, 490.00, 'John Doe', 'john.doe@email.com', '9876543210'),
+(2, 'Movie', 2, NULL, 12, 'Confirmed', 3, 960.00, 172.80, 0.00, NULL, 1132.80, 'Jane Smith', 'jane.smith@email.com', '9876543211'),
+(3, 'Live Event', NULL, 3, NULL, 'Confirmed', 2, 4998.00, 899.64, 500.00, 2, 5397.64, 'Bob Wilson', 'bob.wilson@email.com', '9876543212'),
+(4, 'Movie', 4, NULL, 28, 'Pending', 1, 350.00, 63.00, 150.00, 3, 263.00, 'Alice Brown', 'alice.brown@email.com', '9876543213'),
+(5, 'Live Event', NULL, 9, NULL, 'Confirmed', 1, 1200.00, 216.00, 0.00, NULL, 1416.00, 'Charlie Davis', 'charlie.davis@email.com', '9876543214');
 
 -- Insert Booking Seats (for movie bookings)
+-- Booking 1: Deadpool & Wolverine at TVA Cinema (venue 1) - 2 seats in row A
 INSERT INTO booking_seats (booking_id, seat_id, seat_price) VALUES
-(1, 1, 250.00),  -- Booking 1: 2 seats
-(1, 2, 250.00),
-(2, 11, 320.00), -- Booking 2: 3 seats
-(2, 12, 320.00),
-(2, 13, 320.00),
-(4, 51, 350.00); -- Booking 4: 1 seat
+(1, 1, 250.00),  -- A1
+(1, 2, 250.00);  -- A2
+
+-- Booking 2: Venom at Cinema Hall (venue 2) - 3 seats in row A
+INSERT INTO booking_seats (booking_id, seat_id, seat_price) VALUES
+(2, 201, 320.00), -- A1 (venue 2 starts at seat_id 201)
+(2, 202, 320.00), -- A2
+(2, 203, 320.00); -- A3
+
+-- Booking 4: Dune Part Two at Cinema Hall (venue 2) - 1 seat
+INSERT INTO booking_seats (booking_id, seat_id, seat_price) VALUES
+(4, 211, 350.00); -- B1
 
 -- Insert Payments
 INSERT INTO payments (booking_id, payment_method, payment_status, transaction_id, amount, payment_gateway) VALUES
@@ -155,11 +263,13 @@ INSERT INTO payments (booking_id, payment_method, payment_status, transaction_id
 (5, 'Debit Card', 'Success', 'TXN20241001005', 1416.00, 'Stripe');
 
 -- Insert Reviews
-INSERT INTO reviews (user_id, movie_id, rating, review_text, is_verified_purchase, is_approved) VALUES
-(1, 1, 5, 'Amazing movie! Deadpool and Wolverine together was epic!', TRUE, TRUE),
-(2, 2, 4, 'Good action sequences, Tom Hardy was great as always.', TRUE, TRUE),
-(1, 4, 5, 'Dune Part Two exceeded all expectations. Masterpiece!', FALSE, TRUE),
-(3, NULL, 5, 'Coldplay concert was absolutely fantastic! Best night ever!', TRUE, TRUE);
+INSERT INTO reviews (user_id, movie_id, event_id, rating, review_text, is_verified_purchase, is_approved) VALUES
+(1, 1, NULL, 5, 'Amazing movie! Deadpool and Wolverine together was epic!', TRUE, TRUE),
+(2, 2, NULL, 4, 'Good action sequences, Tom Hardy was great as always.', TRUE, TRUE),
+(1, 4, NULL, 5, 'Dune Part Two exceeded all expectations. Masterpiece!', FALSE, TRUE),
+(3, NULL, 9, 5, 'Coldplay concert was absolutely fantastic! Best night ever!', TRUE, TRUE),
+(2, NULL, 1, 5, 'Comedy Non-Stop was hilarious! Anubhav Singh Bassi is amazing!', TRUE, TRUE),
+(4, 5, NULL, 4, 'The Batman was dark and gritty, exactly what I expected.', TRUE, TRUE);
 
 -- Insert Notifications
 INSERT INTO notifications (user_id, notification_type, title, message, is_read) VALUES
