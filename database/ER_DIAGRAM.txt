@@ -1,0 +1,216 @@
+================================================================================
+                    HAPPENIN TICKET BOOKING SYSTEM
+                         E-R DIAGRAM REPRESENTATION
+================================================================================
+
+ENTITIES AND RELATIONSHIPS:
+
+┌─────────────┐
+│    USERS    │
+├─────────────┤
+│ user_id (PK)│
+│ username    │
+│ email       │
+│ full_name   │
+│ phone       │
+│ city        │
+└──────┬──────┘
+       │
+       │ 1:N
+       │
+       ▼
+┌─────────────┐         ┌─────────────┐
+│  BOOKINGS   │         │   REVIEWS   │
+├─────────────┤         ├─────────────┤
+│booking_id(PK)│         │review_id(PK)│
+│ user_id (FK)│         │ user_id (FK)│
+│ movie_id(FK)│         │ movie_id(FK)│
+│ event_id(FK)│         │ event_id(FK)│
+│ showtime_id │         │ rating      │
+│ total_amount│         │ review_text │
+│ status      │         └─────────────┘
+└──────┬──────┘
+       │
+       │ 1:1
+       │
+       ▼
+┌─────────────┐
+│  PAYMENTS   │
+├─────────────┤
+│payment_id(PK)│
+│booking_id(FK)│
+│ amount      │
+│ status      │
+└─────────────┘
+
+┌─────────────┐
+│   MOVIES    │         ┌─────────────┐
+├─────────────┤         │  SHOWTIMES  │
+│ movie_id(PK)│         ├─────────────┤
+│ title       │         │showtime_id(PK)│
+│ genre       │         │ movie_id(FK)│
+│ rating      │         │ venue_id(FK)│
+│ director    │         │ show_date   │
+└──────┬──────┘         │ show_time   │
+       │               │ available   │
+       │ 1:N           └──────┬──────┘
+       │                      │
+       │                      │ N:1
+       │                      │
+       │                      ▼
+       │              ┌─────────────┐
+       │              │   VENUES    │
+       │              ├─────────────┤
+       │              │ venue_id(PK)│
+       │              │ venue_name  │
+       │              │ city        │
+       │              │ capacity    │
+       │              └──────┬──────┘
+       │                     │
+       │                     │ 1:N
+       │                     │
+       └─────────────────────┘
+                            │
+                            ▼
+                    ┌─────────────┐
+                    │LIVE_EVENTS  │
+                    ├─────────────┤
+                    │ event_id(PK)│
+                    │ venue_id(FK)│
+                    │ title       │
+                    │ event_date  │
+                    │ base_price  │
+                    └─────────────┘
+
+┌─────────────┐         ┌─────────────┐
+│   SEATS     │         │BOOKING_SEATS│
+├─────────────┤         ├─────────────┤
+│ seat_id(PK) │         │booking_seat │
+│ venue_id(FK)│         │ booking_id │
+│ row_label   │         │ seat_id(FK) │
+│ seat_number │         │ seat_price  │
+│ category_id │         └─────────────┘
+└──────┬──────┘
+       │
+       │ N:M
+       │
+       ▼
+┌─────────────┐
+│BOOKING_SEATS│
+└─────────────┘
+
+┌─────────────┐
+│  COUPONS   │
+├─────────────┤
+│coupon_id(PK)│
+│coupon_code │
+│discount_type│
+│discount_value│
+│ valid_from │
+│ valid_until │
+└──────┬──────┘
+       │
+       │ 1:N
+       │
+       ▼
+┌─────────────┐
+│  BOOKINGS   │
+└─────────────┘
+
+┌─────────────┐
+│NOTIFICATIONS│
+├─────────────┤
+│notification │
+│ user_id(FK) │
+│ type        │
+│ message     │
+└─────────────┘
+
+┌─────────────┐
+│ ADMIN_USERS │
+├─────────────┤
+│ admin_id(PK)│
+│ username    │
+│ role        │
+└─────────────┘
+
+================================================================================
+RELATIONSHIP SUMMARY:
+================================================================================
+
+1. USERS → BOOKINGS (1:N)
+   - One user can make many bookings
+   - Foreign Key: bookings.user_id → users.user_id
+
+2. MOVIES → SHOWTIMES (1:N)
+   - One movie can have many showtimes
+   - Foreign Key: showtimes.movie_id → movies.movie_id
+
+3. VENUES → SHOWTIMES (1:N)
+   - One venue can host many showtimes
+   - Foreign Key: showtimes.venue_id → venues.venue_id
+
+4. VENUES → LIVE_EVENTS (1:N)
+   - One venue can host many live events
+   - Foreign Key: live_events.venue_id → venues.venue_id
+
+5. VENUES → SEATS (1:N)
+   - One venue has many seats
+   - Foreign Key: seats.venue_id → venues.venue_id
+
+6. BOOKINGS → PAYMENTS (1:1)
+   - One booking has one payment
+   - Foreign Key: payments.booking_id → bookings.booking_id (UNIQUE)
+
+7. BOOKINGS → BOOKING_SEATS (1:N)
+   - One booking can include many seats
+   - Foreign Key: booking_seats.booking_id → bookings.booking_id
+
+8. SEATS → BOOKING_SEATS (1:N)
+   - One seat can be booked multiple times (different showtimes)
+   - Foreign Key: booking_seats.seat_id → seats.seat_id
+
+9. COUPONS → BOOKINGS (1:N)
+   - One coupon can be used in many bookings
+   - Foreign Key: bookings.coupon_id → coupons.coupon_id
+
+10. USERS → REVIEWS (1:N)
+    - One user can write many reviews
+    - Foreign Key: reviews.user_id → users.user_id
+
+11. MOVIES → REVIEWS (1:N)
+    - One movie can have many reviews
+    - Foreign Key: reviews.movie_id → movies.movie_id
+
+12. LIVE_EVENTS → REVIEWS (1:N)
+    - One event can have many reviews
+    - Foreign Key: reviews.event_id → live_events.event_id
+
+13. USERS → NOTIFICATIONS (1:N)
+    - One user can receive many notifications
+    - Foreign Key: notifications.user_id → users.user_id
+
+================================================================================
+KEY CONSTRAINTS:
+================================================================================
+
+PRIMARY KEYS:
+- All tables have auto-incrementing primary keys
+- Examples: user_id, movie_id, booking_id, payment_id
+
+FOREIGN KEYS:
+- All relationships enforced with FOREIGN KEY constraints
+- ON DELETE actions: CASCADE, RESTRICT, SET NULL
+
+UNIQUE CONSTRAINTS:
+- users.email, users.username
+- payments.transaction_id
+- coupons.coupon_code
+- seats (venue_id, row_label, seat_number)
+
+INDEXES:
+- Created on foreign keys
+- Created on frequently queried columns (email, dates, status)
+
+================================================================================
+
