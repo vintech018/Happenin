@@ -1,0 +1,60 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="smartglove" name="Smart Glove Block Diagram">
+    <mxGraphModel dx="1168" dy="720" grid="1" gridSize="10" page="1" pageScale="1" pageWidth="850" pageHeight="1100">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Hand Gesture -->
+        <mxCell id="handGesture" value="Hand Gesture" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="60" y="180" width="130" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- MPU6050 Sensors -->
+        <mxCell id="mpuSensors" value="MPU6050 Sensors (Multiple)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="240" y="180" width="170" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- ESP32 Processing -->
+        <mxCell id="esp32" value="ESP32 Processing" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="440" y="180" width="150" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Gesture Classification -->
+        <mxCell id="gestureClass" value="Gesture Classification (ML)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="620" y="180" width="190" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Text Output -->
+        <mxCell id="textOutput" value="Text Output" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="850" y="180" width="120" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- TTS Module -->
+        <mxCell id="ttsModule" value="TTS Module" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="180" width="130" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Audio Speech -->
+        <mxCell id="audioSpeech" value="Audio Speech (Speaker)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f4cccc;strokeColor=#cc0000;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="180" width="170" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- Arrows -->
+        <mxCell id="arrow1" edge="1" parent="1" source="handGesture" target="mpuSensors"
+                style="endArrow=block;html=1;rounded=0;strokeColor=#000000;"/>
+        <mxCell id="arrow2" edge="1" parent="1" source="mpuSensors" target="esp32"
+                style="endArrow=block;html=1;rounded=0;strokeColor=#000000;"/>
+        <mxCell id="arrow3" edge="1" parent="1" source="esp32" target="gestureClass"
+                style="endArrow=block;html=1;rounded=0;strokeColor=#000000;"/>
+        <mxCell id="arrow4" edge="1" parent="1" source="gestureClass" target="textOutput"
+                style="endArrow=block;html=1;rounded=0;strokeColor=#000000;"/>
+        <mxCell id="arrow5" edge="1" parent="1" source="textOutput" target="ttsModule"
+                style="endArrow=block;html=1;rounded=0;strokeColor=#000000;"/>
+        <mxCell id="arrow6" edge="1" parent="1" source="ttsModule" target="audioSpeech"
+                style="endArrow=block;html=1;rounded=0;strokeColor=#000000;"/>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -62,3 +62,5 @@ echo ""
 echo "Or use MySQL Workbench to explore the database."
 echo ""
 
+
+

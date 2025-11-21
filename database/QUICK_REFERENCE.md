@@ -170,3 +170,5 @@ mysql -u root -p happenin_db < happenin_backup.sql
 - Regularly backup the database
 - Monitor for SQL injection vulnerabilities
 
+
+
